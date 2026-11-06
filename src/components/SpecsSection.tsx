@@ -33,11 +33,11 @@ export default function SpecsSection() {
         </div>
 
         {/* Certification Badges Row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-12">
           {certifications.map((cert) => (
             <div
               key={cert.title}
-              className="p-5 rounded-xl bg-rfk-surface/70 border border-rfk-border/70 flex flex-col items-start"
+              className="p-4 sm:p-5 rounded-xl bg-rfk-surface/70 border border-rfk-border/70 flex flex-col items-start"
             >
               <div className="p-2 rounded bg-rfk-red/10 text-rfk-red mb-3">
                 <Award className="w-5 h-5" />
@@ -104,3 +104,4 @@ export default function SpecsSection() {
     </section>
   );
 }
+

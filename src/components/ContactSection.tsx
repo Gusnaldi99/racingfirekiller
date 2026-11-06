@@ -12,6 +12,7 @@ export default function ContactSection() {
     notes: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [lastWaUrl, setLastWaUrl] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,6 +29,7 @@ export default function ContactSection() {
     const encoded = encodeURIComponent(textLines.join("\n"));
     const waUrl = `https://wa.me/6281290003278?text=${encoded}`;
 
+    setLastWaUrl(waUrl);
     setSubmitted(true);
     // Open WhatsApp in new tab
     if (typeof window !== "undefined") {
@@ -100,11 +102,21 @@ export default function ContactSection() {
               </p>
 
               {submitted && (
-                <div className="mb-6 p-4 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 text-xs flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 shrink-0" />
-                  <span>
-                    Permintaan Anda telah disiapkan. Jendela WhatsApp terbuka otomatis untuk melanjutkan diskusi teknis.
-                  </span>
+                <div className="mb-6 p-4 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-5 h-5 shrink-0" />
+                    <span>Permintaan Anda telah disiapkan.</span>
+                  </div>
+                  {lastWaUrl && (
+                    <a
+                      href={lastWaUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 font-heading font-bold uppercase tracking-wider text-rfk-white hover:text-green-300 underline underline-offset-2 shrink-0"
+                    >
+                      <span>Buka WhatsApp Sekarang &rarr;</span>
+                    </a>
+                  )}
                 </div>
               )}
 
@@ -224,3 +236,4 @@ export default function ContactSection() {
     </section>
   );
 }
+

@@ -246,3 +246,4 @@ export const FAQS: FaqItem[] = [
       "Tabung RFK dilengkapi pressure gauge presisi tinggi untuk memantau tekanan jarum hijau setiap saat. Formula Hartindo AF11E tidak mengendap atau menggumpal seperti bubuk powder. Kami memberikan garansi resmi 5 tahun dengan layanan inspeksi tekanan purna jual.",
   },
 ];
+

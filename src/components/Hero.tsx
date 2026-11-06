@@ -99,24 +99,26 @@ export default function Hero() {
       {/* Verified Metrics Counter Bar */}
       <div className="relative z-10 w-full bg-rfk-surface/80 border-t border-b border-rfk-border/60 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 divide-y md:divide-y-0 md:divide-x divide-rfk-border/60">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
             {METRICS.map((metric, index) => (
               <div
                 key={metric.label}
-                className={`flex flex-col ${index > 0 ? "pt-4 md:pt-0 md:pl-6" : ""}`}
+                className={`flex flex-col p-3 sm:p-4 rounded-lg bg-rfk-charcoal/30 sm:bg-transparent sm:border-l sm:border-rfk-border/60 ${
+                  index === 0 ? "sm:border-l-0 sm:pl-0" : "sm:pl-6"
+                }`}
               >
-                <div className="flex items-baseline gap-1.5 font-heading">
-                  <span className="text-3xl sm:text-4xl font-extrabold text-rfk-white tracking-tight">
+                <div className="flex flex-wrap items-baseline gap-1.5 font-heading">
+                  <span className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-rfk-white tracking-tight">
                     {metric.value}
                   </span>
-                  <span className="text-xs font-bold text-rfk-red uppercase tracking-wider">
+                  <span className="text-[10px] sm:text-xs font-bold text-rfk-red uppercase tracking-wider">
                     {metric.unit}
                   </span>
                 </div>
                 <div className="text-xs font-semibold text-rfk-silver-light uppercase tracking-wider mt-1 font-heading">
                   {metric.label}
                 </div>
-                <p className="text-[11px] text-rfk-silver/70 font-sans mt-0.5 hidden sm:block">
+                <p className="text-[11px] text-rfk-silver/70 font-sans mt-0.5 hidden lg:block">
                   {metric.detail}
                 </p>
               </div>
@@ -127,3 +129,4 @@ export default function Hero() {
     </section>
   );
 }
+

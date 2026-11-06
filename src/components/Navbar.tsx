@@ -107,33 +107,40 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Accessible Mobile Drawer */}
+      {/* Accessible Mobile Drawer & Backdrop */}
       {isOpen && (
-        <div
-          id="mobile-navigation"
-          className="md:hidden fixed inset-x-0 top-full bg-rfk-black/95 backdrop-blur-xl border-b border-rfk-border px-6 py-6 shadow-2xl transition-all animate-in fade-in slide-in-from-top-4 duration-200"
-        >
-          <div className="flex flex-col gap-4 font-heading tracking-wider uppercase font-semibold text-sm">
-            {navLinks.map((link) => (
+        <>
+          <div
+            className="fixed inset-0 bg-rfk-black/60 backdrop-blur-sm z-40 md:hidden"
+            onClick={() => setIsOpen(false)}
+            aria-hidden="true"
+          />
+          <div
+            id="mobile-navigation"
+            className="md:hidden fixed inset-x-0 top-full bg-rfk-black/95 backdrop-blur-xl border-b border-rfk-border px-6 py-6 shadow-2xl transition-all animate-in fade-in slide-in-from-top-4 duration-200 z-50"
+          >
+            <div className="flex flex-col gap-2 font-heading tracking-wider uppercase font-semibold text-sm">
+              {navLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="min-h-[44px] flex items-center px-3 rounded text-rfk-silver hover:text-rfk-white hover:bg-rfk-charcoal/40 transition-colors border-b border-rfk-charcoal/30"
+                >
+                  {link.label}
+                </a>
+              ))}
               <a
-                key={link.label}
-                href={link.href}
+                href="#kontak"
                 onClick={() => setIsOpen(false)}
-                className="text-rfk-silver hover:text-rfk-red transition-colors py-2 border-b border-rfk-charcoal/50"
+                className="mt-3 min-h-[48px] inline-flex items-center justify-center gap-2 bg-rfk-red hover:bg-rfk-red-dark text-rfk-white font-bold py-3 px-4 rounded text-center tracking-wider shadow-lg shadow-rfk-red/25"
               >
-                {link.label}
+                <span>KONSULTASI DENGAN TIM RFK</span>
+                <ArrowUpRight className="w-4 h-4" />
               </a>
-            ))}
-            <a
-              href="#kontak"
-              onClick={() => setIsOpen(false)}
-              className="mt-2 inline-flex items-center justify-center gap-2 bg-rfk-red hover:bg-rfk-red-dark text-rfk-white font-bold py-3 rounded text-center tracking-wider"
-            >
-              <span>KONSULTASI DENGAN TIM RFK</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </header>
   );

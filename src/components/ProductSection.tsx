@@ -9,6 +9,21 @@ export default function ProductSection() {
   const [activeId, setActiveId] = useState("rfk-1kg");
   const activeProduct = CANISTER_PRODUCTS.find((p) => p.id === activeId) || CANISTER_PRODUCTS[0];
 
+  const handleTabKeyDown = (e: React.KeyboardEvent, index: number) => {
+    let nextIndex = index;
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+      nextIndex = (index + 1) % CANISTER_PRODUCTS.length;
+    } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+      nextIndex = (index - 1 + CANISTER_PRODUCTS.length) % CANISTER_PRODUCTS.length;
+    } else {
+      return;
+    }
+    e.preventDefault();
+    const nextProd = CANISTER_PRODUCTS[nextIndex];
+    setActiveId(nextProd.id);
+    document.getElementById(`tab-${nextProd.id}`)?.focus();
+  };
+
   return (
     <section id="produk" className="py-24 bg-rfk-obsidian relative border-b border-rfk-border/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,7 +51,7 @@ export default function ProductSection() {
           aria-label="Pilihan Kapasitas Tabung RFK"
           className="flex flex-wrap gap-3 mb-10 border-b border-rfk-border/60 pb-4"
         >
-          {CANISTER_PRODUCTS.map((prod) => {
+          {CANISTER_PRODUCTS.map((prod, index) => {
             const isSelected = prod.id === activeId;
             return (
               <button
@@ -47,7 +62,8 @@ export default function ProductSection() {
                 aria-controls={`panel-${prod.id}`}
                 tabIndex={isSelected ? 0 : -1}
                 onClick={() => setActiveId(prod.id)}
-                className={`min-h-[44px] px-6 py-3 rounded-lg font-heading font-bold tracking-wider text-sm transition-all duration-200 flex items-center gap-3 border ${
+                onKeyDown={(e) => handleTabKeyDown(e, index)}
+                className={`min-h-[44px] px-6 py-3 rounded-lg font-heading font-bold tracking-wider text-sm transition-all duration-200 flex items-center gap-3 border focus:outline-none focus-visible:ring-2 focus-visible:ring-rfk-red ${
                   isSelected
                     ? "bg-rfk-red text-rfk-white border-rfk-red shadow-lg shadow-rfk-red/25"
                     : "bg-rfk-surface/80 text-rfk-silver border-rfk-border hover:text-rfk-white hover:border-rfk-silver"
@@ -72,7 +88,7 @@ export default function ProductSection() {
           id={`panel-${activeProduct.id}`}
           role="tabpanel"
           aria-labelledby={`tab-${activeProduct.id}`}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center p-8 sm:p-12 rounded-2xl bg-rfk-surface/80 border border-rfk-border shadow-2xl backdrop-blur-sm"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center p-5 sm:p-8 md:p-12 rounded-2xl bg-rfk-surface/80 border border-rfk-border shadow-2xl backdrop-blur-sm"
         >
           {/* Canister Render Image */}
           <div className="lg:col-span-5 flex justify-center items-center">
@@ -190,3 +206,4 @@ export default function ProductSection() {
     </section>
   );
 }
+
