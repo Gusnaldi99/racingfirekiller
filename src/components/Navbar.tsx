@@ -27,6 +27,17 @@ export default function Navbar() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen]);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   const navLinks = [
     { label: "Keunggulan", href: "#keunggulan" },
     { label: "Produk", href: "#produk" },
