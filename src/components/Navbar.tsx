@@ -39,12 +39,12 @@ export default function Navbar() {
   }, [isOpen]);
 
   const navLinks = [
-    { label: "Keunggulan", href: "#keunggulan" },
-    { label: "Produk", href: "#produk" },
-    { label: "Sistem", href: "#sistem" },
-    { label: "Showcase", href: "#showcase" },
-    { label: "Spesifikasi", href: "#spesifikasi" },
-    { label: "FAQ", href: "#faq" },
+    { label: "Keunggulan", href: "/#keunggulan" },
+    { label: "Produk", href: "/#produk" },
+    { label: "Sistem", href: "/#sistem" },
+    { label: "Showcase", href: "/#showcase" },
+    { label: "Spesifikasi", href: "/#spesifikasi" },
+    { label: "FAQ", href: "/#faq" },
   ];
 
   return (
@@ -59,7 +59,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           {/* Brand Logo */}
           <Link
-            href="#beranda"
+            href="/"
             className="flex items-center gap-3 group focus-visible:ring-2 focus-visible:ring-rfk-red rounded p-1"
             aria-label="Racing Fire Killer beranda"
           >
@@ -77,29 +77,29 @@ export default function Navbar() {
 
           {/* Desktop Navigation Links */}
           <nav
-            className="hidden md:flex items-center gap-7 text-xs font-semibold tracking-widest uppercase font-heading"
+            className="hidden md:flex items-center gap-7 text-sm font-semibold tracking-wider uppercase font-heading"
             aria-label="Navigasi Desktop"
           >
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 className="text-rfk-silver hover:text-rfk-white transition-colors duration-150 py-1 hover:border-b-2 hover:border-rfk-red focus-visible:ring-2 focus-visible:ring-rfk-red rounded"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* Desktop CTA Button */}
           <div className="hidden md:flex items-center gap-4">
-            <a
-              href="#kontak"
-              className="inline-flex items-center gap-2 bg-rfk-red hover:bg-rfk-red-light text-rfk-white font-heading tracking-wider uppercase font-bold text-xs px-5 py-2.5 rounded transition-colors duration-200 shadow-md shadow-rfk-red/20 focus-visible:ring-2 focus-visible:ring-rfk-white"
+            <Link
+              href="/#kontak"
+              className="inline-flex items-center gap-2 bg-rfk-red hover:bg-rfk-red-light text-rfk-white font-heading tracking-wider uppercase font-bold text-sm px-5 py-2.5 rounded transition-colors duration-200 shadow-md shadow-rfk-red/20 focus-visible:ring-2 focus-visible:ring-rfk-white"
             >
               <span>KONSULTASI</span>
-              <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
-            </a>
+              <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+            </Link>
           </div>
 
           {/* Mobile Menu Button (min 44px tap target) */}
@@ -130,25 +130,25 @@ export default function Navbar() {
             id="mobile-navigation"
             className="md:hidden fixed inset-x-0 top-full bg-rfk-black/95 backdrop-blur-xl border-b border-rfk-border px-6 py-6 shadow-2xl transition-all animate-in fade-in slide-in-from-top-4 duration-200 z-50"
           >
-            <div className="flex flex-col gap-2 font-heading tracking-wider uppercase font-semibold text-sm">
+            <div className="flex flex-col gap-2 font-heading tracking-wider uppercase font-semibold text-base">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.label}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="min-h-[44px] flex items-center px-3 rounded text-rfk-silver hover:text-rfk-white hover:bg-rfk-charcoal/40 transition-colors border-b border-rfk-charcoal/30"
+                  className="min-h-[48px] flex items-center px-3 rounded text-rfk-silver-light hover:text-rfk-white hover:bg-rfk-charcoal/40 transition-colors border-b border-rfk-charcoal/30 text-base"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
-              <a
-                href="#kontak"
+              <Link
+                href="/#kontak"
                 onClick={() => setIsOpen(false)}
-                className="mt-3 min-h-[48px] inline-flex items-center justify-center gap-2 bg-rfk-red hover:bg-rfk-red-dark text-rfk-white font-bold py-3 px-4 rounded text-center tracking-wider shadow-lg shadow-rfk-red/25"
+                className="mt-3 min-h-[48px] inline-flex items-center justify-center gap-2 bg-rfk-red hover:bg-rfk-red-dark text-rfk-white font-bold py-3.5 px-4 rounded text-center tracking-wider shadow-lg shadow-rfk-red/25 text-base"
               >
                 <span>KONSULTASI DENGAN TIM RFK</span>
                 <ArrowUpRight className="w-4 h-4" />
-              </a>
+              </Link>
             </div>
           </div>
         </>

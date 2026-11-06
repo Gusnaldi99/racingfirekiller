@@ -24,7 +24,7 @@ export default function WhySection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
-            <div className="flex items-center gap-2 text-xs font-heading font-bold text-rfk-red tracking-widest uppercase mb-3">
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red tracking-wider uppercase mb-3">
               <span>01 / KEUNGGULAN</span>
               <span className="text-rfk-border">/</span>
               <span className="text-rfk-silver">BUILT FOR THE LIMIT</span>
@@ -34,7 +34,7 @@ export default function WhySection() {
               <span className="text-rfk-red">SETIAP DETIK</span> BERARTI.
             </h2>
           </div>
-          <p className="text-sm sm:text-base text-rfk-silver max-w-lg font-sans leading-relaxed">
+          <p className="text-base sm:text-lg text-rfk-silver-light max-w-lg font-sans leading-relaxed">
             Kondisi ekstrem pada mobil balap dan modifikasi membutuhkan pemadaman instan yang tidak merusak komponen bernilai tinggi. Hartindo AF11E hadir sebagai solusi tanpa kompromi.
           </p>
         </div>
@@ -47,10 +47,10 @@ export default function WhySection() {
                 <AlertTriangle className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-heading font-bold uppercase text-sm tracking-wider text-rfk-white mb-1">
+                <h3 className="font-heading font-bold uppercase text-base sm:text-lg tracking-wider text-rfk-white mb-1">
                   Bahaya APAR Powder Konvensional
                 </h3>
-                <p className="text-xs text-rfk-silver leading-relaxed font-sans">
+                <p className="text-sm sm:text-base text-rfk-silver-light leading-relaxed font-sans">
                   Serbuk powder meleleh saat terkena panas mesin, membentuk kerak korosif yang merusak turbocharger, intake, dan silinder mesin hingga rusak total (total engine failure).
                 </p>
               </div>
@@ -65,10 +65,10 @@ export default function WhySection() {
                 <ShieldCheck className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-heading font-bold uppercase text-sm tracking-wider text-rfk-white mb-1">
+                <h3 className="font-heading font-bold uppercase text-base sm:text-lg tracking-wider text-rfk-white mb-1">
                   Solusi Gas Bersih Hartindo AF11E
                 </h3>
-                <p className="text-xs text-rfk-silver leading-relaxed font-sans">
+                <p className="text-sm sm:text-base text-rfk-silver-light leading-relaxed font-sans">
                   Menguap bersih 100% tanpa residu serbuk sama sekali. Aman disemprotkan langsung pada ruang mesin menyala, kabel kelistrikan, ECU, dan interior kabin.
                 </p>
               </div>
@@ -93,21 +93,21 @@ export default function WhySection() {
                   </div>
                 </div>
 
-                <h3 className="font-heading font-extrabold uppercase text-lg tracking-wide text-rfk-white mb-2">
+                <h3 className="font-heading font-extrabold uppercase text-xl sm:text-2xl tracking-wide text-rfk-white mb-2">
                   {pillar.title}
                 </h3>
 
-                <div className="text-xs font-semibold text-rfk-silver-light mb-3 font-heading tracking-wider">
+                <div className="text-sm font-semibold text-rfk-silver-light mb-3 font-heading tracking-wider">
                   {pillar.summary}
                 </div>
 
-                <p className="text-xs text-rfk-silver font-sans leading-relaxed">
+                <p className="text-sm sm:text-base text-rfk-silver-light font-sans leading-relaxed">
                   {pillar.detail}
                 </p>
               </div>
 
               <div className="mt-6 pt-4 border-t border-rfk-border/40">
-                <span className="text-[11px] font-heading uppercase tracking-widest text-rfk-red font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                <span className="text-xs sm:text-sm font-heading uppercase tracking-wider text-rfk-red font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                   Standar RFK 2026 &rarr;
                 </span>
               </div>

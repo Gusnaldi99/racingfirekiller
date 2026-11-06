@@ -16,8 +16,8 @@ export default function FaqSection() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 text-xs font-heading font-bold text-rfk-red tracking-widest uppercase mb-3">
-            <HelpCircle className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red tracking-wider uppercase mb-3">
+            <HelpCircle className="w-4 h-4" />
             <span>06 / FAQ</span>
             <span className="text-rfk-border">/</span>
             <span className="text-rfk-silver">FREQUENTLY ASKED QUESTIONS</span>
@@ -26,7 +26,7 @@ export default function FaqSection() {
             PERTANYAAN SEPUTAR <br />
             <span className="text-rfk-red">PROTEKSI KEBAKARAN</span> MOBIL.
           </h2>
-          <p className="text-sm text-rfk-silver max-w-xl mx-auto font-sans leading-relaxed mt-4">
+          <p className="text-base sm:text-lg text-rfk-silver-light max-w-xl mx-auto font-sans leading-relaxed mt-4">
             Jawaban teknis langsung dari spesialis fire safety otomotif mengenai formula Hartindo AF11E dan aplikasi motorsport.
           </p>
         </div>
@@ -46,7 +46,7 @@ export default function FaqSection() {
                   aria-expanded={isOpen}
                   aria-controls={`accordion-content-${faq.id}`}
                   onClick={() => toggle(faq.id)}
-                  className="w-full min-h-[52px] p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-heading font-bold text-base sm:text-lg text-rfk-white hover:text-rfk-red-light transition-colors focus-visible:ring-2 focus-visible:ring-rfk-red focus:outline-none"
+                  className="w-full min-h-[56px] p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-heading font-bold text-lg sm:text-xl text-rfk-white hover:text-rfk-red-light transition-colors focus-visible:ring-2 focus-visible:ring-rfk-red focus:outline-none"
                 >
                   <span className="tracking-wide">{faq.question}</span>
                   <div
@@ -63,7 +63,7 @@ export default function FaqSection() {
                     id={`accordion-content-${faq.id}`}
                     role="region"
                     aria-labelledby={`accordion-btn-${faq.id}`}
-                    className="px-5 pb-6 sm:px-6 sm:pb-7 text-xs sm:text-sm text-rfk-silver font-sans leading-relaxed border-t border-rfk-border/40 pt-4"
+                    className="px-5 pb-6 sm:px-6 sm:pb-7 text-sm sm:text-base text-rfk-silver-light font-sans leading-relaxed border-t border-rfk-border/40 pt-4"
                   >
                     {faq.answer}
                   </div>
@@ -75,7 +75,7 @@ export default function FaqSection() {
 
         {/* Support Callout */}
         <div className="mt-12 text-center p-6 rounded-xl bg-rfk-surface/40 border border-rfk-border/50">
-          <p className="text-xs text-rfk-silver font-sans">
+          <p className="text-sm sm:text-base text-rfk-silver-light font-sans">
             Punya pertanyaan spesifik tentang ruang mesin atau konfigurasi mobil Anda?{" "}
             <a href="#kontak" className="text-rfk-red font-heading font-bold uppercase underline underline-offset-4 hover:text-rfk-red-light ml-1">
               Hubungi Tim Konsultasi RFK &rarr;

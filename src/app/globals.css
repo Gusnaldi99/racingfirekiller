@@ -8,8 +8,21 @@
 }
 
 html {
+  font-size: 16.5px;
   scroll-behavior: smooth;
   color-scheme: dark;
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 17.5px;
+  }
 }
 
 body {

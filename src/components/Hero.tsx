@@ -22,7 +22,7 @@ export default function Hero() {
           {/* Main Hero Copy */}
           <div className="lg:col-span-7 flex flex-col items-start">
             {/* Motorsport Eyebrow */}
-            <div className="inline-flex items-center gap-3 px-3.5 py-1.5 rounded bg-rfk-charcoal/80 border border-rfk-border text-rfk-silver text-xs font-heading font-semibold tracking-widest uppercase mb-6">
+            <div className="inline-flex items-center gap-3 px-3.5 py-1.5 rounded bg-rfk-charcoal/80 border border-rfk-border text-rfk-silver-light text-xs sm:text-sm font-heading font-semibold tracking-wider uppercase mb-6">
               <span className="w-2 h-2 rounded-full bg-rfk-red animate-pulse" />
               <span>AUTOMOTIVE FIRE SAFETY</span>
               <span className="text-rfk-border">/</span>
@@ -37,7 +37,7 @@ export default function Hero() {
             </h1>
 
             {/* Descriptive Body */}
-            <p className="text-base sm:text-lg text-rfk-silver max-w-xl font-sans leading-relaxed mb-8">
+            <p className="text-base sm:text-lg lg:text-xl text-rfk-silver-light max-w-xl font-sans leading-relaxed mb-8">
               Sistem pemadam otomatis dan tabung berstandar motorsport untuk mobil balap dan modifikasi. Lindungi mesin, kelistrikan, dan keselamatan pengemudi saat setiap detik menentukan.
             </p>
 
@@ -45,7 +45,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
               <a
                 href="#produk"
-                className="inline-flex items-center justify-center gap-2 bg-rfk-red hover:bg-rfk-red-light text-rfk-white font-heading font-bold text-sm tracking-widest uppercase px-7 py-4 rounded transition-all duration-200 shadow-lg shadow-rfk-red/25 focus-visible:ring-2 focus-visible:ring-rfk-white"
+                className="inline-flex items-center justify-center gap-2 bg-rfk-red hover:bg-rfk-red-light text-rfk-white font-heading font-bold text-sm sm:text-base tracking-wider uppercase px-7 py-4 rounded transition-all duration-200 shadow-lg shadow-rfk-red/25 focus-visible:ring-2 focus-visible:ring-rfk-white"
               >
                 <span>JELAJAHI PRODUK</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -53,7 +53,7 @@ export default function Hero() {
 
               <a
                 href="#sistem"
-                className="inline-flex items-center justify-center gap-2 bg-rfk-charcoal/80 hover:bg-rfk-charcoal text-rfk-silver-light hover:text-rfk-white border border-rfk-border font-heading font-semibold text-sm tracking-widest uppercase px-7 py-4 rounded transition-all duration-200 focus-visible:ring-2 focus-visible:ring-rfk-red"
+                className="inline-flex items-center justify-center gap-2 bg-rfk-charcoal/80 hover:bg-rfk-charcoal text-rfk-silver-light hover:text-rfk-white border border-rfk-border font-heading font-semibold text-sm sm:text-base tracking-wider uppercase px-7 py-4 rounded transition-all duration-200 focus-visible:ring-2 focus-visible:ring-rfk-red"
               >
                 <span>CARA KERJA SISTEM</span>
                 <ArrowDownRight className="w-4 h-4 text-rfk-red" />
@@ -78,15 +78,15 @@ export default function Hero() {
               </div>
 
               {/* Verified Clean Agent Badge */}
-              <div className="absolute -bottom-4 -left-2 sm:-left-4 bg-rfk-black/90 border border-rfk-red/50 p-3.5 rounded-lg shadow-xl backdrop-blur-md flex items-center gap-3">
-                <div className="w-9 h-9 rounded bg-rfk-red/20 text-rfk-red flex items-center justify-center">
+              <div className="absolute -bottom-4 -left-2 sm:-left-4 bg-rfk-black/90 border border-rfk-red/50 p-4 rounded-lg shadow-xl backdrop-blur-md flex items-center gap-3">
+                <div className="w-10 h-10 rounded bg-rfk-red/20 text-rfk-red flex items-center justify-center shrink-0">
                   <ShieldAlert className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-[10px] uppercase tracking-widest text-rfk-silver font-heading">
+                  <div className="text-xs uppercase tracking-wider text-rfk-silver-light font-heading">
                     Media Pemadam
                   </div>
-                  <div className="text-xs font-bold text-rfk-white font-heading">
+                  <div className="text-sm sm:text-base font-bold text-rfk-white font-heading">
                     Hartindo AF11E Clean Agent
                   </div>
                 </div>
@@ -111,14 +111,14 @@ export default function Hero() {
                   <span className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-rfk-white tracking-tight">
                     {metric.value}
                   </span>
-                  <span className="text-[10px] sm:text-xs font-bold text-rfk-red uppercase tracking-wider">
+                  <span className="text-xs sm:text-sm font-bold text-rfk-red uppercase tracking-wider">
                     {metric.unit}
                   </span>
                 </div>
-                <div className="text-xs font-semibold text-rfk-silver-light uppercase tracking-wider mt-1 font-heading">
+                <div className="text-sm sm:text-base font-bold text-rfk-white uppercase tracking-wider mt-1 font-heading">
                   {metric.label}
                 </div>
-                <p className="text-[11px] text-rfk-silver/70 font-sans mt-0.5 hidden lg:block">
+                <p className="text-xs sm:text-sm text-rfk-silver font-sans mt-0.5 hidden lg:block">
                   {metric.detail}
                 </p>
               </div>

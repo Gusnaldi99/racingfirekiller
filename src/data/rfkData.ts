@@ -2,7 +2,7 @@ export interface CanisterProduct {
   id: string;
   name: string;
   capacity: string;
-  weightNumber: number;
+  weightNumber: number | string;
   badge: string;
   tagline: string;
   description: string;
@@ -175,6 +175,26 @@ export const CANISTER_PRODUCTS: CanisterProduct[] = [
       material: "Seamless High-Strength Steel Cylinder",
     },
   },
+  {
+    id: "rfk-kit",
+    name: "RFK FIRE SUPPRESSION KIT",
+    capacity: "SUPPRESSION KIT",
+    weightNumber: "KIT",
+    badge: "FULL MOTORSPORT KIT",
+    tagline: "Satu set lengkap suppression system terintegrasi ruang mesin & kokpit",
+    description:
+      "Satu paket lengkap motorsport suppression system berstandar regulasi kompetisi. Dilengkapi tabung 4.0 KG Hartindo AF11E bertekanan tinggi, katup pelepasan cepat mekanis/pneumatik dengan indikator gauge, kabel penarik darurat cockpit, selang pipa tembaga distribusi anti-pecah, serta 8 titik nozzle kuningan presisi untuk pemadaman simultan ruang mesin, turbocharger, dan kompartemen tangki bahan bakar.",
+    idealFor: "Mobil balap reli profesional, Pro Drift, Time Attack, Drag Race Pro, dan mobil balap sirkuit dengan regulasi scrutineering resmi.",
+    image: "/assets/tabung/Perlengkapan-pemadam-kebakaran-otomotif.webp",
+    specs: {
+      agent: "Hartindo AF11E Clean Agent",
+      fireRating: "21A 113B C (Multi-Nozzle)",
+      workingPressure: "14 Bar",
+      testPressure: "27 Bar",
+      operatingTemp: "-30°C hingga +60°C",
+      material: "Tabung Baja Mulus + Pipa Tembaga & 8 Nozzle Kuningan",
+    },
+  },
 ];
 
 export const SYSTEM_STEPS: SystemStep[] = [
@@ -203,7 +223,7 @@ export const SYSTEM_STEPS: SystemStep[] = [
 
 export const TECH_SPECS: TechSpecRow[] = [
   { parameter: "Media Pemadam", value: "Hartindo AF11E (Gas Cair Bersih / Clean Agent)", standard: "Bebas CFC & Halon" },
-  { parameter: "Kapasitas Tersedia", value: "1.0 KG / 2.0 KG / 4.0 KG", standard: "Spesifikasi Motorsport" },
+  { parameter: "Kapasitas Tersedia", value: "1.0 KG / 2.0 KG / 4.0 KG / Suppression Kit", standard: "Spesifikasi Motorsport" },
   { parameter: "Klasifikasi Api", value: "Kelas A (Padat), Kelas B (Cairan), Kelas C (Gas)", standard: "EN3 / ISO 7165" },
   { parameter: "Tekanan Kerja (Working Pressure)", value: "14 Bar pada 20°C", standard: "Gauge Indikator Presisi" },
   { parameter: "Tekanan Pengujian (Test Pressure)", value: "27 Bar", standard: "Hydraulic Integrity Test" },

@@ -30,7 +30,7 @@ export default function ProductSection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div>
-            <div className="flex items-center gap-2 text-xs font-heading font-bold text-rfk-red tracking-widest uppercase mb-3">
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red tracking-wider uppercase mb-3">
               <span>02 / PRODUK</span>
               <span className="text-rfk-border">/</span>
               <span className="text-rfk-silver">HARTINDO AF11E</span>
@@ -40,8 +40,8 @@ export default function ProductSection() {
               <span className="text-rfk-red">SESUAI</span> KEBUTUHAN.
             </h2>
           </div>
-          <p className="text-sm sm:text-base text-rfk-silver max-w-lg font-sans leading-relaxed">
-            Hartindo AF11E tersedia dalam tiga varian kapasitas tabung resmi, siap dipasang dengan braket rilis cepat atau diintegrasikan sebagai automatic suppression system.
+          <p className="text-base sm:text-lg text-rfk-silver-light max-w-lg font-sans leading-relaxed">
+            Hartindo AF11E tersedia dalam varian tabung mandiri 1 KG, 2 KG, 4 KG hingga paket lengkap Fire Suppression Kit motorsport, siap dipasang dengan braket rilis cepat atau terintegrasi sistem nozzle multi-titik.
           </p>
         </div>
 
@@ -53,6 +53,7 @@ export default function ProductSection() {
         >
           {CANISTER_PRODUCTS.map((prod, index) => {
             const isSelected = prod.id === activeId;
+            const codeLabel = typeof prod.weightNumber === "number" ? `RFK / 0${prod.weightNumber}` : `RFK / ${prod.weightNumber}`;
             return (
               <button
                 key={prod.id}
@@ -63,17 +64,17 @@ export default function ProductSection() {
                 tabIndex={isSelected ? 0 : -1}
                 onClick={() => setActiveId(prod.id)}
                 onKeyDown={(e) => handleTabKeyDown(e, index)}
-                className={`min-h-[44px] px-6 py-3 rounded-lg font-heading font-bold tracking-wider text-sm transition-all duration-200 flex items-center gap-3 border focus:outline-none focus-visible:ring-2 focus-visible:ring-rfk-red ${
+                className={`min-h-[46px] px-5 sm:px-6 py-3 rounded-lg font-heading font-bold tracking-wider text-sm sm:text-base transition-all duration-200 flex items-center gap-2.5 sm:gap-3 border focus:outline-none focus-visible:ring-2 focus-visible:ring-rfk-red ${
                   isSelected
                     ? "bg-rfk-red text-rfk-white border-rfk-red shadow-lg shadow-rfk-red/25"
                     : "bg-rfk-surface/80 text-rfk-silver border-rfk-border hover:text-rfk-white hover:border-rfk-silver"
                 }`}
               >
-                <span className="text-xs font-mono opacity-80">RFK / 0{prod.weightNumber}</span>
-                <span className="text-base uppercase">{prod.capacity}</span>
+                <span className="text-xs sm:text-sm font-mono opacity-80">{codeLabel}</span>
+                <span className="text-base sm:text-lg uppercase">{prod.capacity}</span>
                 <span
-                  className={`text-[10px] uppercase font-semibold px-2 py-0.5 rounded ${
-                    isSelected ? "bg-rfk-black/30 text-rfk-white" : "bg-rfk-charcoal text-rfk-silver"
+                  className={`text-xs uppercase font-semibold px-2 py-0.5 rounded ${
+                    isSelected ? "bg-rfk-black/30 text-rfk-white" : "bg-rfk-charcoal text-rfk-silver-light"
                   }`}
                 >
                   {prod.badge}
@@ -88,55 +89,57 @@ export default function ProductSection() {
           id={`panel-${activeProduct.id}`}
           role="tabpanel"
           aria-labelledby={`tab-${activeProduct.id}`}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center p-5 sm:p-8 md:p-12 rounded-2xl bg-rfk-surface/80 border border-rfk-border shadow-2xl backdrop-blur-sm"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center p-6 sm:p-8 md:p-12 rounded-2xl bg-rfk-surface/80 border border-rfk-border shadow-2xl backdrop-blur-sm"
         >
           {/* Canister Render Image */}
-          <div className="lg:col-span-5 flex justify-center items-center">
-            <div className="relative w-full max-w-sm aspect-[3/4] sm:aspect-square flex items-center justify-center p-4">
-              <div className="absolute inset-0 bg-radial-gradient from-rfk-charcoal/40 to-transparent rounded-full blur-2xl pointer-events-none" />
-              <div className="relative w-full h-full flex items-center justify-center">
+          <div className="lg:col-span-6 flex justify-center items-center">
+            <div className="relative w-full max-w-lg sm:max-w-xl lg:max-w-none aspect-square flex items-center justify-center p-2 sm:p-4">
+              <div className="absolute inset-0 bg-radial-gradient from-rfk-red/10 via-rfk-charcoal/40 to-transparent rounded-full blur-3xl pointer-events-none" />
+              <div className="relative w-full h-full min-h-[340px] sm:min-h-[440px] md:min-h-[500px] lg:min-h-[540px] flex items-center justify-center">
                 <Image
+                  key={activeProduct.id}
                   src={activeProduct.image}
                   alt={activeProduct.name}
                   fill
-                  className="object-contain drop-shadow-[0_20px_35px_rgba(211,2,1,0.2)]"
-                  sizes="(max-width: 768px) 100vw, 400px"
+                  className="object-contain drop-shadow-[0_25px_45px_rgba(211,2,1,0.28)] transition-transform duration-300 hover:scale-105"
+                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 70vw, 650px"
+                  priority
                 />
               </div>
             </div>
           </div>
 
           {/* Product Specifications & Narrative */}
-          <div className="lg:col-span-7 flex flex-col">
+          <div className="lg:col-span-6 flex flex-col">
             <div className="flex flex-wrap items-center gap-3 mb-3">
-              <span className="px-3 py-1 rounded bg-rfk-red/20 text-rfk-red font-heading font-bold text-xs uppercase tracking-wider border border-rfk-red/30">
+              <span className="px-3 py-1 rounded bg-rfk-red/20 text-rfk-red font-heading font-bold text-xs sm:text-sm uppercase tracking-wider border border-rfk-red/30">
                 {activeProduct.badge}
               </span>
-              <span className="text-xs font-mono text-rfk-silver uppercase">
-                {activeProduct.capacity} CYLINDER
+              <span className="text-xs sm:text-sm font-mono text-rfk-silver-light uppercase">
+                {activeProduct.id === "rfk-kit" ? "COMPLETE MOTORSPORT SYSTEM" : `${activeProduct.capacity} CYLINDER`}
               </span>
             </div>
 
-            <h3 className="text-3xl sm:text-4xl font-extrabold uppercase font-heading text-rfk-white tracking-tight mb-2">
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase font-heading text-rfk-white tracking-tight mb-2">
               {activeProduct.name}
             </h3>
 
-            <p className="text-sm font-semibold text-rfk-silver-light font-heading tracking-wider mb-4">
+            <p className="text-base sm:text-lg font-semibold text-rfk-silver-light font-heading tracking-wider mb-4">
               {activeProduct.tagline}
             </p>
 
-            <p className="text-sm text-rfk-silver font-sans leading-relaxed mb-6">
+            <p className="text-base text-rfk-silver-light font-sans leading-relaxed mb-6">
               {activeProduct.description}
             </p>
 
             {/* Ideal For Callout */}
-            <div className="mb-8 p-4 rounded-lg bg-rfk-black/60 border border-rfk-border/60 flex items-start gap-3">
+            <div className="mb-8 p-4 sm:p-5 rounded-lg bg-rfk-black/60 border border-rfk-border/60 flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-rfk-red shrink-0 mt-0.5" />
               <div>
-                <span className="text-xs uppercase font-heading font-bold text-rfk-white block">
+                <span className="text-sm uppercase font-heading font-bold text-rfk-white block mb-0.5">
                   Aplikasi Ideal Kendaraan:
                 </span>
-                <span className="text-xs text-rfk-silver font-sans">
+                <span className="text-sm sm:text-base text-rfk-silver-light font-sans">
                   {activeProduct.idealFor}
                 </span>
               </div>
@@ -144,42 +147,42 @@ export default function ProductSection() {
 
             {/* Technical Specs Key Values Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
-              <div className="p-3 rounded-lg bg-rfk-charcoal/60 border border-rfk-border/50">
-                <div className="flex items-center gap-1.5 text-rfk-silver text-[10px] uppercase font-heading mb-1">
-                  <Shield className="w-3.5 h-3.5 text-rfk-red" />
+              <div className="p-3.5 rounded-lg bg-rfk-charcoal/60 border border-rfk-border/50">
+                <div className="flex items-center gap-1.5 text-rfk-silver-light text-xs uppercase font-heading font-semibold mb-1">
+                  <Shield className="w-4 h-4 text-rfk-red" />
                   <span>Rating Api</span>
                 </div>
-                <div className="text-sm font-bold text-rfk-white font-heading">
+                <div className="text-base sm:text-lg font-bold text-rfk-white font-heading">
                   {activeProduct.specs.fireRating}
                 </div>
               </div>
 
-              <div className="p-3 rounded-lg bg-rfk-charcoal/60 border border-rfk-border/50">
-                <div className="flex items-center gap-1.5 text-rfk-silver text-[10px] uppercase font-heading mb-1">
-                  <Gauge className="w-3.5 h-3.5 text-rfk-red" />
+              <div className="p-3.5 rounded-lg bg-rfk-charcoal/60 border border-rfk-border/50">
+                <div className="flex items-center gap-1.5 text-rfk-silver-light text-xs uppercase font-heading font-semibold mb-1">
+                  <Gauge className="w-4 h-4 text-rfk-red" />
                   <span>Tekanan Kerja</span>
                 </div>
-                <div className="text-sm font-bold text-rfk-white font-heading">
+                <div className="text-base sm:text-lg font-bold text-rfk-white font-heading">
                   {activeProduct.specs.workingPressure}
                 </div>
               </div>
 
-              <div className="p-3 rounded-lg bg-rfk-charcoal/60 border border-rfk-border/50">
-                <div className="flex items-center gap-1.5 text-rfk-silver text-[10px] uppercase font-heading mb-1">
-                  <Thermometer className="w-3.5 h-3.5 text-rfk-red" />
+              <div className="p-3.5 rounded-lg bg-rfk-charcoal/60 border border-rfk-border/50">
+                <div className="flex items-center gap-1.5 text-rfk-silver-light text-xs uppercase font-heading font-semibold mb-1">
+                  <Thermometer className="w-4 h-4 text-rfk-red" />
                   <span>Suhu Operasional</span>
                 </div>
-                <div className="text-sm font-bold text-rfk-white font-heading">
+                <div className="text-base sm:text-lg font-bold text-rfk-white font-heading">
                   {activeProduct.specs.operatingTemp}
                 </div>
               </div>
 
-              <div className="p-3 rounded-lg bg-rfk-charcoal/60 border border-rfk-border/50 col-span-2 sm:col-span-3">
-                <div className="flex items-center gap-1.5 text-rfk-silver text-[10px] uppercase font-heading mb-1">
-                  <Layers className="w-3.5 h-3.5 text-rfk-red" />
-                  <span>Material Tabung & Sertifikasi</span>
+              <div className="p-3.5 rounded-lg bg-rfk-charcoal/60 border border-rfk-border/50 col-span-2 sm:col-span-3">
+                <div className="flex items-center gap-1.5 text-rfk-silver-light text-xs uppercase font-heading font-semibold mb-1">
+                  <Layers className="w-4 h-4 text-rfk-red" />
+                  <span>Material Tabung &amp; Sertifikasi</span>
                 </div>
-                <div className="text-xs font-semibold text-rfk-white font-sans">
+                <div className="text-sm font-semibold text-rfk-white font-sans">
                   {activeProduct.specs.material} (Test Pressure: {activeProduct.specs.testPressure})
                 </div>
               </div>
@@ -189,9 +192,13 @@ export default function ProductSection() {
             <div>
               <a
                 href={`#kontak`}
-                className="inline-flex items-center justify-center gap-2 bg-rfk-red hover:bg-rfk-red-light text-rfk-white font-heading font-bold text-xs tracking-widest uppercase px-6 py-3.5 rounded transition-all duration-200 shadow-md shadow-rfk-red/20 focus-visible:ring-2 focus-visible:ring-rfk-white"
+                className="inline-flex items-center justify-center gap-2 bg-rfk-red hover:bg-rfk-red-light text-rfk-white font-heading font-bold text-sm sm:text-base tracking-wider uppercase px-7 py-4 rounded transition-all duration-200 shadow-md shadow-rfk-red/20 focus-visible:ring-2 focus-visible:ring-rfk-white"
               >
-                <span>KONSULTASI UKURAN {activeProduct.capacity}</span>
+                <span>
+                  {activeProduct.id === "rfk-kit"
+                    ? "KONSULTASI FIRE SUPPRESSION KIT"
+                    : `KONSULTASI UKURAN ${activeProduct.capacity}`}
+                </span>
                 <ArrowUpRight className="w-4 h-4" />
               </a>
             </div>
@@ -199,7 +206,7 @@ export default function ProductSection() {
         </div>
 
         {/* Footnote */}
-        <p className="text-[11px] text-rfk-silver/60 text-center mt-6 font-sans">
+        <p className="text-xs sm:text-sm text-rfk-silver/80 text-center mt-6 font-sans">
           * Seluruh unit RFK dilengkapi sertifikat EN3, CE Marking, ISO 9001, dan garansi tekanan resmi selama 5 tahun.
         </p>
       </div>
