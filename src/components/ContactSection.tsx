@@ -45,7 +45,7 @@ export default function ContactSection() {
           <div className="lg:col-span-5">
             <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red tracking-wider uppercase mb-3">
               <MessageSquare className="w-4 h-4" />
-              <span>07 / KONTAK</span>
+              <span>06 / KONTAK</span>
               <span className="text-rfk-border">/</span>
               <span className="text-rfk-silver">MULAI DARI SINI</span>
             </div>
@@ -78,7 +78,7 @@ export default function ContactSection() {
             <div className="space-y-3.5 text-sm sm:text-base text-rfk-silver-light font-sans">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="text-rfk-white font-bold font-heading uppercase">Distribusi Resmi:</span>
-                <span>PT. Famindo Alfa Spektrum Teknologi (FAST)</span>
+                <span>PT Solusi Keselamatan Berkendara</span>
               </div>
               <div className="flex flex-wrap items-center gap-2">
                 <span className="text-rfk-white font-bold font-heading uppercase">Respon:</span>
@@ -196,8 +196,8 @@ export default function ContactSection() {
                       <option value="">Belum tahu (Perlu rekomendasi)</option>
                       <option value="1 KG (Ringkas &amp; Efisien)">1 KG (Ringkas &amp; Efisien)</option>
                       <option value="2 KG (Perlindungan Seimbang)">2 KG (Perlindungan Seimbang)</option>
-                      <option value="4 KG (Kapasitas Maksimal &amp; Sistem Otomatis)">
-                        4 KG (Kapasitas Maksimal &amp; Sistem Otomatis)
+                      <option value="4 KG (Fire Suppression Kit Motorsport)">
+                        4 KG (Fire Suppression Kit Motorsport)
                       </option>
                     </select>
                   </div>
@@ -216,7 +216,7 @@ export default function ContactSection() {
                     maxLength={2000}
                     value={formData.notes}
                     onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                    placeholder="Ceritakan ruang mesin, roll cage, atau event motorsport yang Anda ikuti..."
+                    placeholder="Ceritakan spesifikasi mobil, ruang mesin, atau event motorsport yang Anda ikuti..."
                     className="w-full px-4 py-3 rounded-lg bg-rfk-black/80 border border-rfk-border text-base text-rfk-white placeholder-rfk-silver/50 focus:border-rfk-red focus:outline-none focus:ring-1 focus:ring-rfk-red transition-colors"
                   />
                 </div>

@@ -61,9 +61,9 @@ export const SHOWCASES: ShowcaseItem[] = [
     tagline: "Proteksi Bersih Tanpa Kompromi untuk Mobil Balap dan Modifikasi Bergengsi",
     coverImage: "/assets/passato/bmw-sema-1.jpg",
     overview:
-      "BMW Passato merupakan mahakarya modifikasi dan motorsport berstandar internasional yang tampil di ajang bergengsi SEMA Show Las Vegas. Menghadapi standar scrutineering internasional dan tuntutan estetika tanpa cela, BMW Passato mempercayakan perlindungan kebakaran kepada Racing Fire Killer (RFK) dengan sistem gas bersih Hartindo AF11E dan klem billet aluminium presisi.",
+      "BMW Passato merupakan mahakarya modifikasi dan motorsport berstandar internasional yang tampil di ajang bergengsi SEMA Show Las Vegas. Menghadapi standar scrutineering internasional dan tuntutan estetika tanpa cela, BMW Passato mempercayakan perlindungan kebakaran kepada Racing Fire Killer (RFK) dengan sistem gas bersih Hartindo AF11E dan braket motorsport presisi.",
     cardSummary:
-      "Mobil modifikasi motorsport internasional yang tampil di ajang SEMA Show Las Vegas. Dilengkapi sistem proteksi RFK dengan braket billet CNC aluminium dan formula gas bersih non-residu untuk menjaga integritas mesin performa tinggi.",
+      "Mobil modifikasi motorsport internasional yang tampil di ajang SEMA Show Las Vegas. Dilengkapi sistem proteksi RFK dengan braket motorsport kokoh dan formula gas bersih non-residu untuk menjaga integritas mesin performa tinggi.",
     categoryTag: "INTERNATIONAL MOTORSPORT BUILD",
     carSpecs: [
       { label: "Platform Mobil", value: "BMW M Performance Chassis" },
@@ -78,7 +78,7 @@ export const SHOWCASES: ShowcaseItem[] = [
       { label: "Media Pemadam", value: "Hartindo AF11E (Clean Agent Liquid Gas)" },
       { label: "Kapasitas Tabung", value: "RFK 2.0 KG Motorsport Spec" },
       { label: "Tekanan Kerja", value: "14 Bar (Uji Tekanan Hidrolik 27 Bar)" },
-      { label: "Tipe Braket", value: "Quick-Release CNC Billet 6061-T6 Aluminum" },
+      { label: "Tipe Braket", value: "Heavy-Duty Motorsport Mounting Bracket" },
       { label: "Zona Proteksi", value: "Engine Bay (Turbo & Manifold), Kokpit Pengemudi" },
       { label: "Waktu Padam Rata-rata", value: "< 10 Detik Pelepasan Efektif" },
       { label: "Karakteristik Residu", value: "100% Non-Residu, Non-Konduktif, Tidak Merusak Komponen" },
@@ -88,13 +88,13 @@ export const SHOWCASES: ShowcaseItem[] = [
         number: "01",
         title: "ZERO RESIDUE CLEAN AGENT",
         description:
-          "Hartindo AF11E menguap secara bersih tanpa meninggalkan endapan serbuk kimia korosif. Komponen titanium, billet aluminium, dan sensor mesin kustom tetap steril dan terlindungi utuh.",
+          "Hartindo AF11E menguap secara bersih tanpa meninggalkan endapan serbuk kimia korosif. Komponen titanium, aluminium presisi, dan sensor mesin kustom tetap steril dan terlindungi utuh.",
       },
       {
         number: "02",
-        title: "BILLET QUICK-RELEASE MOUNTING",
+        title: "HEAVY-DUTY MOTORSPORT MOUNTING",
         description:
-          "Klem aluminium CNC 6061-T6 mengunci tabung kokoh pada roll cage berdiameter 1.5 hingga 1.75 inci. Mekanisme pin tarik satu sentuhan memungkinkan akses darurat dalam waktu 2 detik.",
+          "Braket motorsport mengunci tabung kokoh di kabin kendaraan. Mekanisme pin pengaman memungkinkan akses darurat instan dalam hitungan detik saat situasi darurat.",
       },
       {
         number: "03",
@@ -128,9 +128,9 @@ export const SHOWCASES: ShowcaseItem[] = [
             "Tabung RFK 2.0 KG ditempatkan di posisi ergonomis pada palang roll cage samping pengemudi. Mudah diraih dengan sarung tangan balap tebal dan dilengkapi pin pengaman berwarna merah kontras.",
         },
         {
-          location: "Braket Aluminium Billet CNC",
+          location: "Braket Kokoh Motorsport",
           description:
-            "Dudukan klem presisi tinggi dirancang khusus menahan getaran frekuensi tinggi saat mobil melaju kencang di sirkuit tanpa ada celah goyang atau getar.",
+            "Dudukan braket presisi tinggi dirancang khusus menahan getaran frekuensi tinggi saat mobil melaju kencang di sirkuit tanpa ada celah goyang atau getar.",
         },
         {
           location: "Kompartemen Mesin (Engine Bay)",
@@ -161,10 +161,10 @@ export const SHOWCASES: ShowcaseItem[] = [
       },
       {
         src: "/assets/passato/bmw-sema-3.jpg",
-        title: "Detail Klem Billet CNC Quick-Release",
+        title: "Detail Braket Dudukan Tabung",
         caption:
-          "Klem aluminium CNC dengan finishing hitam dan merah anodized yang mencengkeram kuat tabung RFK, tahan getaran guncangan ekstrem sirkuit.",
-        tag: "03 / BILLET MOUNTING",
+          "Braket kokoh yang mencengkeram kuat tabung RFK, tahan getaran guncangan ekstrem sirkuit.",
+        tag: "03 / CANISTER MOUNTING",
       },
       {
         src: "/assets/passato/bmw-sema-4.jpg",
@@ -216,7 +216,7 @@ export const SHOWCASES: ShowcaseItem[] = [
       { label: "Media Pemadam", value: "Hartindo AF11E Clean Agent" },
       { label: "Kapasitas Tabung", value: "RFK 2.0 KG Motorsport Competition Spec" },
       { label: "Tekanan Kerja", value: "14 Bar Standar Kerja Presisi" },
-      { label: "Tipe Braket", value: "Heavy-Duty Quick-Release Billet Clamp" },
+      { label: "Tipe Braket", value: "Heavy-Duty Motorsport Mounting Bracket" },
       { label: "Cakupan Zona", value: "Ruang Mesin, Jalur Turbocharger, Kompartemen Kokpit" },
       { label: "Waktu Respon", value: "Pemadaman Seketika Rata-rata 10 Detik" },
       { label: "Dampak Kelistrikan", value: "Non-Konduktif, Aman untuk ECU Balap & PDM" },
@@ -226,7 +226,7 @@ export const SHOWCASES: ShowcaseItem[] = [
         number: "01",
         title: "TAHAN GUNCANGAN G-FORCE LATERAL",
         description:
-          "Saat drifting dengan kecepatan tinggi dan transisi arah yang brutal, braket billet CNC RFK menjaga tabung tetap terkunci kokoh tanpa bergeser sedikit pun.",
+          "Saat drifting dengan kecepatan tinggi dan transisi arah yang brutal, braket kokoh RFK menjaga tabung tetap terkunci aman tanpa bergeser sedikit pun.",
       },
       {
         number: "02",
@@ -267,9 +267,9 @@ export const SHOWCASES: ShowcaseItem[] = [
             "Tabung RFK 2.0 KG terpasang kokoh pada roll cage interior Driftbull, dapat diraih oleh drifter maupun navigator dalam waktu kurang dari 2 detik.",
         },
         {
-          location: "Klem Billet Heavy Duty",
+          location: "Braket Heavy Duty",
           description:
-            "Menggunakan material aluminium berkekuatan tinggi yang dirancang untuk menahan entakan keras saat benturan ban, getaran limiter RPM tinggi, dan hempasan suspensi kaku.",
+            "Menggunakan material berkekuatan tinggi yang dirancang untuk menahan entakan keras saat benturan ban, getaran limiter RPM tinggi, dan hempasan suspensi kaku.",
         },
         {
           location: "Jalur Pipa Nozzle Ruang Mesin",
@@ -293,10 +293,10 @@ export const SHOWCASES: ShowcaseItem[] = [
       },
       {
         src: "/assets/driftbull/driftbull-2.jpg",
-        title: "Klem Presisi Tahan G-Force Drift",
+        title: "Braket Presisi Tahan G-Force Drift",
         caption:
-          "Detail klem billet aluminium yang memegang tabung dengan presisi tinggi, tahan terhadap entakan lateral dan getaran sasis yang keras.",
-        tag: "02 / HEAVY DUTY CLAMP",
+          "Detail braket dudukan kokoh yang memegang tabung dengan presisi tinggi, tahan terhadap entakan lateral dan getaran sasis yang keras.",
+        tag: "02 / HEAVY DUTY MOUNT",
       },
       {
         src: "/assets/driftbull/driftbull-3.jpg",

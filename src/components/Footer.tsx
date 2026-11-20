@@ -9,7 +9,6 @@ export default function Footer() {
     { label: "Produk", href: "/#produk" },
     { label: "Sistem", href: "/#sistem" },
     { label: "Showcase", href: "/#showcase" },
-    { label: "Spesifikasi", href: "/#spesifikasi" },
     { label: "FAQ", href: "/#faq" },
     { label: "Kontak", href: "/#kontak" },
   ];
@@ -56,7 +55,7 @@ export default function Footer() {
             </p>
 
             <div className="text-xs sm:text-sm font-mono text-rfk-silver-light">
-              Distributor Eksklusif: PT. Famindo Alfa Spektrum Teknologi (FAST)
+              Distributor: PT Solusi Keselamatan Berkendara
             </div>
           </div>
 
@@ -84,7 +83,7 @@ export default function Footer() {
               Layanan &amp; Konsultasi
             </div>
             <p className="text-sm text-rfk-silver-light font-sans leading-relaxed mb-4">
-              Konsultasikan kebutuhan tabung dan instalasi sistem otomatis kendaraan Anda bersama tim teknis RFK.
+              Konsultasikan kebutuhan tabung dan instalasi sistem fire suppression kendaraan Anda bersama tim teknis RFK.
             </p>
             <Link
               href="/#kontak"

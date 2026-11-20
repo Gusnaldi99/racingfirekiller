@@ -38,7 +38,7 @@ export default function Hero() {
 
             {/* Descriptive Body */}
             <p className="text-base sm:text-lg lg:text-xl text-rfk-silver-light max-w-xl font-sans leading-relaxed mb-8">
-              Sistem pemadam otomatis dan tabung berstandar motorsport untuk mobil balap dan modifikasi. Lindungi mesin, kelistrikan, dan keselamatan pengemudi saat setiap detik menentukan.
+              Sistem pemadam motorsport dan tabung clean agent untuk mobil balap dan modifikasi. Lindungi mesin, kelistrikan, dan keselamatan pengemudi saat setiap detik menentukan.
             </p>
 
             {/* CTAs */}

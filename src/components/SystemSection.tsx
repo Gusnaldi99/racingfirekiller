@@ -20,13 +20,13 @@ export default function SystemSection() {
             </h2>
           </div>
           <p className="text-base sm:text-lg text-rfk-silver-light max-w-lg font-sans leading-relaxed">
-            Saat insiden terjadi di lintasan balap, pengemudi membutuhkan proteksi seketika. Sistem RFK dirancang untuk aktif otomatis meredam kobaran api di kompartemen mesin.
+            Saat insiden terjadi di lintasan balap, respon cepat adalah segalanya. Sistem RFK dirancang untuk aksi pemadaman instan melalui tabung mandiri kabin maupun integrasi sistem manual release suppression kit multi-nozzle.
           </p>
         </div>
 
         {/* Dual Mode Card Architecture */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {/* Mode 1: Manual Quick Release */}
+          {/* Mode 1: Manual Portable Canister */}
           <div className="p-8 rounded-xl bg-rfk-surface/70 border border-rfk-border/80 flex flex-col justify-between">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-rfk-charcoal text-rfk-silver-light text-xs sm:text-sm font-heading font-semibold uppercase tracking-wider mb-4 border border-rfk-border">
@@ -34,36 +34,36 @@ export default function SystemSection() {
                 <span>Opsi 1: Portable Standalone</span>
               </div>
               <h3 className="font-heading font-extrabold text-2xl sm:text-3xl uppercase text-rfk-white tracking-wide mb-3">
-                Billet Quick-Release Bracket
+                Tabung Mandiri Kabin
               </h3>
               <p className="text-sm sm:text-base text-rfk-silver-light font-sans leading-relaxed mb-6">
-                Pemasangan fleksibel menggunakan braket aluminium billet CNC yang dijepit kuat pada roll cage atau lantai kabin. Dilengkapi safety pin sekali tarik yang memungkinkan pelepasan tabung dalam waktu kurang dari 2 detik saat situasi darurat.
+                Penempatan tabung 1.0 KG atau 2.0 KG di dalam kabin dengan braket dudukan kokoh yang mudah dijangkau pengemudi. Dilengkapi safety pin yang memungkinkan penggunaan dan pelepasan tabung dalam hitungan detik saat situasi darurat.
               </p>
             </div>
             <div className="pt-4 border-t border-rfk-border/40 text-xs sm:text-sm text-rfk-silver-light font-mono flex items-center justify-between">
-              <span>Klem Roll Cage: 1.5 - 1.75 Inci</span>
+              <span>Penempatan: Lantai Kabin / Konsol</span>
               <span className="text-rfk-red font-bold">Respon Manual Instan</span>
             </div>
           </div>
 
-          {/* Mode 2: Integrated Automatic System */}
+          {/* Mode 2: Integrated Manual Release Suppression Kit */}
           <div className="p-8 rounded-xl bg-rfk-surface/70 border border-rfk-red/40 flex flex-col justify-between relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-rfk-red/5 rounded-bl-full pointer-events-none" />
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-rfk-red/20 text-rfk-red text-xs sm:text-sm font-heading font-semibold uppercase tracking-wider mb-4 border border-rfk-red/30">
                 <Radio className="w-3.5 h-3.5" />
-                <span>Opsi 2: Full Automatic Suppression</span>
+                <span>Opsi 2: Motorsport Suppression Kit</span>
               </div>
               <h3 className="font-heading font-extrabold text-2xl sm:text-3xl uppercase text-rfk-white tracking-wide mb-3">
-                Sistem Otomatis Ruang Mesin
+                Manual Release Suppression System
               </h3>
               <p className="text-sm sm:text-base text-rfk-silver-light font-sans leading-relaxed mb-6">
-                Integrasi selang deteksi polimer termal yang dirutekan langsung di sekitar turbo, manifold, dan sistem bahan bakar. Bekerja otomatis memicu semprotan gas melalui nozzle distribusi tanpa bergantung pada sistem kelistrikan mobil yang mungkin putus.
+                Sistem pemadam motorsport terintegrasi dengan aktivasi manual via kabel penarik darurat (cockpit pull cable). Menyalurkan gas Hartindo AF11E dari tabung 4 KG secara mekanis ke 8 titik nozzle distribusi di ruang mesin, turbocharger, dan tangki bahan bakar tanpa bergantung pada kelistrikan mobil.
               </p>
             </div>
             <div className="pt-4 border-t border-rfk-border/40 text-xs sm:text-sm text-rfk-silver-light font-mono flex items-center justify-between">
               <span>Coverage: Kompartemen Mesin + Fuel Cell</span>
-              <span className="text-rfk-red font-bold">100% Pneumatik Otomatis</span>
+              <span className="text-rfk-red font-bold">100% Mekanis Manual Release</span>
             </div>
           </div>
         </div>

@@ -41,7 +41,7 @@ export default function ProductSection() {
             </h2>
           </div>
           <p className="text-base sm:text-lg text-rfk-silver-light max-w-lg font-sans leading-relaxed">
-            Hartindo AF11E tersedia dalam varian tabung mandiri 1 KG, 2 KG, 4 KG hingga paket lengkap Fire Suppression Kit motorsport, siap dipasang dengan braket rilis cepat atau terintegrasi sistem nozzle multi-titik.
+            Hartindo AF11E tersedia dalam varian tabung mandiri 1 KG &amp; 2 KG hingga paket lengkap 4 KG Fire Suppression Kit motorsport, siap dipasang dengan braket kokoh atau terintegrasi sistem nozzle multi-titik.
           </p>
         </div>
 
@@ -116,7 +116,7 @@ export default function ProductSection() {
                 {activeProduct.badge}
               </span>
               <span className="text-xs sm:text-sm font-mono text-rfk-silver-light uppercase">
-                {activeProduct.id === "rfk-kit" ? "COMPLETE MOTORSPORT SYSTEM" : `${activeProduct.capacity} CYLINDER`}
+                {activeProduct.id === "rfk-4kg" ? "COMPLETE MOTORSPORT SYSTEM" : `${activeProduct.capacity} CYLINDER`}
               </span>
             </div>
 
@@ -195,8 +195,8 @@ export default function ProductSection() {
                 className="inline-flex items-center justify-center gap-2 bg-rfk-red hover:bg-rfk-red-light text-rfk-white font-heading font-bold text-sm sm:text-base tracking-wider uppercase px-7 py-4 rounded transition-all duration-200 shadow-md shadow-rfk-red/20 focus-visible:ring-2 focus-visible:ring-rfk-white"
               >
                 <span>
-                  {activeProduct.id === "rfk-kit"
-                    ? "KONSULTASI FIRE SUPPRESSION KIT"
+                  {activeProduct.id === "rfk-4kg"
+                    ? "KONSULTASI FIRE SUPPRESSION KIT 4 KG"
                     : `KONSULTASI UKURAN ${activeProduct.capacity}`}
                 </span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -207,7 +207,7 @@ export default function ProductSection() {
 
         {/* Footnote */}
         <p className="text-xs sm:text-sm text-rfk-silver/80 text-center mt-6 font-sans">
-          * Seluruh unit RFK dilengkapi sertifikat EN3, CE Marking, ISO 9001, dan garansi tekanan resmi selama 5 tahun.
+          * Seluruh unit RFK dijamin keaslian formula Hartindo AF11E dengan garansi tekanan resmi selama 5 tahun.
         </p>
       </div>
     </section>

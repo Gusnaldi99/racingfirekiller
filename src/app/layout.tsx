@@ -25,19 +25,19 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "Racing Fire Killer | Sistem Pemadam Mobil Balap & Modifikasi",
   description:
-    "RFK menghadirkan Hartindo AF11E 1 KG, 2 KG, dan 4 KG untuk sistem pemadam otomatis kendaraan motorsport. Formula non-konduktif, tanpa residu, respons 10 detik, dan garansi 5 tahun.",
+    "RFK menghadirkan Hartindo AF11E 1 KG, 2 KG, dan 4 KG Fire Suppression Kit untuk perlindungan kendaraan balap dan motorsport. Formula non-konduktif, tanpa residu, respons 10 detik, dan garansi 5 tahun.",
   keywords: [
     "racing fire killer",
     "APAR mobil balap",
     "pemadam api motorsport",
     "Hartindo AF11E",
-    "automatic suppression system",
+    "motorsport fire suppression kit",
     "clean agent fire extinguisher",
     "APAR tanpa residu",
     "fire safety mobil modifikasi",
   ],
   authors: [{ name: "Racing Fire Killer" }],
-  creator: "PT. Famindo Alfa Spektrum Teknologi",
+  creator: "PT Solusi Keselamatan Berkendara",
   publisher: "Racing Fire Killer",
   metadataBase: new URL("https://www.racingfirekiller.com"),
   alternates: {
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     url: "https://www.racingfirekiller.com/",
     title: "Racing Fire Killer | Sistem Pemadam Mobil Balap & Modifikasi",
     description:
-      "Sistem pemadam otomatis dan tabung performa tinggi untuk mobil balap dan modifikasi. Formula non-konduktif, tanpa residu, dan respons cepat 10 detik.",
+      "Sistem pemadam motorsport dan tabung performa tinggi untuk mobil balap dan modifikasi. Formula non-konduktif, tanpa residu, dan respons cepat 10 detik.",
     siteName: "Racing Fire Killer",
     images: [
       {
@@ -95,7 +95,7 @@ export default function RootLayout({
           "Sistem pemadam kebakaran otomotif dan motorsport performa tinggi berteknologi Hartindo AF11E.",
         parentOrganization: {
           "@type": "Organization",
-          name: "PT. Famindo Alfa Spektrum Teknologi (FAST)",
+          name: "PT Solusi Keselamatan Berkendara",
         },
       },
       {

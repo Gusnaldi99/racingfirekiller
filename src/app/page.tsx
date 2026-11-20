@@ -4,7 +4,6 @@ import WhySection from "@/components/WhySection";
 import ProductSection from "@/components/ProductSection";
 import SystemSection from "@/components/SystemSection";
 import ShowcaseSection from "@/components/ShowcaseSection";
-import SpecsSection from "@/components/SpecsSection";
 import FaqSection from "@/components/FaqSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -19,7 +18,6 @@ export default function Home() {
         <ProductSection />
         <SystemSection />
         <ShowcaseSection />
-        <SpecsSection />
         <FaqSection />
         <ContactSection />
       </main>

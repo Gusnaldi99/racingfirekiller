@@ -123,7 +123,7 @@ export const CANISTER_PRODUCTS: CanisterProduct[] = [
     badge: "RINGKAS & EFISIEN",
     tagline: "Perlindungan kabin dan ruang kompak siap pasang",
     description:
-      "Diformulasikan khusus untuk kendaraan harian performa, mobil sport kompak, dan track day. Ukuran tabung yang ergonomis memudahkan penempatan di bawah jok penumpang, konsol tengah, atau roll cage bar.",
+      "Diformulasikan khusus untuk kendaraan harian performa, mobil sport kompak, dan track day. Ukuran tabung yang ergonomis memudahkan penempatan di bawah jok penumpang, konsol tengah, atau partisi kabin pengemudi.",
     idealFor: "Mobil harian performa tinggi, Track Day, Hot Hatch, dan mobil sport 2 pintu.",
     image: "/assets/tabung/RFK-1-KG.webp",
     specs: {
@@ -157,33 +157,13 @@ export const CANISTER_PRODUCTS: CanisterProduct[] = [
   },
   {
     id: "rfk-4kg",
-    name: "HARTINDO AF11E 4 KG",
+    name: "RFK 4 KG FIRE SUPPRESSION KIT",
     capacity: "4.0 KG",
     weightNumber: 4,
-    badge: "KAPASITAS MAKSIMAL",
-    tagline: "Standar sistem proteksi otomatis penuh motorsport",
+    badge: "SUPPRESSION KIT",
+    tagline: "Satu set lengkap motorsport suppression system terintegrasi ruang mesin & kokpit",
     description:
-      "Didesain untuk integrasi automatic suppression system dengan instalasi pipa manifold dan nozzle ganda menuju kompartemen mesin dan tangki bahan bakar. Siap untuk balap reli ketahanan dan drag race profesional.",
-    idealFor: "Mobil balap reli profesional, Drag Race Pro, Endurance Racing, dan bengkel sirkuit.",
-    image: "/assets/tabung/RFK-4-KG.webp",
-    specs: {
-      agent: "Hartindo AF11E Clean Agent",
-      fireRating: "21A 113B C",
-      workingPressure: "14 Bar",
-      testPressure: "27 Bar",
-      operatingTemp: "-30°C hingga +60°C",
-      material: "Seamless High-Strength Steel Cylinder",
-    },
-  },
-  {
-    id: "rfk-kit",
-    name: "RFK FIRE SUPPRESSION KIT",
-    capacity: "SUPPRESSION KIT",
-    weightNumber: "KIT",
-    badge: "FULL MOTORSPORT KIT",
-    tagline: "Satu set lengkap suppression system terintegrasi ruang mesin & kokpit",
-    description:
-      "Satu paket lengkap motorsport suppression system berstandar regulasi kompetisi. Dilengkapi tabung 4.0 KG Hartindo AF11E bertekanan tinggi, katup pelepasan cepat mekanis/pneumatik dengan indikator gauge, kabel penarik darurat cockpit, selang pipa tembaga distribusi anti-pecah, serta 8 titik nozzle kuningan presisi untuk pemadaman simultan ruang mesin, turbocharger, dan kompartemen tangki bahan bakar.",
+      "Satu paket lengkap motorsport suppression system berstandar regulasi kompetisi dengan aktivasi manual release. Dilengkapi tabung 4.0 KG Hartindo AF11E bertekanan tinggi, katup mekanis presisi dengan indikator gauge, kabel penarik darurat cockpit, selang pipa tembaga distribusi anti-pecah, serta 8 titik nozzle kuningan presisi untuk pemadaman simultan ruang mesin, turbocharger, dan kompartemen tangki bahan bakar tanpa ketergantungan kelistrikan mobil.",
     idealFor: "Mobil balap reli profesional, Pro Drift, Time Attack, Drag Race Pro, dan mobil balap sirkuit dengan regulasi scrutineering resmi.",
     image: "/assets/tabung/Perlengkapan-pemadam-kebakaran-otomotif.webp",
     specs: {
@@ -192,7 +172,7 @@ export const CANISTER_PRODUCTS: CanisterProduct[] = [
       workingPressure: "14 Bar",
       testPressure: "27 Bar",
       operatingTemp: "-30°C hingga +60°C",
-      material: "Tabung Baja Mulus + Pipa Tembaga & 8 Nozzle Kuningan",
+      material: "Tabung 4 KG Baja Mulus + Pipa Tembaga & 8 Nozzle Kuningan",
     },
   },
 ];
@@ -200,30 +180,30 @@ export const CANISTER_PRODUCTS: CanisterProduct[] = [
 export const SYSTEM_STEPS: SystemStep[] = [
   {
     step: "01",
-    title: "DETEKSI TERMAL CEPAT",
-    tagline: "Sensor pipa polimer peka panas",
+    title: "AKSES TARIK MANUAL CEPAT",
+    tagline: "Kabel penarik darurat kokpit & luar",
     description:
-      "Selang deteksi khusus dirutekan di sekitar manifold knalpot, turbo, dan saluran bahan bakar. Jika terjadi lonjakan panas kritis di atas ambang batas, selang bereaksi otomatis.",
+      "Pengemudi atau marshal dapat mengaktifkan sistem seketika dengan menarik safety pull-cable darurat mekanis yang terpasang strategis di kabin kemudi maupun di sisi luar bodi kendaraan.",
   },
   {
     step: "02",
-    title: "AKTIVASI SISTEM OTOMATIS",
-    tagline: "Pelepasan katup instan tanpa delay",
+    title: "PELEPASAN KATUP MEKANIS PRESISI",
+    tagline: "Katup bertekanan tinggi 14 Bar respons instan",
     description:
-      "Tekanan pada katup pneumatik terlepas seketika, membuka saluran utama gas Hartindo AF11E tanpa memerlukan intervensi tombol manual dari pengemudi yang sedang berkonsentrasi balap.",
+      "Tarikan kabel membuka katup utama tabung 4 KG secara mekanis murni tanpa membutuhkan daya aki atau kelistrikan mobil, mengalirkan gas Hartindo AF11E langsung ke jalur pipa distribusi tembaga.",
   },
   {
     step: "03",
-    title: "DISTRIBUSI NOZZLE TOTAL",
-    tagline: "Cakupan semprotan merata 360 derajat",
+    title: "DISTRIBUSI SIMULTAN 8 NOZZLE",
+    tagline: "Cakupan multi-arah ruang mesin & tangki",
     description:
-      "Nozzle khusus motorsport menyemprotkan kabut gas mendinginkan titik api hingga temperatur padam tuntas, memotong pasokan oksigen lokal tanpa merusak komponen mesin.",
+      "Nozzle presisi motorsport menyemprotkan kabut gas bersih ke titik kritis suhu tinggi (turbocharger, manifold, dan tangki bensin) untuk memutus rantai api dalam rata-rata 10 detik tanpa residu.",
   },
 ];
 
 export const TECH_SPECS: TechSpecRow[] = [
   { parameter: "Media Pemadam", value: "Hartindo AF11E (Gas Cair Bersih / Clean Agent)", standard: "Bebas CFC & Halon" },
-  { parameter: "Kapasitas Tersedia", value: "1.0 KG / 2.0 KG / 4.0 KG / Suppression Kit", standard: "Spesifikasi Motorsport" },
+  { parameter: "Kapasitas Tersedia", value: "1.0 KG / 2.0 KG / 4.0 KG (Suppression Kit)", standard: "Spesifikasi Motorsport" },
   { parameter: "Klasifikasi Api", value: "Kelas A (Padat), Kelas B (Cairan), Kelas C (Gas)", standard: "EN3 / ISO 7165" },
   { parameter: "Tekanan Kerja (Working Pressure)", value: "14 Bar pada 20°C", standard: "Gauge Indikator Presisi" },
   { parameter: "Tekanan Pengujian (Test Pressure)", value: "27 Bar", standard: "Hydraulic Integrity Test" },
@@ -249,15 +229,15 @@ export const FAQS: FaqItem[] = [
   },
   {
     id: "faq-3",
-    question: "Bagaimana cara pemasangan tabung RFK pada roll cage atau interior mobil?",
+    question: "Bagaimana cara pemasangan tabung RFK di dalam kendaraan?",
     answer:
-      "Setiap unit RFK kompatibel dengan braket rilis cepat (billet quick release bracket) standar motorsport yang dapat dipasang kokoh pada pipa roll cage berdiameter 1.5 hingga 1.75 inci maupun pada dudukan lantai kabin. Mekanisme pin tarik satu sentuhan memungkinkan tabung dilepas dalam waktu kurang dari 2 detik saat darurat.",
+      "Setiap unit tabung RFK dilengkapi braket dudukan kokoh yang dapat dipasang fleksibel pada interior kendaraan, seperti lantai kabin atau konsol yang mudah dijangkau pengemudi. Tabung dilengkapi pin pengaman yang mudah ditarik untuk respon cepat saat darurat.",
   },
   {
     id: "faq-4",
-    question: "Apakah sistem RFK bisa dihubungkan menjadi sistem pemadam otomatis penuh?",
+    question: "Bagaimana sistem kerja Fire Suppression Kit pada kendaraan balap?",
     answer:
-      "Bisa. Untuk varian 2 KG dan 4 KG, RFK menyediakan paket instalasi terintegrasi dengan selang deteksi polimer termal dan jalur nozzle stainless steel yang dapat disebar ke ruang mesin, kolong turbo, dan kompartemen tangki bensin. Sistem ini otomatis menyemprot jika terjadi kebakaran mesin tanpa menunggu pengemudi menarik tuas.",
+      "Fire Suppression Kit RFK 4 KG menggunakan sistem manual release berstandar motorsport. Sistem diaktifkan secara mekanis menggunakan kabel penarik darurat (cockpit pull-cable) dari dalam kabin atau sisi luar kendaraan. Saat ditarik, katup tabung terbuka seketika dan mengalirkan gas Hartindo AF11E melalui pipa distribusi tembaga ke 8 titik nozzle multi-arah di ruang mesin, turbo, dan tangki bahan bakar secara simultan tanpa bergantung pada sistem kelistrikan mobil.",
   },
   {
     id: "faq-5",

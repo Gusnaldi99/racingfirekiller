@@ -18,7 +18,7 @@ export default function FaqSection() {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red tracking-wider uppercase mb-3">
             <HelpCircle className="w-4 h-4" />
-            <span>06 / FAQ</span>
+            <span>05 / FAQ</span>
             <span className="text-rfk-border">/</span>
             <span className="text-rfk-silver">FREQUENTLY ASKED QUESTIONS</span>
           </div>

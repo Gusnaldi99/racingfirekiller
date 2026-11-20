@@ -43,8 +43,8 @@ export default function Navbar() {
     { label: "Produk", href: "/#produk" },
     { label: "Sistem", href: "/#sistem" },
     { label: "Showcase", href: "/#showcase" },
-    { label: "Spesifikasi", href: "/#spesifikasi" },
     { label: "FAQ", href: "/#faq" },
+    { label: "Kontak", href: "/#kontak" },
   ];
 
   return (

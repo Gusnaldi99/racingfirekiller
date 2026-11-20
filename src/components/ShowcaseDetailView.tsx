@@ -448,7 +448,7 @@ export default function ShowcaseDetailView({ item, otherShowcase }: ShowcaseDeta
             INGIN PASANG SISTEM RFK PADA MOBIL ANDA?
           </h2>
           <p className="text-base sm:text-lg text-rfk-silver-light max-w-2xl mx-auto font-sans mb-8 leading-relaxed">
-            Konsultasikan tipe tabung, jalur nozzle, dan braket roll cage yang sesuai dengan platform mobil balap, track day, maupun proyek modifikasi Anda langsung bersama tim teknis resmi RFK.
+            Konsultasikan tipe tabung, jalur nozzle, dan konfigurasi instalasi yang sesuai dengan platform mobil balap, track day, maupun proyek modifikasi Anda langsung bersama tim teknis resmi RFK.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

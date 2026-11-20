@@ -86,7 +86,7 @@ export default function ShowcaseSection() {
                     </span>
                     <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-rfk-charcoal/60 border border-rfk-border/60 text-xs sm:text-sm font-heading font-medium uppercase text-rfk-silver-light">
                       <Gauge className="w-3.5 h-3.5 text-rfk-red" />
-                      Quick-Release Billet Mount
+                      Tekanan Presisi 14 Bar
                     </span>
                     <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-rfk-charcoal/60 border border-rfk-border/60 text-xs sm:text-sm font-heading font-medium uppercase text-rfk-silver-light">
                       <Zap className="w-3.5 h-3.5 text-rfk-red" />
@@ -117,17 +117,7 @@ export default function ShowcaseSection() {
           ))}
         </div>
 
-        {/* Trust verification note */}
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-6 p-5 rounded-xl bg-rfk-surface/60 border border-rfk-border/40 text-sm text-rfk-silver-light font-sans text-center">
-          <div className="flex items-center gap-2 text-rfk-white font-heading uppercase font-semibold">
-            <ShieldCheck className="w-4 h-4 text-rfk-red" />
-            <span>Pemasangan Kompatibel: Roll Cage 1.5 - 1.75 Inci</span>
-          </div>
-          <span className="hidden sm:inline text-rfk-border">|</span>
-          <div>Braket Aluminium Billet CNC Anti Getaran Tinggi</div>
-          <span className="hidden sm:inline text-rfk-border">|</span>
-          <div className="text-rfk-white font-medium">Garansi Tekanan Resmi 5 Tahun</div>
-        </div>
+
       </div>
     </section>
   );
