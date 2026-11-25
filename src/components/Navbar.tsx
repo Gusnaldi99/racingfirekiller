@@ -65,7 +65,7 @@ export default function Navbar() {
           >
             <div className="relative w-36 h-9 sm:w-44 sm:h-10 transition-transform duration-200 group-hover:scale-105">
               <Image
-                src="/assets/logo/rfk-logo-white.png"
+                src="/assets/logo/RFK [Red White No Tagline].png"
                 alt="RFK Racing Fire Killer"
                 fill
                 priority
@@ -112,7 +112,7 @@ export default function Navbar() {
               aria-expanded={isOpen}
               aria-controls="mobile-navigation"
             >
-              {isOpen ? <X className="w-6 h-6 text-rfk-red" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? <X className="w-6 h-6 text-rfk-red-light" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
             </button>
           </div>
         </div>
@@ -147,7 +147,7 @@ export default function Navbar() {
                 className="mt-3 min-h-[48px] inline-flex items-center justify-center gap-2 bg-rfk-red hover:bg-rfk-red-dark text-rfk-white font-bold py-3.5 px-4 rounded text-center tracking-wider shadow-lg shadow-rfk-red/25 text-base"
               >
                 <span>KONSULTASI DENGAN TIM RFK</span>
-                <ArrowUpRight className="w-4 h-4" />
+                <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
               </Link>
             </div>
           </div>

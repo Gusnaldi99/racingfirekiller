@@ -5,7 +5,7 @@ import { TECH_SPECS } from "@/data/rfkData";
 export default function SpecsSection() {
   const certifications = [
     { title: "CE Marking", desc: "Kesesuaian standar keselamatan Uni Eropa" },
-    { title: "EN3 Certified", desc: "Standar ketat eropa untuk tabung pemadam api" },
+    { title: "EN3 Certified", desc: "Standar ketat Eropa untuk tabung pemadam api" },
     { title: "ISO 9001", desc: "Manajemen mutu manufaktur berstandar global" },
     { title: "Bureau Veritas", desc: "Verifikasi independen integritas material tabung" },
   ];
@@ -16,19 +16,19 @@ export default function SpecsSection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
-            <div className="flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red tracking-wider uppercase mb-3">
-              <FileText className="w-4 h-4 text-rfk-red" />
-              <span>05 / SPESIFIKASI</span>
-              <span className="text-rfk-border">/</span>
-              <span className="text-rfk-silver">TECHNICAL DATA SHEET</span>
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red-light tracking-wider uppercase mb-3">
+              <FileText className="w-4 h-4 text-rfk-red-light" aria-hidden="true" />
+              <span>SPESIFIKASI</span>
+              <span className="text-rfk-border" aria-hidden="true">/</span>
+              <span className="text-rfk-silver">LEMBAR DATA TEKNIS</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-extrabold uppercase font-heading tracking-tight text-rfk-white leading-tight">
               DATA TEKNIS &amp; <br />
-              <span className="text-rfk-red">SERTIFIKASI</span> RESMI.
+              <span className="text-rfk-red-light">SERTIFIKASI</span> RESMI.
             </h2>
           </div>
           <p className="text-base sm:text-lg text-rfk-silver-light max-w-lg font-sans leading-relaxed">
-            Spesifikasi resmi yang tertera pada setiap kemasan dan tabung Racing Fire Killer, teruji di bawah kondisi pengujian laboratorium bersertifikasi internasional.
+            Spesifikasi resmi yang tertera pada setiap kemasan dan tabung Racing Fire Killer, teruji di laboratorium bersertifikasi internasional.
           </p>
         </div>
 
@@ -57,14 +57,14 @@ export default function SpecsSection() {
           <div className="p-6 sm:p-8 border-b border-rfk-border/70 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <h3 className="font-heading font-bold uppercase text-xl sm:text-2xl text-rfk-white tracking-wider">
-                Spesifikasi Teknis Canister RFK
+                Spesifikasi Teknis Tabung RFK
               </h3>
               <p className="text-sm text-rfk-silver-light font-sans mt-0.5">
                 Kesesuaian parameter produk Hartindo AF11E 2026
               </p>
             </div>
             <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded bg-rfk-black/80 border border-rfk-border text-sm font-mono text-rfk-silver-light">
-              <span>Barcode Resmi:</span>
+              <span>Kode Batang Resmi:</span>
               <span className="text-rfk-white font-bold">8 50026 73854 2</span>
             </div>
           </div>
@@ -93,10 +93,10 @@ export default function SpecsSection() {
 
           <div className="p-4 sm:p-6 bg-rfk-black/80 border-t border-rfk-border/60 text-sm sm:text-base text-rfk-silver-light font-sans flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
-              Instruksi Darurat: 1. Tarik Safety Pin &bull; 2. Arahkan ke Sumber Api &bull; 3. Tekan Tuas Katup &bull; 4. Sapukan Merata
+              Instruksi Darurat: 1. Tarik Pin Pengaman &bull; 2. Arahkan ke Sumber Api &bull; 3. Tekan Tuas Katup &bull; 4. Sapukan Merata
             </div>
-            <div className="text-rfk-red font-heading font-bold uppercase tracking-wider text-xs sm:text-sm shrink-0">
-              ENGINEERED FOR THE UNEXPECTED
+            <div className="text-rfk-red-light font-heading font-bold uppercase tracking-wider text-xs sm:text-sm shrink-0">
+              DIRANCANG UNTUK KONDISI DARURAT
             </div>
           </div>
         </div>

@@ -43,33 +43,33 @@ export default function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Column: Brand Statement & Trust */}
           <div className="lg:col-span-5">
-            <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red tracking-wider uppercase mb-3">
-              <MessageSquare className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red-light tracking-wider uppercase mb-3">
+              <MessageSquare className="w-4 h-4" aria-hidden="true" />
               <span>06 / KONTAK</span>
-              <span className="text-rfk-border">/</span>
-              <span className="text-rfk-silver">MULAI DARI SINI</span>
+              <span className="text-rfk-border" aria-hidden="true">/</span>
+              <span className="text-rfk-silver">KONSULTASI TEKNIS</span>
             </div>
 
             <h2 className="text-3xl sm:text-5xl font-extrabold uppercase font-heading tracking-tight text-rfk-white leading-tight mb-6">
-              SIAP MELINDUNGI <br />
-              <span className="text-rfk-red">PERFORMA</span> ANDA?
+              BUTUH REKOMENDASI <br />
+              <span className="text-rfk-red-light">SISTEM PEMADAM</span>?
             </h2>
 
             <p className="text-base sm:text-lg text-rfk-silver-light font-sans leading-relaxed mb-8">
-              Belum yakin ukuran tabung atau konfigurasi instalasi mana yang paling tepat untuk mobil Anda? Ceritakan spesifikasi kendaraan Anda. Tim RFK siap membantu konsultasi teknis dan pemesanan.
+              Belum yakin ukuran tabung atau konfigurasi pemasangan mana yang paling sesuai untuk mobil Anda? Sampaikan spesifikasi kendaraan Anda agar tim RFK dapat membantu konsultasi teknis dan pemesanan.
             </p>
 
             {/* 5 Year Warranty Badge Box */}
             <div className="p-6 rounded-xl bg-rfk-surface/80 border border-rfk-border/70 flex items-start gap-4 mb-8">
-              <div className="p-3 rounded-lg bg-rfk-red/10 text-rfk-red shrink-0">
-                <ShieldCheck className="w-7 h-7 sm:w-8 sm:h-8" />
+              <div className="p-3 rounded-lg bg-rfk-red/10 text-rfk-red-light shrink-0">
+                <ShieldCheck className="w-7 h-7 sm:w-8 sm:h-8" aria-hidden="true" />
               </div>
               <div>
                 <div className="font-heading font-extrabold text-xl sm:text-2xl text-rfk-white uppercase tracking-wider mb-1">
                   5 TAHUN GARANSI RESMI
                 </div>
                 <div className="text-sm sm:text-base text-rfk-silver-light font-sans leading-relaxed">
-                  Komitmen perlindungan jangka panjang terhadap tekanan tabung, keaslian formula Hartindo AF11E, dan dukungan suku cadang bracket.
+                  Jaminan jangka panjang terhadap tekanan tabung, keaslian formula Hartindo AF11E, serta ketersediaan suku cadang braket.
                 </div>
               </div>
             </div>
@@ -81,12 +81,12 @@ export default function ContactSection() {
                 <span>PT Solusi Keselamatan Berkendara</span>
               </div>
               <div className="flex flex-wrap items-center gap-2">
-                <span className="text-rfk-white font-bold font-heading uppercase">Respon:</span>
+                <span className="text-rfk-white font-bold font-heading uppercase">Respons:</span>
                 <span>Maksimal 1 x 24 Jam Kerja melalui WhatsApp</span>
               </div>
               <div className="flex flex-wrap items-center gap-2">
-                <span className="text-rfk-white font-bold font-heading uppercase">Website Resmi:</span>
-                <span className="text-rfk-red font-mono font-semibold">racingfirekiller.com</span>
+                <span className="text-rfk-white font-bold font-heading uppercase">Situs Resmi:</span>
+                <span className="text-rfk-red-light font-mono font-semibold">racingfirekiller.com</span>
               </div>
             </div>
           </div>
@@ -95,10 +95,10 @@ export default function ContactSection() {
           <div className="lg:col-span-7">
             <div className="p-8 sm:p-10 rounded-2xl bg-rfk-surface/90 border border-rfk-border shadow-2xl backdrop-blur-md">
               <h3 className="font-heading font-extrabold text-2xl sm:text-3xl uppercase tracking-wider text-rfk-white mb-2">
-                KONSULTASI DENGAN RFK
+                FORMULIR KONSULTASI RFK
               </h3>
               <p className="text-sm sm:text-base text-rfk-silver-light font-sans mb-8">
-                Isi formulir di bawah ini, dan sistem akan langsung menghubungkan detail kendaraan Anda ke tim konsultasi WhatsApp resmi kami.
+                Isi formulir di bawah ini untuk meneruskan detail kendaraan Anda ke tim konsultasi WhatsApp resmi kami.
               </p>
 
               {submitted && (
@@ -216,7 +216,7 @@ export default function ContactSection() {
                     maxLength={2000}
                     value={formData.notes}
                     onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                    placeholder="Ceritakan spesifikasi mobil, ruang mesin, atau event motorsport yang Anda ikuti..."
+                    placeholder="Ceritakan spesifikasi mobil, ruang mesin, atau ajang balap yang Anda ikuti..."
                     className="w-full px-4 py-3 rounded-lg bg-rfk-black/80 border border-rfk-border text-base text-rfk-white placeholder-rfk-silver/50 focus:border-rfk-red focus:outline-none focus:ring-1 focus:ring-rfk-red transition-colors"
                   />
                 </div>

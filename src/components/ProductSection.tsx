@@ -30,18 +30,18 @@ export default function ProductSection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div>
-            <div className="flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red tracking-wider uppercase mb-3">
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red-light tracking-wider uppercase mb-3">
               <span>02 / PRODUK</span>
-              <span className="text-rfk-border">/</span>
+              <span className="text-rfk-border" aria-hidden="true">/</span>
               <span className="text-rfk-silver">HARTINDO AF11E</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-extrabold uppercase font-heading tracking-tight text-rfk-white leading-tight">
               PERLINDUNGAN YANG <br />
-              <span className="text-rfk-red">SESUAI</span> KEBUTUHAN.
+              <span className="text-rfk-red-light">SESUAI</span> KEBUTUHAN.
             </h2>
           </div>
           <p className="text-base sm:text-lg text-rfk-silver-light max-w-lg font-sans leading-relaxed">
-            Hartindo AF11E tersedia dalam varian tabung mandiri 1 KG &amp; 2 KG hingga paket lengkap 4 KG Fire Suppression Kit motorsport, siap dipasang dengan braket kokoh atau terintegrasi sistem nozzle multi-titik.
+            Hartindo AF11E tersedia dalam varian tabung mandiri 1 KG dan 2 KG hingga paket lengkap 4 KG Fire Suppression Kit motorsport, siap dipasang dengan braket kokoh atau sistem nosel multi-titik.
           </p>
         </div>
 
@@ -112,11 +112,11 @@ export default function ProductSection() {
           {/* Product Specifications & Narrative */}
           <div className="lg:col-span-6 flex flex-col">
             <div className="flex flex-wrap items-center gap-3 mb-3">
-              <span className="px-3 py-1 rounded bg-rfk-red/20 text-rfk-red font-heading font-bold text-xs sm:text-sm uppercase tracking-wider border border-rfk-red/30">
+              <span className="px-3 py-1 rounded bg-rfk-red/20 text-rfk-red-light font-heading font-bold text-xs sm:text-sm uppercase tracking-wider border border-rfk-red/30">
                 {activeProduct.badge}
               </span>
               <span className="text-xs sm:text-sm font-mono text-rfk-silver-light uppercase">
-                {activeProduct.id === "rfk-4kg" ? "COMPLETE MOTORSPORT SYSTEM" : `${activeProduct.capacity} CYLINDER`}
+                {activeProduct.id === "rfk-4kg" ? "SISTEM PEMADAM MOTORSPORT LENGKAP" : `TABUNG ${activeProduct.capacity}`}
               </span>
             </div>
 
@@ -134,10 +134,10 @@ export default function ProductSection() {
 
             {/* Ideal For Callout */}
             <div className="mb-8 p-4 sm:p-5 rounded-lg bg-rfk-black/60 border border-rfk-border/60 flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-rfk-red shrink-0 mt-0.5" />
+              <CheckCircle2 className="w-5 h-5 text-rfk-red-light shrink-0 mt-0.5" aria-hidden="true" />
               <div>
                 <span className="text-sm uppercase font-heading font-bold text-rfk-white block mb-0.5">
-                  Aplikasi Ideal Kendaraan:
+                  Cocok untuk Kendaraan:
                 </span>
                 <span className="text-sm sm:text-base text-rfk-silver-light font-sans">
                   {activeProduct.idealFor}
@@ -149,8 +149,8 @@ export default function ProductSection() {
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
               <div className="p-3.5 rounded-lg bg-rfk-charcoal/60 border border-rfk-border/50">
                 <div className="flex items-center gap-1.5 text-rfk-silver-light text-xs uppercase font-heading font-semibold mb-1">
-                  <Shield className="w-4 h-4 text-rfk-red" />
-                  <span>Rating Api</span>
+                  <Shield className="w-4 h-4 text-rfk-red-light" aria-hidden="true" />
+                  <span>Kelas Pemadaman</span>
                 </div>
                 <div className="text-base sm:text-lg font-bold text-rfk-white font-heading">
                   {activeProduct.specs.fireRating}
@@ -159,7 +159,7 @@ export default function ProductSection() {
 
               <div className="p-3.5 rounded-lg bg-rfk-charcoal/60 border border-rfk-border/50">
                 <div className="flex items-center gap-1.5 text-rfk-silver-light text-xs uppercase font-heading font-semibold mb-1">
-                  <Gauge className="w-4 h-4 text-rfk-red" />
+                  <Gauge className="w-4 h-4 text-rfk-red-light" aria-hidden="true" />
                   <span>Tekanan Kerja</span>
                 </div>
                 <div className="text-base sm:text-lg font-bold text-rfk-white font-heading">
@@ -169,7 +169,7 @@ export default function ProductSection() {
 
               <div className="p-3.5 rounded-lg bg-rfk-charcoal/60 border border-rfk-border/50">
                 <div className="flex items-center gap-1.5 text-rfk-silver-light text-xs uppercase font-heading font-semibold mb-1">
-                  <Thermometer className="w-4 h-4 text-rfk-red" />
+                  <Thermometer className="w-4 h-4 text-rfk-red-light" aria-hidden="true" />
                   <span>Suhu Operasional</span>
                 </div>
                 <div className="text-base sm:text-lg font-bold text-rfk-white font-heading">
@@ -179,11 +179,11 @@ export default function ProductSection() {
 
               <div className="p-3.5 rounded-lg bg-rfk-charcoal/60 border border-rfk-border/50 col-span-2 sm:col-span-3">
                 <div className="flex items-center gap-1.5 text-rfk-silver-light text-xs uppercase font-heading font-semibold mb-1">
-                  <Layers className="w-4 h-4 text-rfk-red" />
-                  <span>Material Tabung &amp; Sertifikasi</span>
+                  <Layers className="w-4 h-4 text-rfk-red-light" aria-hidden="true" />
+                  <span>Material Tabung &amp; Tekanan Uji</span>
                 </div>
                 <div className="text-sm font-semibold text-rfk-white font-sans">
-                  {activeProduct.specs.material} (Test Pressure: {activeProduct.specs.testPressure})
+                  {activeProduct.specs.material} (Tekanan Uji: {activeProduct.specs.testPressure})
                 </div>
               </div>
             </div>
@@ -197,9 +197,9 @@ export default function ProductSection() {
                 <span>
                   {activeProduct.id === "rfk-4kg"
                     ? "KONSULTASI FIRE SUPPRESSION KIT 4 KG"
-                    : `KONSULTASI UKURAN ${activeProduct.capacity}`}
+                    : `KONSULTASI TABUNG ${activeProduct.capacity}`}
                 </span>
-                <ArrowUpRight className="w-4 h-4" />
+                <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
               </a>
             </div>
           </div>

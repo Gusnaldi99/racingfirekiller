@@ -80,7 +80,7 @@ export default function ShowcaseDetailView({ item, otherShowcase }: ShowcaseDeta
               Showcase
             </Link>
             <ChevronRight className="w-4 h-4 text-rfk-border" />
-            <span className="text-rfk-red font-medium truncate max-w-[180px] sm:max-w-none">
+            <span className="text-rfk-red-light font-medium truncate max-w-[180px] sm:max-w-none">
               {item.title}
             </span>
           </div>
@@ -100,8 +100,8 @@ export default function ShowcaseDetailView({ item, otherShowcase }: ShowcaseDeta
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
             {/* Category Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-rfk-surface border border-rfk-border text-xs sm:text-sm font-heading font-bold uppercase tracking-wider text-rfk-red mb-4">
-              <span className="w-2 h-2 rounded-full bg-rfk-red animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-rfk-surface border border-rfk-border text-xs sm:text-sm font-heading font-bold uppercase tracking-wider text-rfk-red-light mb-4">
+              <span className="w-2 h-2 rounded-full bg-rfk-red animate-pulse" aria-hidden="true" />
               <span>{item.badge}</span>
             </div>
 
@@ -253,8 +253,8 @@ export default function ShowcaseDetailView({ item, otherShowcase }: ShowcaseDeta
 
               {/* Callout Box */}
               <div className="mt-8 p-6 rounded-xl bg-rfk-surface/80 border-l-4 border-rfk-red border-y border-r border-rfk-border">
-                <div className="text-xs sm:text-sm font-heading font-bold uppercase tracking-wider text-rfk-red mb-1">
-                  FILOSOFI MOTORSPORT SAFETY
+                <div className="text-xs sm:text-sm font-heading font-bold uppercase tracking-wider text-rfk-red-light mb-1">
+                  PRINSIP KESELAMATAN MOTORSPORT
                 </div>
                 <p className="text-sm sm:text-base text-rfk-white font-sans leading-relaxed">
                   {item.whyRfk.callout}
@@ -285,7 +285,7 @@ export default function ShowcaseDetailView({ item, otherShowcase }: ShowcaseDeta
             {/* 4 Feature Cards Column */}
             <div className="lg:col-span-5 space-y-4">
               <div className="text-xs sm:text-sm font-heading font-bold text-rfk-silver-light tracking-wider uppercase mb-2">
-                4 PILAR PROTEKSI AKTIF PADA UNIT INI
+                4 KEUNGGULAN PROTEKSI PADA UNIT INI
               </div>
               {item.features.map((feat) => (
                 <div
@@ -293,7 +293,7 @@ export default function ShowcaseDetailView({ item, otherShowcase }: ShowcaseDeta
                   className="p-5 sm:p-6 rounded-xl bg-rfk-surface/90 border border-rfk-border/80 hover:border-rfk-red/60 transition-colors"
                 >
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="font-mono text-xs sm:text-sm font-bold text-rfk-red px-2.5 py-0.5 rounded bg-rfk-red/10 border border-rfk-red/30">
+                    <span className="font-mono text-xs sm:text-sm font-bold text-rfk-red-light px-2.5 py-0.5 rounded bg-rfk-red/10 border border-rfk-red/30">
                       {feat.number}
                     </span>
                     <h3 className="font-heading font-bold text-base sm:text-lg uppercase text-rfk-white tracking-wider">
@@ -350,9 +350,9 @@ export default function ShowcaseDetailView({ item, otherShowcase }: ShowcaseDeta
             {/* Left: Vehicle Specs */}
             <div className="p-6 sm:p-8 rounded-2xl bg-rfk-surface/80 border border-rfk-border">
               <div className="flex items-center gap-2 mb-4">
-                <Gauge className="w-5 h-5 text-rfk-red" />
+                <Gauge className="w-5 h-5 text-rfk-red-light" aria-hidden="true" />
                 <h3 className="font-heading font-bold text-lg uppercase text-rfk-white tracking-wider">
-                  SPESIFIKASI KENDARAAN &amp; CHASSIS
+                  SPESIFIKASI KENDARAAN &amp; SASIS
                 </h3>
               </div>
               <div className="divide-y divide-rfk-border/50 text-sm sm:text-base">
@@ -371,13 +371,13 @@ export default function ShowcaseDetailView({ item, otherShowcase }: ShowcaseDeta
             <div className="p-6 sm:p-8 rounded-2xl bg-rfk-surface/80 border border-rfk-red/40 relative shadow-xl">
               <div className="absolute top-4 right-4">
                 <span className="px-2.5 py-0.5 rounded bg-rfk-red text-xs font-heading font-bold uppercase text-rfk-white">
-                  RFK SPEC
+                  SPEK RFK
                 </span>
               </div>
               <div className="flex items-center gap-2 mb-4">
-                <Zap className="w-5 h-5 text-rfk-red" />
+                <Zap className="w-5 h-5 text-rfk-red-light" aria-hidden="true" />
                 <h3 className="font-heading font-bold text-lg uppercase text-rfk-white tracking-wider">
-                  SISTEM FIRE SUPPRESSION TERPASANG
+                  SPESIFIKASI SISTEM PEMADAM TERPASANG
                 </h3>
               </div>
               <div className="divide-y divide-rfk-border/50 text-sm sm:text-base">
@@ -399,7 +399,7 @@ export default function ShowcaseDetailView({ item, otherShowcase }: ShowcaseDeta
       <section className="py-16 border-b border-rfk-border/50 bg-rfk-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-xs sm:text-sm font-heading font-bold text-rfk-silver-light tracking-wider uppercase mb-4">
-            EKSPLORASI SHOWCASE LAINNYA
+            LIHAT SHOWCASE LAINNYA
           </div>
 
           <div className="rounded-2xl overflow-hidden bg-rfk-surface/90 border border-rfk-border hover:border-rfk-red transition-all p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -458,8 +458,8 @@ export default function ShowcaseDetailView({ item, otherShowcase }: ShowcaseDeta
               rel="noopener noreferrer"
               className="min-h-[48px] w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-rfk-red hover:bg-rfk-red-dark text-rfk-white font-heading font-bold text-base uppercase tracking-wider px-8 py-3.5 rounded transition-all shadow-xl shadow-rfk-red/30 focus-visible:ring-2 focus-visible:ring-rfk-white"
             >
-              <MessageSquare className="w-4 h-4" />
-              <span>KONSULTASI VIA WHATSAPP SEKARANG</span>
+              <MessageSquare className="w-4 h-4" aria-hidden="true" />
+              <span>KONSULTASI VIA WHATSAPP</span>
             </a>
 
             <Link

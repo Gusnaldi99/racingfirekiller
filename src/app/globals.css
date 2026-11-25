@@ -38,13 +38,45 @@ body {
   outline-offset: 3px;
 }
 
-/* Minimum 44px tap targets for mobile touch safety (R-03) */
+/* Minimum 44px tap targets and pointer affordance for interactive controls (R-03, R-39) */
+@layer base {
+  a[href],
+  button:not(:disabled),
+  summary,
+  select:not(:disabled),
+  label[for],
+  [role="button"]:not([aria-disabled="true"]),
+  [role="tab"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  select:disabled,
+  [aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+}
+
 button,
 a,
 input,
 select,
 textarea {
   touch-action: manipulation;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Custom scrollbar */
@@ -60,5 +92,47 @@ textarea {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #d30201;
+}
+
+/* Motorsport & Clean-Agent Motion Utilities */
+@keyframes rfk-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes rfk-gas-flow {
+  0% {
+    stroke-dashoffset: 48;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes rfk-scanline {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+.animate-rfk-float {
+  animation: rfk-float 5.5s ease-in-out infinite;
+}
+
+.animate-rfk-gas-flow {
+  stroke-dasharray: 8 8;
+  animation: rfk-gas-flow 1.4s linear infinite;
+}
+
+.animate-rfk-scanline {
+  animation: rfk-scanline 4.5s ease-in-out infinite;
 }
 

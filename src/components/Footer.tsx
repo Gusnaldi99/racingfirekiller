@@ -19,11 +19,11 @@ export default function Footer() {
       <div className="bg-gradient-to-r from-rfk-charcoal via-rfk-surface to-rfk-charcoal border-b border-rfk-border/60 py-4 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-sm font-heading font-semibold tracking-wider uppercase">
           <div className="flex items-center gap-2 text-rfk-white font-bold">
-            <span className="w-2.5 h-2.5 rounded-full bg-rfk-red" />
-            <span>BE PREPARED. DRIVE PROTECTED.</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-rfk-red" aria-hidden="true" />
+            <span>SIAP SEDIA. BERKENDARA AMAN.</span>
           </div>
           <div className="text-rfk-silver-light">
-            AUTOMOTIVE FIRE SAFETY &bull; HARTINDO AF11E
+            KESELAMATAN KEBAKARAN OTOMOTIF &bull; HARTINDO AF11E
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@ export default function Footer() {
               aria-label="Kembali ke beranda Racing Fire Killer"
             >
               <Image
-                src="/assets/logo/rfk-logo-white.png"
+                src="/assets/logo/RFK [Red White No Tagline].png"
                 alt="RFK Racing Fire Killer"
                 fill
                 className="object-contain"
@@ -51,7 +51,7 @@ export default function Footer() {
             </div>
 
             <p className="text-sm text-rfk-silver-light max-w-sm font-sans leading-relaxed mb-6">
-              Sistem proteksi dan pemadam kebakaran berstandar motorsport untuk kendaraan yang hidup di batas performa. Formula gas bersih Hartindo AF11E, non-konduktif dan tanpa residu.
+              Sistem proteksi dan pemadam kebakaran berstandar motorsport untuk mobil balap dan modifikasi. Formula gas bersih Hartindo AF11E bersifat nonkonduktif dan tanpa residu.
             </p>
 
             <div className="text-xs sm:text-sm font-mono text-rfk-silver-light">
@@ -89,8 +89,8 @@ export default function Footer() {
               href="/#kontak"
               className="inline-flex items-center gap-2 bg-rfk-charcoal hover:bg-rfk-charcoal-light text-rfk-white border border-rfk-border font-heading font-bold text-sm uppercase tracking-wider px-5 py-3 rounded transition-colors"
             >
-              <span>HUBUNGI VIA WA</span>
-              <ArrowUpRight className="w-4 h-4 text-rfk-red" />
+              <span>KONSULTASI WHATSAPP</span>
+              <ArrowUpRight className="w-4 h-4 text-rfk-red-light" aria-hidden="true" />
             </Link>
           </div>
         </div>
@@ -101,7 +101,7 @@ export default function Footer() {
             &copy; 2026 RACING FIRE KILLER. HAK CIPTA DILINDUNGI.
           </div>
           <div className="text-rfk-white font-heading tracking-wider uppercase font-semibold">
-            ENGINEERED FOR THE UNEXPECTED.
+            DIRANCANG UNTUK KONDISI DARURAT.
           </div>
         </div>
       </div>

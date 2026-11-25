@@ -16,18 +16,18 @@ export default function FaqSection() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red tracking-wider uppercase mb-3">
-            <HelpCircle className="w-4 h-4" />
-            <span>05 / FAQ</span>
-            <span className="text-rfk-border">/</span>
-            <span className="text-rfk-silver">FREQUENTLY ASKED QUESTIONS</span>
+          <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red-light tracking-wider uppercase mb-3">
+            <HelpCircle className="w-4 h-4" aria-hidden="true" />
+            <span>05 / TANYA JAWAB</span>
+            <span className="text-rfk-border" aria-hidden="true">/</span>
+            <span className="text-rfk-silver">PERTANYAAN UMUM</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold uppercase font-heading tracking-tight text-rfk-white leading-tight">
             PERTANYAAN SEPUTAR <br />
-            <span className="text-rfk-red">PROTEKSI KEBAKARAN</span> MOBIL.
+            <span className="text-rfk-red-light">PROTEKSI KEBAKARAN</span> MOBIL.
           </h2>
           <p className="text-base sm:text-lg text-rfk-silver-light max-w-xl mx-auto font-sans leading-relaxed mt-4">
-            Jawaban teknis langsung dari spesialis fire safety otomotif mengenai formula Hartindo AF11E dan aplikasi motorsport.
+            Jawaban teknis dari tim keselamatan kebakaran otomotif mengenai formula Hartindo AF11E dan penerapannya pada kendaraan balap.
           </p>
         </div>
 
@@ -77,8 +77,8 @@ export default function FaqSection() {
         <div className="mt-12 text-center p-6 rounded-xl bg-rfk-surface/40 border border-rfk-border/50">
           <p className="text-sm sm:text-base text-rfk-silver-light font-sans">
             Punya pertanyaan spesifik tentang ruang mesin atau konfigurasi mobil Anda?{" "}
-            <a href="#kontak" className="text-rfk-red font-heading font-bold uppercase underline underline-offset-4 hover:text-rfk-red-light ml-1">
-              Hubungi Tim Konsultasi RFK &rarr;
+            <a href="#kontak" className="text-rfk-red-light font-heading font-bold uppercase underline underline-offset-4 hover:text-rfk-white ml-1">
+              Hubungi Tim Konsultasi RFK
             </a>
           </p>
         </div>

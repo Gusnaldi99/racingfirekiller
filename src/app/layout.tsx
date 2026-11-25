@@ -25,16 +25,16 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "Racing Fire Killer | Sistem Pemadam Mobil Balap & Modifikasi",
   description:
-    "RFK menghadirkan Hartindo AF11E 1 KG, 2 KG, dan 4 KG Fire Suppression Kit untuk perlindungan kendaraan balap dan motorsport. Formula non-konduktif, tanpa residu, respons 10 detik, dan garansi 5 tahun.",
+    "RFK menyediakan tabung pemadam Hartindo AF11E 1 kg, 2 kg, dan 4 kg Fire Suppression Kit untuk mobil balap dan modifikasi. Formula nonkonduktif, tanpa residu, rata-rata padam 10 detik, dan garansi tekanan 5 tahun.",
   keywords: [
     "racing fire killer",
     "APAR mobil balap",
     "pemadam api motorsport",
     "Hartindo AF11E",
-    "motorsport fire suppression kit",
-    "clean agent fire extinguisher",
+    "sistem pemadam mobil balap",
+    "APAR gas bersih",
     "APAR tanpa residu",
-    "fire safety mobil modifikasi",
+    "keselamatan kebakaran mobil modifikasi",
   ],
   authors: [{ name: "Racing Fire Killer" }],
   creator: "PT Solusi Keselamatan Berkendara",
@@ -49,14 +49,14 @@ export const metadata: Metadata = {
     url: "https://www.racingfirekiller.com/",
     title: "Racing Fire Killer | Sistem Pemadam Mobil Balap & Modifikasi",
     description:
-      "Sistem pemadam motorsport dan tabung performa tinggi untuk mobil balap dan modifikasi. Formula non-konduktif, tanpa residu, dan respons cepat 10 detik.",
+      "Sistem pemadam api dan tabung gas bersih Hartindo AF11E untuk mobil balap serta modifikasi. Nonkonduktif, tanpa residu, dan padam rata-rata dalam 10 detik.",
     siteName: "Racing Fire Killer",
     images: [
       {
         url: "/assets/logo/rfk-logo.jpg",
         width: 1200,
         height: 630,
-        alt: "Racing Fire Killer Automotive Fire Safety",
+        alt: "Racing Fire Killer Keselamatan Kebakaran Otomotif",
       },
     ],
   },
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Racing Fire Killer | Sistem Pemadam Mobil Balap & Modifikasi",
     description:
-      "Perlindungan kebakaran motorsport dengan formula Hartindo AF11E non-konduktif & tanpa residu.",
+      "Perlindungan kebakaran mobil balap dengan formula Hartindo AF11E yang nonkonduktif dan tanpa residu.",
     images: ["/assets/logo/rfk-logo.jpg"],
   },
   robots: {

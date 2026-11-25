@@ -13,19 +13,19 @@ export default function ShowcaseSection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
-            <div className="flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red tracking-wider uppercase mb-3">
-              <Flag className="w-4 h-4 text-rfk-red" />
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red-light tracking-wider uppercase mb-3">
+              <Flag className="w-4 h-4 text-rfk-red-light" aria-hidden="true" />
               <span>04 / SHOWCASE</span>
-              <span className="text-rfk-border">/</span>
-              <span className="text-rfk-silver">PROVEN ON TRACK &amp; BUILDS</span>
+              <span className="text-rfk-border" aria-hidden="true">/</span>
+              <span className="text-rfk-silver">TERUJI DI LINTASAN &amp; PAMERAN</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-extrabold uppercase font-heading tracking-tight text-rfk-white leading-tight">
-              DIPERCAYA PADA KARYA <br />
-              <span className="text-rfk-red">MOTORSPORT TERTINGGI.</span>
+              DIPERCAYA DI AJANG <br />
+              <span className="text-rfk-red-light">MOTORSPORT BERGENGSI.</span>
             </h2>
           </div>
           <p className="text-base sm:text-lg text-rfk-silver-light max-w-lg font-sans leading-relaxed">
-            Dari panggung modifikasi bergengsi dunia SEMA Show Las Vegas hingga lintasan drifting ekstrem bersama tim Garasi Drift, tabung dan sistem pemadam Racing Fire Killer terbukti melindungi mobil balap bernilai tinggi tanpa kompromi.
+            Dari panggung modifikasi dunia SEMA Show Las Vegas hingga lintasan drifting bersama tim Garasi Drift, tabung dan sistem pemadam Racing Fire Killer melindungi mobil balap bernilai tinggi tanpa merusak komponen.
           </p>
         </div>
 
@@ -62,7 +62,7 @@ export default function ShowcaseSection() {
 
                 {/* Bottom Overlay Info on Image */}
                 <div className="absolute bottom-4 left-4 right-4 z-10">
-                  <div className="text-xs sm:text-sm font-mono text-rfk-red tracking-wider uppercase mb-1">
+                  <div className="text-xs sm:text-sm font-mono text-rfk-red-light tracking-wider uppercase mb-1">
                     {item.categoryTag}
                   </div>
                   <h3 className="text-2xl sm:text-3xl font-extrabold uppercase font-heading text-rfk-white tracking-tight drop-shadow-md">
@@ -81,20 +81,20 @@ export default function ShowcaseSection() {
                   {/* Feature Highlights Pills */}
                   <div className="flex flex-wrap gap-2.5 mb-6">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-rfk-charcoal/60 border border-rfk-border/60 text-xs sm:text-sm font-heading font-medium uppercase text-rfk-silver-light">
-                      <ShieldCheck className="w-3.5 h-3.5 text-rfk-red" />
-                      Hartindo AF11E Clean Agent
+                      <ShieldCheck className="w-3.5 h-3.5 text-rfk-red-light" aria-hidden="true" />
+                      Gas Bersih Hartindo AF11E
                     </span>
                     <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-rfk-charcoal/60 border border-rfk-border/60 text-xs sm:text-sm font-heading font-medium uppercase text-rfk-silver-light">
-                      <Gauge className="w-3.5 h-3.5 text-rfk-red" />
-                      Tekanan Presisi 14 Bar
+                      <Gauge className="w-3.5 h-3.5 text-rfk-red-light" aria-hidden="true" />
+                      Tekanan Kerja 14 Bar
                     </span>
                     <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-rfk-charcoal/60 border border-rfk-border/60 text-xs sm:text-sm font-heading font-medium uppercase text-rfk-silver-light">
-                      <Zap className="w-3.5 h-3.5 text-rfk-red" />
-                      Non-Konduktif Aman ECU
+                      <Zap className="w-3.5 h-3.5 text-rfk-red-light" aria-hidden="true" />
+                      Nonkonduktif Aman ECU
                     </span>
                     <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-rfk-charcoal/60 border border-rfk-border/60 text-xs sm:text-sm font-heading font-medium uppercase text-rfk-silver-light">
-                      <Flame className="w-3.5 h-3.5 text-rfk-red" />
-                      Padam Cepat &lt; 10 Detik
+                      <Flame className="w-3.5 h-3.5 text-rfk-red-light" aria-hidden="true" />
+                      Padam Rata-rata 10 Detik
                     </span>
                   </div>
                 </div>
@@ -102,14 +102,14 @@ export default function ShowcaseSection() {
                 {/* Action Link to Detail Page */}
                 <div className="pt-4 border-t border-rfk-border/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <span className="text-sm font-mono text-rfk-silver-light">
-                    5 Dokumentasi Foto Instalasi
+                    5 Foto Dokumentasi Instalasi
                   </span>
                   <Link
                     href={`/showcase/${item.slug}/`}
                     className="inline-flex items-center justify-center gap-2 bg-rfk-red hover:bg-rfk-red-dark text-rfk-white font-heading font-bold text-sm uppercase tracking-wider px-6 py-3 rounded transition-all duration-200 group-hover:translate-x-1 shadow-md shadow-rfk-red/20 focus-visible:ring-2 focus-visible:ring-rfk-white min-h-[44px]"
                   >
-                    <span>LIHAT DETAIL INSTALASI RFK</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <span>LIHAT DETAIL INSTALASI</span>
+                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
                   </Link>
                 </div>
               </div>
