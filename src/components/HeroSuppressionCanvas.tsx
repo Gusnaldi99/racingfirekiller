@@ -2,6 +2,8 @@
 
 import React, { useEffect, useRef } from "react";
 
+export type SuppressionPhase = "fire" | "sucking" | "extinguished";
+
 interface FireParticle {
   x: number;
   y: number;
@@ -10,7 +12,7 @@ interface FireParticle {
   radius: number;
   life: number;
   maxLife: number;
-  heat: number; // 1 = full flame, 0 = cooled/extinguished
+  heat: number; // 1 = full flame, 0 = cooled/vaporized
   sucked: boolean;
   isSpark: boolean;
   seed: number;
@@ -27,15 +29,50 @@ interface GasParticle {
   maxLife: number;
 }
 
+interface ShockwaveRing {
+  x: number;
+  y: number;
+  radius: number;
+  maxRadius: number;
+  alpha: number;
+}
+
+interface HeroSuppressionCanvasProps {
+  paused?: boolean;
+  burstTrigger?: number;
+  onPhaseChange?: (phase: SuppressionPhase) => void;
+}
+
 /**
- * High-polish HTML5 Canvas simulation:
- * - Elongated, flickering fire plumes & rising sparks
- * - Multi-strand thin clean-agent gas/vapor ribbons & mist wisps
- * - Dynamic vortex suction that spirals flames inward and extinguishes them
- * - Interactive pointer trail + click/tap pressurized clean-agent blast
+ * Real-time HTML5 Canvas simulation of Hartindo AF11E Clean Agent:
+ * - Multi-layered flickering flame plumes & rising sparks
+ * - Gossamer-thin pressurized gas/vapor ribbons sweeping out toward the fire
+ * - Tight suction vortex that spirals flames inward, cools them to vapor, and extinguishes cleanly
+ * - Supports user-triggered manual discharge ("Semprot Gas AF11E") and Pause/Play control
  */
-export default function HeroSuppressionCanvas() {
+export default function HeroSuppressionCanvas({
+  paused = false,
+  burstTrigger = 0,
+  onPhaseChange,
+}: HeroSuppressionCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const pausedRef = useRef(paused);
+  const triggerRef = useRef<(() => void) | null>(null);
+  const onPhaseChangeRef = useRef(onPhaseChange);
+
+  useEffect(() => {
+    pausedRef.current = paused;
+  }, [paused]);
+
+  useEffect(() => {
+    onPhaseChangeRef.current = onPhaseChange;
+  }, [onPhaseChange]);
+
+  useEffect(() => {
+    if (burstTrigger > 0 && triggerRef.current) {
+      triggerRef.current();
+    }
+  }, [burstTrigger]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -51,8 +88,10 @@ export default function HeroSuppressionCanvas() {
 
     const fireParticles: FireParticle[] = [];
     const gasParticles: GasParticle[] = [];
+    const shockwaves: ShockwaveRing[] = [];
 
-    let cycleTimer = 55;
+    let cycleTimer = 25;
+    let lastPhase: SuppressionPhase | null = null;
     let vortexX = 0;
     let vortexY = 0;
     let mouseX = -9999;
@@ -73,26 +112,26 @@ export default function HeroSuppressionCanvas() {
       canvas.style.height = `${height}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      vortexX = width * 0.64;
-      vortexY = height * 0.48;
+      vortexX = width * 0.66;
+      vortexY = height * 0.42;
     };
 
     const spawnFire = (count: number) => {
-      const originX = width * 0.65;
-      const originY = height * 0.86;
-      const spreadX = Math.max(180, width * 0.34);
+      const originX = width * 0.68;
+      const originY = height * 0.64;
+      const spreadX = Math.max(220, width * 0.36);
 
       for (let i = 0; i < count; i++) {
-        if (fireParticles.length > 180) break;
-        const isSpark = Math.random() < 0.3;
+        if (fireParticles.length > 230) break;
+        const isSpark = Math.random() < 0.35;
         fireParticles.push({
           x: originX + (Math.random() - 0.5) * spreadX,
-          y: originY + Math.random() * 30,
-          vx: (Math.random() - 0.5) * (isSpark ? 2.4 : 1.0),
-          vy: -(isSpark ? 2.8 + Math.random() * 3.4 : 1.9 + Math.random() * 2.5),
-          radius: isSpark ? 2 + Math.random() * 3 : 16 + Math.random() * 32,
+          y: originY + (Math.random() - 0.5) * 42,
+          vx: (Math.random() - 0.5) * (isSpark ? 1.8 : 0.75),
+          vy: -(isSpark ? 2.1 + Math.random() * 2.4 : 1.5 + Math.random() * 1.9),
+          radius: isSpark ? 2 + Math.random() * 3 : 19 + Math.random() * 34,
           life: 0,
-          maxLife: isSpark ? 48 + Math.random() * 42 : 58 + Math.random() * 50,
+          maxLife: isSpark ? 68 + Math.random() * 44 : 78 + Math.random() * 54,
           heat: 1,
           sucked: false,
           isSpark,
@@ -116,55 +155,83 @@ export default function HeroSuppressionCanvas() {
       const dirY = dy / dist;
 
       for (let i = 0; i < count; i++) {
-        if (gasParticles.length > 180) break;
-        const speed = (5.5 + Math.random() * 5) * speedScale;
-        const jitter = (Math.random() - 0.5) * 0.4;
+        if (gasParticles.length > 210) break;
+        const speed = (3.8 + Math.random() * 3.4) * speedScale;
+        const jitter = (Math.random() - 0.5) * 0.34;
         const cos = Math.cos(jitter);
         const sin = Math.sin(jitter);
         const vx = (dirX * cos - dirY * sin) * speed;
         const vy = (dirX * sin + dirY * cos) * speed;
 
         gasParticles.push({
-          x: startX + (Math.random() - 0.5) * 24,
-          y: startY + (Math.random() - 0.5) * 24,
+          x: startX + (Math.random() - 0.5) * 18,
+          y: startY + (Math.random() - 0.5) * 18,
           vx,
           vy,
-          radius: 16 + Math.random() * 40,
-          alpha: 0.14 + Math.random() * 0.2,
+          radius: 10 + Math.random() * 26,
+          alpha: 0.16 + Math.random() * 0.22,
           life: 0,
-          maxLife: 42 + Math.random() * 34,
+          maxLife: 56 + Math.random() * 38,
         });
       }
     };
 
+    // Allow external "Uji Semprot Gas AF11E" button to jump directly to suppression
+    triggerRef.current = () => {
+      if (fireParticles.length < 35) {
+        spawnFire(52);
+      }
+      cycleTimer = 92;
+      blastX = vortexX;
+      blastY = vortexY;
+      blastTimer = 46;
+      spawnGasStream(width * 0.24, height * 0.68, vortexX, vortexY, 28, 1.45);
+      shockwaves.push({
+        x: vortexX,
+        y: vortexY,
+        radius: 18,
+        maxRadius: 270,
+        alpha: 0.65,
+      });
+    };
+
     resize();
-    spawnFire(45);
+    spawnFire(48);
     window.addEventListener("resize", resize);
 
     const handlePointerMove = (e: PointerEvent) => {
+      if (pausedRef.current) return;
       const rect = canvas.getBoundingClientRect();
       mouseX = e.clientX - rect.left;
       mouseY = e.clientY - rect.top;
 
       const now = performance.now();
-      if (now - lastMouseBurst > 32) {
+      if (now - lastMouseBurst > 36) {
         lastMouseBurst = now;
         spawnGasStream(
-          mouseX - 65,
-          mouseY + 22,
-          mouseX + 45,
-          mouseY - 22,
+          mouseX - 60,
+          mouseY + 20,
+          mouseX + 42,
+          mouseY - 20,
           3
         );
       }
     };
 
     const handlePointerDown = (e: PointerEvent) => {
+      if (pausedRef.current) return;
       const rect = canvas.getBoundingClientRect();
       blastX = e.clientX - rect.left;
       blastY = e.clientY - rect.top;
       blastTimer = 36;
-      spawnGasStream(blastX - 110, blastY + 45, blastX, blastY, 18, 1.35);
+      spawnGasStream(blastX - 105, blastY + 42, blastX, blastY, 18, 1.35);
+      shockwaves.push({
+        x: blastX,
+        y: blastY,
+        radius: 12,
+        maxRadius: 195,
+        alpha: 0.52,
+      });
     };
 
     const handlePointerLeave = () => {
@@ -198,86 +265,116 @@ export default function HeroSuppressionCanvas() {
       ctx.save();
       ctx.globalCompositeOperation = "screen";
 
-      for (let s = 0; s < 3; s++) {
-        const wave = Math.sin(time * 0.09 + s * 2.1) * (24 + s * 14);
-        const ctrlX = (nozzleX + targetX) * 0.5 + wave * 0.4;
-        const ctrlY = Math.min(nozzleY, targetY) - (45 + s * 28) + wave;
+      // 5 gossamer-thin gas/vapor ribbons sweeping into the fire vortex
+      for (let s = 0; s < 5; s++) {
+        const wave = Math.sin(time * 0.055 + s * 1.65) * (20 + s * 11);
+        const ctrlX = (nozzleX + targetX) * 0.5 + wave * 0.45;
+        const ctrlY = Math.min(nozzleY, targetY) - (32 + s * 22) + wave;
 
         const grad = ctx.createLinearGradient(nozzleX, nozzleY, targetX, targetY);
-        grad.addColorStop(0, "rgba(186, 230, 253, 0)");
-        grad.addColorStop(0.35, `rgba(224, 242, 254, ${envelope * (0.22 - s * 0.04)})`);
-        grad.addColorStop(0.75, `rgba(125, 211, 252, ${envelope * (0.3 - s * 0.05)})`);
-        grad.addColorStop(1, "rgba(186, 230, 253, 0)");
+        grad.addColorStop(0, "rgba(226, 232, 240, 0)");
+        grad.addColorStop(0.35, `rgba(240, 249, 255, ${envelope * (0.28 - s * 0.04)})`);
+        grad.addColorStop(0.75, `rgba(186, 230, 253, ${envelope * (0.34 - s * 0.045)})`);
+        grad.addColorStop(1, "rgba(226, 232, 240, 0)");
 
         ctx.strokeStyle = grad;
-        ctx.lineWidth = 4 - s * 0.9;
+        ctx.lineWidth = Math.max(1, 3.2 - s * 0.55);
         ctx.lineCap = "round";
         ctx.beginPath();
-        ctx.moveTo(nozzleX - s * 14, nozzleY + s * 10);
+        ctx.moveTo(nozzleX - s * 12, nozzleY + s * 8);
         ctx.quadraticCurveTo(ctrlX, ctrlY, targetX, targetY);
         ctx.stroke();
       }
 
-      // Subtle rotating vortex suction ring
-      const ringRadius = Math.max(18, 95 * (1 - progress * 0.65));
-      ctx.strokeStyle = `rgba(186, 230, 253, ${envelope * 0.25})`;
-      ctx.lineWidth = 1.5;
-      ctx.setLineDash([18, 14]);
-      ctx.lineDashOffset = -time * 4;
-      ctx.beginPath();
-      ctx.arc(targetX, targetY, ringRadius, 0, Math.PI * 2);
-      ctx.stroke();
+      // Spiral suction streamlines pulling flames inward
+      for (let arm = 0; arm < 3; arm++) {
+        const baseAngle = time * 0.08 + (arm * Math.PI * 2) / 3;
+        const startR = Math.max(24, 128 * (1 - progress * 0.55));
+        const endR = 10;
+        const sx = targetX + Math.cos(baseAngle) * startR;
+        const sy = targetY + Math.sin(baseAngle) * startR;
+        const cx = targetX + Math.cos(baseAngle + 1.1) * (startR * 0.55);
+        const cy = targetY + Math.sin(baseAngle + 1.1) * (startR * 0.55);
+        const ex = targetX + Math.cos(baseAngle + 2.2) * endR;
+        const ey = targetY + Math.sin(baseAngle + 2.2) * endR;
+
+        ctx.strokeStyle = `rgba(224, 242, 254, ${envelope * 0.3})`;
+        ctx.lineWidth = 1.35;
+        ctx.beginPath();
+        ctx.moveTo(sx, sy);
+        ctx.quadraticCurveTo(cx, cy, ex, ey);
+        ctx.stroke();
+      }
 
       ctx.restore();
     };
 
     const tick = () => {
       animationId = requestAnimationFrame(tick);
-      if (!isVisible || document.hidden) return;
+      if (!isVisible || document.hidden || pausedRef.current) return;
 
       cycleTimer += 1;
       if (blastTimer > 0) blastTimer -= 1;
 
-      const cyclePos = cycleTimer % 240;
-      const isBurning = cyclePos < 118;
-      const isSuppressing = cyclePos >= 105 && cyclePos < 195;
+      const cyclePos = cycleTimer % 340;
+      const isBurning = cyclePos < 165;
+      const isSuppressing = cyclePos >= 145 && cyclePos < 290;
+
+      const currentPhase: SuppressionPhase = isSuppressing
+        ? "sucking"
+        : isBurning
+        ? "fire"
+        : "extinguished";
+      if (currentPhase !== lastPhase) {
+        lastPhase = currentPhase;
+        onPhaseChangeRef.current?.(currentPhase);
+      }
 
       ctx.clearRect(0, 0, width, height);
 
-      // Dynamic ambient heat glow
+      // Ambient fire glow (fades out completely as gas cools the zone)
       const heatIntensity = isSuppressing
-        ? Math.max(0.04, 0.34 * (1 - (cyclePos - 105) / 70))
+        ? Math.max(0.03, 0.42 * (1 - (cyclePos - 145) / 115))
         : isBurning
-        ? 0.25 + Math.sin(cycleTimer * 0.08) * 0.06
-        : 0.04;
+        ? 0.34 + Math.sin(cycleTimer * 0.05) * 0.07
+        : 0.02;
 
       const ambientFire = ctx.createRadialGradient(
-        width * 0.65,
-        height * 0.68,
-        12,
-        width * 0.65,
-        height * 0.6,
+        width * 0.68,
+        height * 0.52,
+        14,
+        width * 0.68,
+        height * 0.46,
         Math.max(300, width * 0.42)
       );
-      ambientFire.addColorStop(0, `rgba(255, 85, 0, ${heatIntensity})`);
-      ambientFire.addColorStop(0.45, `rgba(211, 2, 1, ${heatIntensity * 0.65})`);
+      ambientFire.addColorStop(0, `rgba(255, 95, 10, ${heatIntensity})`);
+      ambientFire.addColorStop(0.45, `rgba(211, 2, 1, ${heatIntensity * 0.7})`);
       ambientFire.addColorStop(1, "rgba(2, 2, 2, 0)");
       ctx.fillStyle = ambientFire;
       ctx.fillRect(0, 0, width, height);
 
-      if (isBurning && cycleTimer % 2 === 0) {
-        spawnFire(cyclePos < 45 ? 4 : 5);
+      if (isBurning && cycleTimer % 3 === 0) {
+        spawnFire(cyclePos < 60 ? 5 : 6);
       }
 
       if (isSuppressing) {
-        const progress = (cyclePos - 105) / 90;
-        const nozzleX = width * (0.16 + progress * 0.32);
-        const nozzleY = height * (0.76 - progress * 0.26);
-        vortexX = width * (0.65 - Math.sin(progress * Math.PI) * 0.06);
-        vortexY = height * (0.5 - progress * 0.12);
+        const progress = (cyclePos - 145) / 145;
+        const nozzleX = width * (0.24 + progress * 0.24);
+        const nozzleY = height * (0.58 - progress * 0.16);
+        vortexX = width * (0.67 - Math.sin(progress * Math.PI) * 0.06);
+        vortexY = height * (0.44 - progress * 0.1);
 
-        if (cycleTimer % 2 === 0) {
+        if (cycleTimer % 3 === 0) {
           spawnGasStream(nozzleX, nozzleY, vortexX, vortexY, 6);
+        }
+        if (cyclePos === 152 || cyclePos === 210) {
+          shockwaves.push({
+            x: vortexX,
+            y: vortexY,
+            radius: 20,
+            maxRadius: 250,
+            alpha: 0.48,
+          });
         }
 
         const mistAura = ctx.createRadialGradient(
@@ -288,8 +385,8 @@ export default function HeroSuppressionCanvas() {
           vortexY,
           Math.max(240, width * 0.3)
         );
-        const mistAlpha = Math.sin(progress * Math.PI) * 0.22;
-        mistAura.addColorStop(0, `rgba(186, 230, 253, ${mistAlpha})`);
+        const mistAlpha = Math.sin(progress * Math.PI) * 0.26;
+        mistAura.addColorStop(0, `rgba(224, 242, 254, ${mistAlpha})`);
         mistAura.addColorStop(0.5, `rgba(226, 232, 240, ${mistAlpha * 0.5})`);
         mistAura.addColorStop(1, "rgba(2, 2, 2, 0)");
         ctx.fillStyle = mistAura;
@@ -298,7 +395,7 @@ export default function HeroSuppressionCanvas() {
         drawGasRibbons(nozzleX, nozzleY, vortexX, vortexY, progress, cycleTimer);
       }
 
-      // Update & draw elongated fire particles
+      // Update & draw flame tongues / sparks
       ctx.globalCompositeOperation = "lighter";
       for (let i = fireParticles.length - 1; i >= 0; i--) {
         const p = fireParticles[i];
@@ -308,15 +405,15 @@ export default function HeroSuppressionCanvas() {
           const dx = vortexX - p.x;
           const dy = vortexY - p.y;
           const dist = Math.hypot(dx, dy) || 1;
-          if (dist < width * 0.55) {
+          if (dist < width * 0.56) {
             p.sucked = true;
-            const pull = 0.8 + (1 - dist / (width * 0.55)) * 1.55;
-            p.vx += (dx / dist) * pull - (dy / dist) * 0.38;
-            p.vy += (dy / dist) * pull + (dx / dist) * 0.38;
-            p.vx *= 0.9;
-            p.vy *= 0.9;
-            p.heat = Math.max(0, p.heat - 0.05);
-            p.radius *= 0.955;
+            const pull = 0.55 + (1 - dist / (width * 0.56)) * 1.05;
+            p.vx += (dx / dist) * pull - (dy / dist) * 0.26;
+            p.vy += (dy / dist) * pull + (dx / dist) * 0.26;
+            p.vx *= 0.91;
+            p.vy *= 0.91;
+            p.heat = Math.max(0, p.heat - 0.032);
+            p.radius *= 0.968;
           }
         }
 
@@ -347,7 +444,7 @@ export default function HeroSuppressionCanvas() {
         }
 
         if (!p.sucked) {
-          p.vx += Math.sin(p.life * 0.14 + p.seed) * 0.07;
+          p.vx += Math.sin(p.life * 0.09 + p.seed) * 0.045;
         }
 
         p.x += p.vx;
@@ -365,8 +462,7 @@ export default function HeroSuppressionCanvas() {
         ctx.save();
         ctx.translate(p.x, p.y);
         if (!p.isSpark && !p.sucked) {
-          // Elongate flame vertically with subtle flicker
-          ctx.scale(0.82, 1.42 + Math.sin(p.life * 0.25 + p.seed) * 0.15);
+          ctx.scale(0.8, 1.45 + Math.sin(p.life * 0.14 + p.seed) * 0.14);
         }
 
         const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, p.radius);
@@ -375,8 +471,8 @@ export default function HeroSuppressionCanvas() {
           grad.addColorStop(0.42, `rgba(255, 72, 0, ${alpha * 0.9})`);
           grad.addColorStop(1, "rgba(211, 2, 1, 0)");
         } else {
-          grad.addColorStop(0, `rgba(226, 232, 240, ${alpha * 0.75})`);
-          grad.addColorStop(0.5, `rgba(148, 163, 184, ${alpha * 0.38})`);
+          grad.addColorStop(0, `rgba(241, 245, 249, ${alpha * 0.75})`);
+          grad.addColorStop(0.5, `rgba(186, 230, 253, ${alpha * 0.35})`);
           grad.addColorStop(1, "rgba(15, 23, 42, 0)");
         }
 
@@ -387,7 +483,7 @@ export default function HeroSuppressionCanvas() {
         ctx.restore();
       }
 
-      // Update & draw thin clean-agent gas/smoke puffs
+      // Update & draw gossamer clean-agent gas wisps
       ctx.globalCompositeOperation = "screen";
       for (let i = gasParticles.length - 1; i >= 0; i--) {
         const g = gasParticles[i];
@@ -397,15 +493,15 @@ export default function HeroSuppressionCanvas() {
         const dy = vortexY - g.y;
         const dist = Math.hypot(dx, dy) || 1;
         if (dist < 260) {
-          g.vx += (-dy / dist) * 0.18 + (dx / dist) * 0.1;
-          g.vy += (dx / dist) * 0.18 + (dy / dist) * 0.1;
+          g.vx += (-dy / dist) * 0.2 + (dx / dist) * 0.12;
+          g.vy += (dx / dist) * 0.2 + (dy / dist) * 0.12;
         }
 
-        g.vx *= 0.97;
-        g.vy *= 0.97;
+        g.vx *= 0.965;
+        g.vy *= 0.965;
         g.x += g.vx;
         g.y += g.vy;
-        g.radius += 0.75;
+        g.radius += 0.6;
 
         const lifeRatio = g.life / g.maxLife;
         if (lifeRatio >= 1) {
@@ -415,14 +511,30 @@ export default function HeroSuppressionCanvas() {
 
         const fade = Math.sin(lifeRatio * Math.PI) * g.alpha;
         const grad = ctx.createRadialGradient(g.x, g.y, 0, g.x, g.y, g.radius);
-        grad.addColorStop(0, `rgba(240, 249, 255, ${fade})`);
-        grad.addColorStop(0.5, `rgba(125, 211, 252, ${fade * 0.65})`);
-        grad.addColorStop(1, "rgba(125, 211, 252, 0)");
+        grad.addColorStop(0, `rgba(248, 250, 252, ${fade})`);
+        grad.addColorStop(0.5, `rgba(186, 230, 253, ${fade * 0.58})`);
+        grad.addColorStop(1, "rgba(186, 230, 253, 0)");
 
         ctx.fillStyle = grad;
         ctx.beginPath();
         ctx.arc(g.x, g.y, g.radius, 0, Math.PI * 2);
         ctx.fill();
+      }
+
+      // Expanding pressurized shockwave rings
+      for (let i = shockwaves.length - 1; i >= 0; i--) {
+        const ring = shockwaves[i];
+        ring.radius += (ring.maxRadius - ring.radius) * 0.065 + 1.4;
+        ring.alpha *= 0.945;
+        if (ring.alpha < 0.02 || ring.radius >= ring.maxRadius) {
+          shockwaves.splice(i, 1);
+          continue;
+        }
+        ctx.strokeStyle = `rgba(224, 242, 254, ${ring.alpha})`;
+        ctx.lineWidth = 1.75;
+        ctx.beginPath();
+        ctx.arc(ring.x, ring.y, ring.radius, 0, Math.PI * 2);
+        ctx.stroke();
       }
 
       ctx.globalCompositeOperation = "source-over";

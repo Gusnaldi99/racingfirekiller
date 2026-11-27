@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 
 export default function Footer() {
   const links = [
@@ -87,10 +86,9 @@ export default function Footer() {
             </p>
             <Link
               href="/#kontak"
-              className="inline-flex items-center gap-2 bg-rfk-charcoal hover:bg-rfk-charcoal-light text-rfk-white border border-rfk-border font-heading font-bold text-sm uppercase tracking-wider px-5 py-3 rounded transition-colors"
+              className="inline-flex items-center justify-center bg-rfk-charcoal hover:bg-rfk-charcoal-light text-rfk-white border border-rfk-border font-heading font-bold text-sm uppercase tracking-wider px-5 py-3 rounded transition-colors min-h-[44px]"
             >
               <span>KONSULTASI WHATSAPP</span>
-              <ArrowUpRight className="w-4 h-4 text-rfk-red-light" aria-hidden="true" />
             </Link>
           </div>
         </div>

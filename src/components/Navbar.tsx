@@ -3,18 +3,36 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+    let rafId = 0;
+    const updateScroll = () => {
+      rafId = 0;
+      const y = window.scrollY;
+      setScrolled(y > 20);
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(docHeight > 0 ? Math.min(1, Math.max(0, y / docHeight)) : 0);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    const handleScroll = () => {
+      if (!rafId) {
+        rafId = requestAnimationFrame(updateScroll);
+      }
+    };
+
+    updateScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   useEffect(() => {
@@ -84,7 +102,7 @@ export default function Navbar() {
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-rfk-silver hover:text-rfk-white transition-colors duration-150 py-1 hover:border-b-2 hover:border-rfk-red focus-visible:ring-2 focus-visible:ring-rfk-red rounded"
+                className="relative text-rfk-silver hover:text-rfk-white transition-colors duration-200 py-1.5 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-rfk-red-light after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-200 focus-visible:ring-2 focus-visible:ring-rfk-red rounded"
               >
                 {link.label}
               </Link>
@@ -95,10 +113,9 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-4">
             <Link
               href="/#kontak"
-              className="inline-flex items-center gap-2 bg-rfk-red hover:bg-rfk-red-light text-rfk-white font-heading tracking-wider uppercase font-bold text-sm px-5 py-2.5 rounded transition-colors duration-200 shadow-md shadow-rfk-red/20 focus-visible:ring-2 focus-visible:ring-rfk-white"
+              className="inline-flex items-center justify-center bg-rfk-red hover:bg-rfk-red-light text-rfk-white font-heading tracking-wider uppercase font-bold text-sm px-5 py-2.5 rounded transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-rfk-white"
             >
               <span>KONSULTASI</span>
-              <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
             </Link>
           </div>
 
@@ -116,6 +133,17 @@ export default function Navbar() {
             </button>
           </div>
         </div>
+      </div>
+
+      {/* Scroll Telemetry Progress Bar */}
+      <div
+        aria-hidden="true"
+        className="absolute bottom-0 left-0 right-0 h-[2px] bg-rfk-border/20 pointer-events-none"
+      >
+        <div
+          className="h-full bg-gradient-to-r from-rfk-red via-rfk-red-light to-sky-300 origin-left transition-transform duration-75"
+          style={{ transform: `scaleX(${scrollProgress})` }}
+        />
       </div>
 
       {/* Accessible Mobile Drawer & Backdrop */}
@@ -144,10 +172,9 @@ export default function Navbar() {
               <Link
                 href="/#kontak"
                 onClick={() => setIsOpen(false)}
-                className="mt-3 min-h-[48px] inline-flex items-center justify-center gap-2 bg-rfk-red hover:bg-rfk-red-dark text-rfk-white font-bold py-3.5 px-4 rounded text-center tracking-wider shadow-lg shadow-rfk-red/25 text-base"
+                className="mt-3 min-h-[48px] inline-flex items-center justify-center bg-rfk-red hover:bg-rfk-red-dark text-rfk-white font-bold py-3.5 px-4 rounded text-center tracking-wider text-base"
               >
                 <span>KONSULTASI DENGAN TIM RFK</span>
-                <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
               </Link>
             </div>
           </div>

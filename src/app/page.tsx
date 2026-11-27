@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import TelemetryTicker from "@/components/TelemetryTicker";
 import WhySection from "@/components/WhySection";
 import ProductSection from "@/components/ProductSection";
 import SystemSection from "@/components/SystemSection";
@@ -14,6 +15,7 @@ export default function Home() {
       <Navbar />
       <main className="flex-1">
         <Hero />
+        <TelemetryTicker />
         <WhySection />
         <ProductSection />
         <SystemSection />

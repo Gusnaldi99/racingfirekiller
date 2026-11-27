@@ -61,9 +61,9 @@ export const SHOWCASES: ShowcaseItem[] = [
     tagline: "Proteksi Bersih untuk Mobil Balap dan Modifikasi Berkelas",
     coverImage: "/assets/passato/bmw-sema-1.jpg",
     overview:
-      "BMW Passato adalah proyek modifikasi dan motorsport berstandar internasional yang tampil di pameran SEMA Show Las Vegas. Untuk memenuhi standar pemeriksaan teknis (scrutineering) internasional sekaligus menjaga kebersihan ruang mesin, BMW Passato menggunakan sistem pemadam Racing Fire Killer (RFK) dengan gas bersih Hartindo AF11E dan braket motorsport.",
+      "BMW Passato adalah proyek modifikasi dan motorsport berstandar internasional yang tampil di pameran SEMA Show Las Vegas. Untuk memenuhi standar pemeriksaan teknis (scrutineering) internasional sekaligus menjaga kebersihan ruang mesin, BMW Passato menggunakan RFK 4.0 KG Fire Suppression Kit dengan sistem pelepas manual mekanis, gas bersih Hartindo AF11E, pipa distribusi tembaga, dan braket motorsport.",
     cardSummary:
-      "Mobil modifikasi motorsport internasional yang tampil di ajang SEMA Show Las Vegas. Dilengkapi sistem proteksi RFK dengan braket motorsport kokoh dan formula gas bersih tanpa residu untuk menjaga komponen mesin berperforma tinggi.",
+      "Mobil modifikasi motorsport internasional yang tampil di ajang SEMA Show Las Vegas. Dilengkapi RFK 4.0 KG Fire Suppression Kit pelepas manual dengan distribusi multi-nosel dan formula gas bersih tanpa residu.",
     categoryTag: "MODIFIKASI MOTORSPORT INTERNASIONAL",
     carSpecs: [
       { label: "Platform Mobil", value: "Sasis BMW M Performance" },
@@ -74,12 +74,13 @@ export const SHOWCASES: ShowcaseItem[] = [
       { label: "Manajemen Mesin", value: "ECU Balap Mandiri & Kabel Mil-Spec" },
     ],
     rfkSystemSpecs: [
-      { label: "Sistem Pemadam", value: "RFK Active Suppression System & Tabung Manual Kokpit" },
+      { label: "Sistem Pemadam", value: "RFK 4.0 KG Fire Suppression Kit (Pelepas Manual)" },
       { label: "Media Pemadam", value: "Hartindo AF11E (Gas Cair Bersih)" },
-      { label: "Kapasitas Tabung", value: "RFK 2.0 KG Spek Motorsport" },
+      { label: "Kapasitas Tabung", value: "RFK 4.0 KG Spek Kompetisi Motorsport" },
+      { label: "Aktivasi Sistem", value: "Manual Mekanis via Kabel Penarik Darurat (Tanpa Kelistrikan)" },
       { label: "Tekanan Kerja", value: "14 Bar (Uji Tekanan Hidrolik 27 Bar)" },
-      { label: "Tipe Braket", value: "Braket Dudukan Motorsport Heavy-Duty" },
-      { label: "Zona Proteksi", value: "Ruang Mesin (Turbo & Manifold), Kokpit Pengemudi" },
+      { label: "Distribusi & Braket", value: "Pipa Tembaga, 8 Titik Nosel Kuningan & Braket Heavy-Duty" },
+      { label: "Zona Proteksi", value: "Ruang Mesin (Turbo & Manifold), Tangki BBM & Kokpit" },
       { label: "Waktu Padam Rata-rata", value: "Kurang dari 10 Detik Pelepasan Efektif" },
       { label: "Karakteristik Residu", value: "100% Tanpa Residu, Nonkonduktif, Aman Komponen" },
     ],
@@ -92,9 +93,9 @@ export const SHOWCASES: ShowcaseItem[] = [
       },
       {
         number: "02",
-        title: "BRAKET DUDUKAN MOTORSPORT",
+        title: "PELEPAS MANUAL 100% MEKANIS",
         description:
-          "Braket motorsport mengunci tabung dengan kokoh di kabin kendaraan. Pin pengaman pelepas cepat memungkinkan pengemudi mengambil tabung dalam hitungan detik saat darurat.",
+          "Aktivasi menggunakan kabel penarik darurat (safety pull-cable) di kokpit dan sisi luar bodi tanpa bergantung pada daya aki atau sistem kelistrikan mobil.",
       },
       {
         number: "03",
@@ -104,9 +105,9 @@ export const SHOWCASES: ShowcaseItem[] = [
       },
       {
         number: "04",
-        title: "DISTRIBUSI NOSEL RUANG MESIN",
+        title: "DISTRIBUSI 8 NOSEL RUANG MESIN",
         description:
-          "Nosel baja tahan karat diarahkan ke titik panas turbocharger dan fuel rail untuk meredam api sebelum merambat ke kabin.",
+          "Delapan titik nosel kuningan melalui pipa tembaga diarahkan ke area turbocharger, manifold, dan saluran bahan bakar untuk memadamkan api secara serentak.",
       },
     ],
     whyRfk: {
@@ -120,27 +121,27 @@ export const SHOWCASES: ShowcaseItem[] = [
         "Bagi para builder dan pemilik mobil berperforma tinggi, RFK bukan sekadar alat pemadam, melainkan perlindungan penting untuk menjaga aset otomotif bernilai tinggi.",
     },
     installationHighlights: {
-      title: "Detail Konfigurasi Pemasangan RFK pada BMW Passato",
+      title: "Detail Konfigurasi Pemasangan RFK 4.0 KG pada BMW Passato",
       points: [
         {
-          location: "Kabin & Palang Roll Cage",
+          location: "Tabung 4.0 KG & Kabel Tarik Kokpit",
           description:
-            "Tabung RFK 2.0 KG dipasang pada palang roll cage di sisi pengemudi agar mudah diraih dengan sarung tangan balap dan dilengkapi pin pengaman merah yang kontras.",
+            "Tabung RFK 4.0 KG Fire Suppression Kit dipasang kokoh pada sasis kabin dengan kabel penarik darurat manual (pull-cable) yang mudah dijangkau pengemudi saat mengenakan sarung tangan balap.",
         },
         {
           location: "Braket Kokoh Motorsport",
           description:
-            "Braket dirancang menahan getaran berfrekuensi tinggi saat mobil melaju kencang di sirkuit tanpa ada celah goyang.",
+            "Braket heavy-duty dirancang menahan getaran berfrekuensi tinggi saat mobil melaju kencang di sirkuit tanpa ada celah goyang.",
         },
         {
-          location: "Kompartemen Mesin (Engine Bay)",
+          location: "Pipa Tembaga & 8 Titik Nosel",
           description:
-            "Jalur pemadaman diarahkan ke area turbocharger bersuhu tinggi dan sambungan saluran bahan bakar bertekanan tinggi untuk respons pemadaman langsung.",
+            "Jalur pipa tembaga bertekanan tinggi menyalurkan gas ke 8 titik nosel di area turbocharger, manifold, tangki bahan bakar, dan kokpit untuk pemadaman serentak.",
         },
         {
           location: "Panel Indikator Tekanan",
           description:
-            "Indikator tekanan dipasang menghadap ke arah pandang mekanik dan pengemudi untuk pemeriksaan cepat sebelum mobil turun ke lintasan atau arena pameran.",
+            "Indikator tekanan pada katup mekanis dipasang menghadap ke arah pandang mekanik dan pengemudi untuk pemeriksaan cepat sebelum mobil turun ke lintasan atau arena pameran.",
         },
       ],
     },
@@ -149,22 +150,22 @@ export const SHOWCASES: ShowcaseItem[] = [
         src: "/assets/passato/bmw-sema-1.jpg",
         title: "Tampilan Penuh BMW Passato",
         caption:
-          "Tampilan BMW Passato di ajang motorsport internasional dengan paket aerodinamika lebar dan standar keselamatan balap.",
+          "Tampilan BMW Passato di ajang motorsport internasional dengan paket aerodinamika lebar dan sistem Fire Suppression Kit 4.0 KG pelepas manual.",
         tag: "01 / EKSTERIOR & AERO",
       },
       {
         src: "/assets/passato/bmw-sema-2.jpg",
-        title: "Integrasi Tabung pada Kokpit & Roll Cage",
+        title: "Integrasi Tabung 4.0 KG & Kabel Tarik Kokpit",
         caption:
-          "Penempatan tabung RFK pada pipa roll cage kabin yang memberikan akses cepat bagi pengemudi tanpa mengganggu jarak pandang.",
+          "Penempatan tabung RFK 4.0 KG Fire Suppression Kit dan jalur kabel aktivasi manual di area kokpit tanpa mengganggu jarak pandang pengemudi.",
         tag: "02 / INTEGRASI KOKPIT",
       },
       {
         src: "/assets/passato/bmw-sema-3.jpg",
-        title: "Detail Braket Dudukan Tabung",
+        title: "Detail Braket & Katup Mekanis 4.0 KG",
         caption:
-          "Braket kokoh yang mengikat tabung RFK agar tetap stabil menghadapi guncangan di sirkuit.",
-        tag: "03 / DUDUKAN TABUNG",
+          "Braket kokoh yang mengikat tabung 4.0 KG beserta katup mekanis berindikator tekanan agar tetap stabil menghadapi guncangan di sirkuit.",
+        tag: "03 / DUDUKAN TABUNG 4 KG",
       },
       {
         src: "/assets/passato/bmw-sema-4.jpg",
@@ -199,9 +200,9 @@ export const SHOWCASES: ShowcaseItem[] = [
     tagline: "Dipercaya Tim Garasi Drift untuk Menghadapi Panas Ekstrem Lintasan Drift",
     coverImage: "/assets/driftbull/driftbull-1.jpg",
     overview:
-      "Driftbull adalah mobil kompetisi drifting profesional milik Garasi Drift (Ziko Harnadi & Dipo Dwiki). Di arena drifting, mesin dipaksa bekerja pada putaran RPM tinggi secara terus-menerus dengan sudut kemiringan ekstrem dan suhu knalpot yang mencapai ratusan derajat Celsius. Garasi Drift memilih Racing Fire Killer (RFK) sebagai sistem pemadam kebakaran aktif untuk melindungi pengemudi dan mesin Driftbull.",
+      "Driftbull adalah mobil kompetisi drifting profesional milik Garasi Drift (Ziko Harnadi & Dipo Dwiki). Di arena drifting, mesin dipaksa bekerja pada putaran RPM tinggi secara terus-menerus dengan sudut kemiringan ekstrem dan suhu knalpot yang mencapai ratusan derajat Celsius. Garasi Drift memilih RFK 4.0 KG Fire Suppression Kit pelepas manual sebagai sistem pemadam kebakaran untuk melindungi pengemudi dan mesin Driftbull.",
     cardSummary:
-      "Mobil drift kompetisi milik Garasi Drift yang menghadapi suhu mesin tinggi dan putaran RPM ekstrem. Mengandalkan sistem RFK untuk pemadaman cepat tanpa meninggalkan residu serbuk kimia korosif.",
+      "Mobil drift kompetisi milik Garasi Drift yang menghadapi suhu mesin tinggi dan putaran RPM ekstrem. Mengandalkan RFK 4.0 KG Fire Suppression Kit pelepas manual untuk pemadaman cepat tanpa meninggalkan residu serbuk kimia korosif.",
     categoryTag: "KEJUARAAN PRO DRIFT",
     carSpecs: [
       { label: "Nama Mobil", value: "Driftbull oleh Garasi Drift" },
@@ -212,12 +213,13 @@ export const SHOWCASES: ShowcaseItem[] = [
       { label: "Kabin & Keselamatan", value: "Roll Cage Penuh Standar FIA & Sekat Firewall" },
     ],
     rfkSystemSpecs: [
-      { label: "Sistem Pemadam", value: "RFK Active Fire Suppression System" },
+      { label: "Sistem Pemadam", value: "RFK 4.0 KG Fire Suppression Kit (Pelepas Manual)" },
       { label: "Media Pemadam", value: "Hartindo AF11E (Gas Bersih)" },
-      { label: "Kapasitas Tabung", value: "RFK 2.0 KG Spek Kompetisi Motorsport" },
+      { label: "Kapasitas Tabung", value: "RFK 4.0 KG Spek Kompetisi Motorsport" },
+      { label: "Aktivasi Sistem", value: "Manual Mekanis via Kabel Penarik Darurat (Tanpa Kelistrikan)" },
       { label: "Tekanan Kerja", value: "14 Bar Standar Kerja Presisi" },
-      { label: "Tipe Braket", value: "Braket Dudukan Motorsport Heavy-Duty" },
-      { label: "Cakupan Zona", value: "Ruang Mesin, Jalur Turbocharger, Kompartemen Kokpit" },
+      { label: "Distribusi & Braket", value: "Pipa Tembaga, 8 Titik Nosel Kuningan & Braket Heavy-Duty" },
+      { label: "Cakupan Zona", value: "Ruang Mesin, Jalur Turbocharger, Tangki Bahan Bakar & Kokpit" },
       { label: "Waktu Respons", value: "Pemadaman Seketika Rata-rata 10 Detik" },
       { label: "Dampak Kelistrikan", value: "Nonkonduktif, Aman untuk ECU Balap & PDM" },
     ],
@@ -226,13 +228,13 @@ export const SHOWCASES: ShowcaseItem[] = [
         number: "01",
         title: "TAHAN GUNCANGAN G-FORCE LATERAL",
         description:
-          "Saat drifting pada kecepatan tinggi dengan transisi arah yang cepat, braket kokoh RFK menjaga tabung tetap terkunci aman tanpa bergeser.",
+          "Saat drifting pada kecepatan tinggi dengan transisi arah yang cepat, braket heavy-duty menjaga tabung 4.0 KG dan jalur pipa tembaga tetap terkunci aman tanpa bergeser.",
       },
       {
         number: "02",
         title: "REDAM PANAS TURBOCHARGER SEKETIKA",
         description:
-          "Semprotan gas cair Hartindo AF11E menyerap panas secara cepat di sekitar rumah turbo dan manifold knalpot untuk memutus segitiga api.",
+          "Semprotan gas cair Hartindo AF11E melalui nosel terarah menyerap panas secara cepat di sekitar rumah turbo, manifold knalpot, dan tangki bahan bakar.",
       },
       {
         number: "03",
@@ -242,9 +244,9 @@ export const SHOWCASES: ShowcaseItem[] = [
       },
       {
         number: "04",
-        title: "AKSES MUDAH DARI POSISI PENGEMUDI",
+        title: "AKTIVASI MANUAL MEKANIS DI KOKPIT",
         description:
-          "Dipasang dalam jangkauan tangan pengemudi saat duduk di jok balap dengan sabuk pengaman 6-titik terkunci rapat, memastikan respons cepat saat darurat.",
+          "Kabel penarik darurat manual dipasang dalam jangkauan tangan drifter saat sabuk pengaman 6-titik terkunci rapat, membuka katup 4.0 KG seketika tanpa bergantung pada kelistrikan mobil.",
       },
     ],
     whyRfk: {
@@ -259,12 +261,12 @@ export const SHOWCASES: ShowcaseItem[] = [
         "Di lintasan drift kompetisi, rasa percaya diri pengemudi lahir dari jaminan keamanan mobil. RFK membantu drifter menekan pedal gas hingga batas maksimal dengan lebih tenang.",
     },
     installationHighlights: {
-      title: "Konfigurasi Pemasangan Proteksi RFK pada Driftbull",
+      title: "Konfigurasi Pemasangan Proteksi RFK 4.0 KG pada Driftbull",
       points: [
         {
-          location: "Roll Cage Kabin Samping Pengemudi",
+          location: "Tabung 4.0 KG pada Kabin / Roll Cage",
           description:
-            "Tabung RFK 2.0 KG terpasang kokoh pada roll cage interior Driftbull dan dapat diraih oleh drifter maupun navigator dalam waktu kurang dari 2 detik.",
+            "Tabung RFK 4.0 KG Fire Suppression Kit terpasang kokoh di dalam interior Driftbull lengkap dengan katup pelepas manual dan indikator tekanan yang mudah dipantau kru.",
         },
         {
           location: "Braket Heavy Duty",
@@ -272,37 +274,37 @@ export const SHOWCASES: ShowcaseItem[] = [
             "Menggunakan material berkekuatan tinggi yang dirancang menahan entakan keras saat benturan ban, getaran limiter RPM tinggi, dan suspensi balap yang kaku.",
         },
         {
-          location: "Jalur Pipa Nosel Ruang Mesin",
+          location: "Jalur Pipa Tembaga & 8 Nosel",
           description:
-            "Sistem nosel diarahkan langsung ke area rawan kebakaran seperti turbocharger, exhaust manifold, dan saluran distribusi bahan bakar balap.",
+            "Delapan titik nosel kuningan diarahkan langsung ke area rawan kebakaran seperti ruang mesin, turbocharger, exhaust manifold, dan kompartemen tangki bahan bakar balap.",
         },
         {
-          location: "Pin Pengaman Lepas Cepat Ergonomis",
+          location: "Kabel Penarik Darurat Manual (Pull-Cable)",
           description:
-            "Pin pengaman dilengkapi tali penarik berwarna mencolok agar mudah dilepas meski pengemudi mengenakan sarung tangan balap tebal.",
+            "Tuas kabel penarik darurat berwarna merah mencolok dipasang di kokpit dan sisi luar bodi agar mudah ditarik oleh drifter maupun marshal meski mengenakan sarung tangan balap tebal.",
         },
       ],
     },
     gallery: [
       {
         src: "/assets/driftbull/driftbull-1.jpg",
-        title: "Pemasangan Tabung RFK pada Roll Cage",
+        title: "Instalasi Tabung 4.0 KG Fire Suppression Kit",
         caption:
-          "Integrasi tabung pemadam RFK pada roll cage Driftbull untuk menjaga kesiapan proteksi kebakaran di setiap sesi tandem balap.",
-        tag: "01 / DUDUKAN ROLL CAGE",
+          "Integrasi tabung RFK 4.0 KG Fire Suppression Kit pelepas manual pada Driftbull untuk menjaga kesiapan proteksi kebakaran di setiap sesi tandem balap.",
+        tag: "01 / TABUNG 4 KG KIT",
       },
       {
         src: "/assets/driftbull/driftbull-2.jpg",
         title: "Braket Presisi Tahan G-Force Drift",
         caption:
-          "Detail braket dudukan kokoh yang mengikat tabung dengan presisi tinggi, tahan terhadap entakan lateral dan getaran sasis yang keras.",
+          "Detail braket dudukan kokoh yang mengikat tabung 4.0 KG dengan presisi tinggi, tahan terhadap entakan lateral dan getaran sasis yang keras.",
         tag: "02 / BRAKET HEAVY DUTY",
       },
       {
         src: "/assets/driftbull/driftbull-3.jpg",
-        title: "Integrasi Kokpit Balap",
+        title: "Integrasi Kokpit & Kabel Pelepas Manual",
         caption:
-          "Tampilan kabin kompetisi Garasi Drift dengan tabung RFK terpasang rapi berdampingan bersama jok balap dan setir kompetisi.",
+          "Tampilan kabin kompetisi Garasi Drift dengan sistem RFK 4.0 KG dan akses kabel tarik darurat yang rapi berdampingan bersama jok balap dan setir kompetisi.",
         tag: "03 / KOKPIT BALAP",
       },
       {

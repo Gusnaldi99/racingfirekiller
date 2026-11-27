@@ -1,77 +1,142 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
-import { ArrowDownRight, ArrowUpRight, ShieldAlert } from "lucide-react";
+import { ArrowDownRight } from "lucide-react";
 import { METRICS } from "@/data/rfkData";
-import HeroSuppressionCanvas from "@/components/HeroSuppressionCanvas";
+import HeroSuppressionCanvas, {
+  SuppressionPhase,
+} from "@/components/HeroSuppressionCanvas";
+import AnimatedCounter from "@/components/AnimatedCounter";
 
 export default function Hero() {
+  const [phase, setPhase] = useState<SuppressionPhase>("fire");
+
   return (
     <section
       id="beranda"
-      className="relative min-h-screen flex flex-col justify-between pt-28 pb-16 overflow-hidden border-b border-rfk-border/50"
+      className="relative min-h-screen flex flex-col justify-between pt-28 pb-0 overflow-hidden border-b border-rfk-border/50"
     >
-      {/* Background Graphic: Clean-Agent Gas Puff Sucking & Extinguishing Fire */}
+      {/* Live Clean-Agent Gas Suction & Fire Suppression Canvas */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        {/* Subtle carbon micro-grid */}
-        <div className="absolute inset-0 bg-[radial-gradient(#262626_1px,transparent_1px)] [background-size:24px_24px] opacity-20 z-0" />
-        {/* Left-side vignette only so right/center canvas fire & gas stay vivid */}
-        <div className="absolute inset-0 bg-gradient-to-r from-rfk-black/90 via-rfk-black/45 to-transparent z-0" />
-        <HeroSuppressionCanvas />
+        <div className="absolute inset-0 bg-gradient-to-r from-rfk-black/92 via-rfk-black/38 to-transparent z-0" />
+        <HeroSuppressionCanvas onPhaseChange={setPhase} />
       </div>
 
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Main Hero Copy */}
           <div className="lg:col-span-7 flex flex-col items-start">
-            {/* Motorsport Eyebrow */}
-            <div className="inline-flex items-center gap-3 px-3.5 py-1.5 rounded bg-rfk-charcoal/80 border border-rfk-border text-rfk-silver-light text-xs sm:text-sm font-heading font-semibold tracking-wider uppercase mb-6">
-              <span className="w-2 h-2 rounded-full bg-rfk-red animate-pulse" aria-hidden="true" />
-              <span>KESELAMATAN KEBAKARAN OTOMOTIF</span>
-              <span className="text-rfk-border" aria-hidden="true">/</span>
-              <span className="text-rfk-silver-light">RFK 2026</span>
-            </div>
+            <p
+              className="animate-rfk-hero-enter text-xs sm:text-sm font-heading font-bold tracking-wider uppercase text-rfk-silver mb-4"
+              style={{ animationDelay: "60ms" }}
+            >
+              KESELAMATAN KEBAKARAN OTOMOTIF &bull; RFK 2026
+            </p>
 
-            {/* Aggressive Motorsport Headline */}
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold uppercase font-heading tracking-tight text-rfk-white leading-[0.95] mb-6">
+            <h1
+              className="animate-rfk-hero-enter text-4xl sm:text-6xl lg:text-7xl font-extrabold uppercase font-heading tracking-tight text-rfk-white leading-[0.95] mb-6"
+              style={{ animationDelay: "180ms" }}
+            >
               BUKAN SEKADAR <br />
               <span className="text-rfk-red-light">CEPAT.</span> SIAP <br />
               SAAT DIBUTUHKAN.
             </h1>
 
-            {/* Descriptive Body */}
-            <p className="text-base sm:text-lg lg:text-xl text-rfk-silver-light max-w-xl font-sans leading-relaxed mb-8">
-              Sistem pemadam api dan tabung gas bersih untuk mobil balap serta modifikasi. Lindungi mesin, kelistrikan, dan keselamatan pengemudi saat setiap detik menentukan.
+            <p
+              className="animate-rfk-hero-enter text-base sm:text-lg lg:text-xl text-rfk-silver-light max-w-xl font-sans leading-relaxed mb-8"
+              style={{ animationDelay: "300ms" }}
+            >
+              Sistem pemadam api dan tabung gas bersih untuk mobil balap serta modifikasi. Hembusan gas Hartindo AF11E menyedot panas dan memadamkan api tanpa meninggalkan residu pada mesin maupun kelistrikan.
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
+            {/* Primary & Secondary CTAs */}
+            <div
+              className="animate-rfk-hero-enter flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto"
+              style={{ animationDelay: "420ms" }}
+            >
               <a
                 href="#produk"
-                className="inline-flex items-center justify-center gap-2 bg-rfk-red hover:bg-rfk-red-light text-rfk-white font-heading font-bold text-sm sm:text-base tracking-wider uppercase px-7 py-4 rounded transition-all duration-200 shadow-lg shadow-rfk-red/25 focus-visible:ring-2 focus-visible:ring-rfk-white"
+                className="rfk-cta-sheen inline-flex items-center justify-center bg-rfk-red hover:bg-rfk-red-light text-rfk-white font-heading font-bold text-sm sm:text-base tracking-wider uppercase px-7 py-4 rounded transition-all duration-200 hover:-translate-y-1 shadow-lg shadow-rfk-red/25 focus-visible:ring-2 focus-visible:ring-rfk-white min-h-[48px]"
               >
                 <span>PILIH VARIAN TABUNG</span>
-                <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
               </a>
 
               <a
                 href="#sistem"
-                className="inline-flex items-center justify-center gap-2 bg-rfk-charcoal/80 hover:bg-rfk-charcoal text-rfk-silver-light hover:text-rfk-white border border-rfk-border font-heading font-semibold text-sm sm:text-base tracking-wider uppercase px-7 py-4 rounded transition-all duration-200 focus-visible:ring-2 focus-visible:ring-rfk-red"
+                className="group inline-flex items-center justify-center gap-2 bg-rfk-charcoal/85 hover:bg-rfk-charcoal text-rfk-silver-light hover:text-rfk-white border border-rfk-border hover:border-rfk-red/60 font-heading font-semibold text-sm sm:text-base tracking-wider uppercase px-7 py-4 rounded transition-all duration-200 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-rfk-red min-h-[48px]"
               >
-                <span>LIHAT CARA KERJA SISTEM</span>
-                <ArrowDownRight className="w-4 h-4 text-rfk-red-light" aria-hidden="true" />
+                <span>CARA KERJA SISTEM</span>
+                <ArrowDownRight
+                  className="w-4 h-4 text-rfk-red-light transition-transform duration-200 group-hover:translate-x-0.5 group-hover:translate-y-0.5"
+                  aria-hidden="true"
+                />
               </a>
             </div>
           </div>
 
-          {/* Hero Visual: Certified Canister Trio & Quick Feature Badge */}
-          <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
+          {/* Hero Visual: Certified Canister Trio + Live Gas-Suction Ring */}
+          <div
+            className="animate-rfk-hero-enter lg:col-span-5 relative flex justify-center lg:justify-end"
+            style={{ animationDelay: "220ms" }}
+          >
             <div className="relative w-full max-w-md aspect-[4/3] sm:aspect-square flex items-center justify-center animate-rfk-float">
+              {/* Single deliberate focus glow behind the primary product visual */}
               <div
                 aria-hidden="true"
-                className="absolute -inset-3 rounded-3xl bg-gradient-to-tr from-rfk-red/20 via-transparent to-sky-400/15 blur-2xl animate-pulse"
+                className={`absolute inset-4 rounded-full blur-2xl pointer-events-none transition-colors duration-500 ${
+                  phase === "sucking"
+                    ? "bg-gradient-to-tr from-sky-400/25 via-transparent to-rfk-red/15"
+                    : "bg-gradient-to-tr from-rfk-red/25 via-transparent to-orange-500/15"
+                }`}
               />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-rfk-charcoal/40 to-rfk-surface/20 border border-rfk-border/60 p-6 flex items-center justify-center backdrop-blur-sm">
-                <div className="relative w-full h-full">
+
+              {/* Animated SVG thin clean-agent gas suction arcs sweeping around the canister */}
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 360 360"
+                className="absolute -inset-4 w-[calc(100%+2rem)] h-[calc(100%+2rem)] pointer-events-none z-20"
+              >
+                <defs>
+                  <linearGradient id="heroGasArc" x1="0%" y1="50%" x2="100%" y2="50%">
+                    <stop offset="0%" stopColor="#E2E8F0" stopOpacity="0" />
+                    <stop offset="50%" stopColor="#BAE6FD" stopOpacity="0.85" />
+                    <stop offset="100%" stopColor="#F8FAFC" stopOpacity="0" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M 46 235 C 95 295, 240 310, 314 205"
+                  fill="none"
+                  stroke="url(#heroGasArc)"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  className="animate-rfk-gas-suction"
+                />
+                <path
+                  d="M 38 195 C 95 258, 250 265, 326 148"
+                  fill="none"
+                  stroke="url(#heroGasArc)"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  className="animate-rfk-gas-suction"
+                  style={{ animationDelay: "420ms" }}
+                />
+                <circle
+                  cx="180"
+                  cy="180"
+                  r="164"
+                  fill="none"
+                  stroke="#BAE6FD"
+                  strokeOpacity={phase === "sucking" ? "0.28" : "0.1"}
+                  strokeWidth="1"
+                  strokeDasharray="12 18"
+                  className="animate-rfk-spin-slow"
+                  style={{ transformOrigin: "180px 180px" }}
+                />
+              </svg>
+
+              <div className="group relative w-full h-full rounded-2xl bg-gradient-to-tr from-rfk-charcoal/30 to-rfk-surface/20 border border-rfk-border/70 p-6 flex items-center justify-center">
+                <div className="relative w-full h-full transition-transform duration-500 ease-out group-hover:scale-105">
                   <Image
                     src="/assets/tabung/Perlengkapan-pemadam-kebakaran-otomotif.webp"
                     alt="Koleksi Tabung Racing Fire Killer Hartindo AF11E"
@@ -83,18 +148,13 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Verified Clean Agent Badge */}
-              <div className="absolute -bottom-4 -left-2 sm:-left-4 bg-rfk-black/90 border border-rfk-red/50 p-4 rounded-lg shadow-xl backdrop-blur-md flex items-center gap-3">
-                <div className="w-10 h-10 rounded bg-rfk-red/20 text-rfk-red flex items-center justify-center shrink-0">
-                  <ShieldAlert className="w-5 h-5" />
+              {/* Material / Agent Label Card */}
+              <div className="absolute -bottom-4 -left-2 sm:-left-4 z-30 bg-rfk-black/95 border border-rfk-red/60 px-4 py-3.5 rounded-lg shadow-xl">
+                <div className="text-xs uppercase tracking-wider text-rfk-silver-light font-heading">
+                  Media Pemadam
                 </div>
-                <div>
-                  <div className="text-xs uppercase tracking-wider text-rfk-silver-light font-heading">
-                    Media Pemadam
-                  </div>
-                  <div className="text-sm sm:text-base font-bold text-rfk-white font-heading">
-                    Hartindo AF11E Clean Agent
-                  </div>
+                <div className="text-sm sm:text-base font-bold text-rfk-white font-heading">
+                  Hartindo AF11E Clean Agent
                 </div>
               </div>
             </div>
@@ -103,7 +163,7 @@ export default function Hero() {
       </div>
 
       {/* Verified Metrics Counter Bar */}
-      <div className="relative z-10 w-full bg-rfk-surface/80 border-t border-b border-rfk-border/60 backdrop-blur-md overflow-hidden">
+      <div className="relative z-10 w-full bg-rfk-surface/90 border-t border-rfk-border/60 overflow-hidden">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute top-0 left-0 h-[1px] w-1/3 bg-gradient-to-r from-transparent via-rfk-red-light/80 to-transparent animate-rfk-scanline"
@@ -119,7 +179,7 @@ export default function Hero() {
               >
                 <div className="flex flex-wrap items-baseline gap-1.5 font-heading">
                   <span className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-rfk-white tracking-tight">
-                    {metric.value}
+                    <AnimatedCounter value={metric.value} />
                   </span>
                   <span className="text-xs sm:text-sm font-bold text-rfk-red-light uppercase tracking-wider">
                     {metric.unit}
@@ -139,4 +199,3 @@ export default function Hero() {
     </section>
   );
 }
-

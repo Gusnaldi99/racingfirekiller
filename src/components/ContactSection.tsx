@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { MessageSquare, ShieldCheck, Send, CheckCircle2 } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -42,58 +43,60 @@ export default function ContactSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Column: Brand Statement & Trust */}
-          <div className="lg:col-span-5">
-            <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red-light tracking-wider uppercase mb-3">
-              <MessageSquare className="w-4 h-4" aria-hidden="true" />
-              <span>06 / KONTAK</span>
-              <span className="text-rfk-border" aria-hidden="true">/</span>
-              <span className="text-rfk-silver">KONSULTASI TEKNIS</span>
-            </div>
-
-            <h2 className="text-3xl sm:text-5xl font-extrabold uppercase font-heading tracking-tight text-rfk-white leading-tight mb-6">
-              BUTUH REKOMENDASI <br />
-              <span className="text-rfk-red-light">SISTEM PEMADAM</span>?
-            </h2>
-
-            <p className="text-base sm:text-lg text-rfk-silver-light font-sans leading-relaxed mb-8">
-              Belum yakin ukuran tabung atau konfigurasi pemasangan mana yang paling sesuai untuk mobil Anda? Sampaikan spesifikasi kendaraan Anda agar tim RFK dapat membantu konsultasi teknis dan pemesanan.
-            </p>
-
-            {/* 5 Year Warranty Badge Box */}
-            <div className="p-6 rounded-xl bg-rfk-surface/80 border border-rfk-border/70 flex items-start gap-4 mb-8">
-              <div className="p-3 rounded-lg bg-rfk-red/10 text-rfk-red-light shrink-0">
-                <ShieldCheck className="w-7 h-7 sm:w-8 sm:h-8" aria-hidden="true" />
+          <ScrollReveal variant="left" className="lg:col-span-5">
+            <div>
+              <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red-light tracking-wider uppercase mb-3">
+                <MessageSquare className="w-4 h-4" aria-hidden="true" />
+                <span>06 / KONTAK</span>
+                <span className="text-rfk-border" aria-hidden="true">/</span>
+                <span className="text-rfk-silver">KONSULTASI TEKNIS</span>
               </div>
-              <div>
-                <div className="font-heading font-extrabold text-xl sm:text-2xl text-rfk-white uppercase tracking-wider mb-1">
-                  5 TAHUN GARANSI RESMI
+
+              <h2 className="text-3xl sm:text-5xl font-extrabold uppercase font-heading tracking-tight text-rfk-white leading-tight mb-6">
+                BUTUH REKOMENDASI <br />
+                <span className="text-rfk-red-light">SISTEM PEMADAM</span>?
+              </h2>
+
+              <p className="text-base sm:text-lg text-rfk-silver-light font-sans leading-relaxed mb-8">
+                Belum yakin ukuran tabung atau konfigurasi pemasangan mana yang paling sesuai untuk mobil Anda? Sampaikan spesifikasi kendaraan Anda agar tim RFK dapat membantu konsultasi teknis dan pemesanan.
+              </p>
+
+              {/* 5 Year Warranty Badge Box */}
+              <div className="p-6 rounded-xl bg-rfk-surface border border-rfk-border/70 flex items-start gap-4 mb-8">
+                <div className="p-3 rounded-lg bg-rfk-red/10 text-rfk-red-light shrink-0">
+                  <ShieldCheck className="w-7 h-7 sm:w-8 sm:h-8" aria-hidden="true" />
                 </div>
-                <div className="text-sm sm:text-base text-rfk-silver-light font-sans leading-relaxed">
-                  Jaminan jangka panjang terhadap tekanan tabung, keaslian formula Hartindo AF11E, serta ketersediaan suku cadang braket.
+                <div>
+                  <div className="font-heading font-extrabold text-xl sm:text-2xl text-rfk-white uppercase tracking-wider mb-1">
+                    5 TAHUN GARANSI RESMI
+                  </div>
+                  <div className="text-sm sm:text-base text-rfk-silver-light font-sans leading-relaxed">
+                    Jaminan jangka panjang terhadap tekanan tabung, keaslian formula Hartindo AF11E, serta ketersediaan suku cadang braket.
+                  </div>
+                </div>
+              </div>
+
+              {/* Contact Details */}
+              <div className="space-y-3.5 text-sm sm:text-base text-rfk-silver-light font-sans">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-rfk-white font-bold font-heading uppercase">Distribusi Resmi:</span>
+                  <span>PT Solusi Keselamatan Berkendara</span>
+                </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-rfk-white font-bold font-heading uppercase">Respons:</span>
+                  <span>Maksimal 1 x 24 Jam Kerja melalui WhatsApp</span>
+                </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-rfk-white font-bold font-heading uppercase">Situs Resmi:</span>
+                  <span className="text-rfk-red-light font-mono font-semibold">racingfirekiller.com</span>
                 </div>
               </div>
             </div>
-
-            {/* Contact Details */}
-            <div className="space-y-3.5 text-sm sm:text-base text-rfk-silver-light font-sans">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="text-rfk-white font-bold font-heading uppercase">Distribusi Resmi:</span>
-                <span>PT Solusi Keselamatan Berkendara</span>
-              </div>
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="text-rfk-white font-bold font-heading uppercase">Respons:</span>
-                <span>Maksimal 1 x 24 Jam Kerja melalui WhatsApp</span>
-              </div>
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="text-rfk-white font-bold font-heading uppercase">Situs Resmi:</span>
-                <span className="text-rfk-red-light font-mono font-semibold">racingfirekiller.com</span>
-              </div>
-            </div>
-          </div>
+          </ScrollReveal>
 
           {/* Right Column: Lead Capture Form */}
-          <div className="lg:col-span-7">
-            <div className="p-8 sm:p-10 rounded-2xl bg-rfk-surface/90 border border-rfk-border shadow-2xl backdrop-blur-md">
+          <ScrollReveal variant="right" delayMs={100} className="lg:col-span-7">
+            <div className="p-8 sm:p-10 rounded-2xl bg-rfk-surface border border-rfk-border shadow-xl">
               <h3 className="font-heading font-extrabold text-2xl sm:text-3xl uppercase tracking-wider text-rfk-white mb-2">
                 FORMULIR KONSULTASI RFK
               </h3>
@@ -223,14 +226,14 @@ export default function ContactSection() {
 
                 <button
                   type="submit"
-                  className="w-full min-h-[52px] bg-rfk-red hover:bg-rfk-red-light text-rfk-white font-heading font-bold tracking-wider uppercase text-base py-4 rounded-lg flex items-center justify-center gap-2 transition-all duration-200 shadow-lg shadow-rfk-red/25 focus-visible:ring-2 focus-visible:ring-rfk-white"
+                  className="group w-full min-h-[52px] bg-rfk-red hover:bg-rfk-red-light text-rfk-white font-heading font-bold tracking-wider uppercase text-base py-4 rounded-lg flex items-center justify-center gap-2 transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-rfk-white"
                 >
                   <span>KIRIM PERMINTAAN KONSULTASI VIA WHATSAPP</span>
-                  <Send className="w-5 h-5" />
+                  <Send className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
                 </button>
               </form>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

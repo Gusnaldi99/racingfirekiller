@@ -94,14 +94,14 @@ textarea {
   background: #d30201;
 }
 
-/* Motorsport & Clean-Agent Motion Utilities */
+/* Motorsport & Clean-Agent Motion Utilities (purposeful & reduced-motion safe) */
 @keyframes rfk-float {
   0%,
   100% {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-12px);
+    transform: translateY(-10px);
   }
 }
 
@@ -114,25 +114,213 @@ textarea {
   }
 }
 
-@keyframes rfk-scanline {
+@keyframes rfk-gas-suction {
   0% {
-    transform: translateX(-100%);
+    stroke-dashoffset: 110;
+    opacity: 0.25;
+  }
+  45% {
+    opacity: 0.95;
   }
   100% {
-    transform: translateX(200%);
+    stroke-dashoffset: 0;
+    opacity: 0.2;
+  }
+}
+
+@keyframes rfk-suction-swirl {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(0.92);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes rfk-vapor-drift {
+  0% {
+    transform: translate(0px, 4px) scale(0.9);
+    opacity: 0;
+  }
+  35% {
+    opacity: 0.65;
+  }
+  100% {
+    transform: translate(18px, -16px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes rfk-flame-flicker {
+  0%,
+  100% {
+    transform: scaleY(1) scaleX(1) translateY(0px);
+  }
+  33% {
+    transform: scaleY(1.1) scaleX(0.94) translateY(-2px);
+  }
+  66% {
+    transform: scaleY(0.92) scaleX(1.05) translateY(1px);
+  }
+}
+
+@keyframes rfk-powder-fall {
+  0% {
+    transform: translateY(-6px);
+    opacity: 0;
+  }
+  35% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(18px);
+    opacity: 0.6;
+  }
+}
+
+@keyframes rfk-scanline {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(340%);
+  }
+}
+
+@keyframes rfk-spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rfk-btn-sheen {
+  0%,
+  65% {
+    transform: translateX(-140%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(260%) skewX(-20deg);
+  }
+}
+
+@keyframes rfk-hero-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rfk-product-swap {
+  0% {
+    opacity: 0;
+    transform: scale(0.94) translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes rfk-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
 
 .animate-rfk-float {
-  animation: rfk-float 5.5s ease-in-out infinite;
+  animation: rfk-float 7.5s ease-in-out infinite;
 }
 
 .animate-rfk-gas-flow {
   stroke-dasharray: 8 8;
-  animation: rfk-gas-flow 1.4s linear infinite;
+  animation: rfk-gas-flow 2.2s linear infinite;
+}
+
+.animate-rfk-gas-suction {
+  stroke-dasharray: 18 10;
+  animation: rfk-gas-suction 2.5s linear infinite;
+}
+
+.animate-rfk-suction-swirl {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: rfk-suction-swirl 4.2s linear infinite;
+}
+
+.animate-rfk-vapor-drift {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: rfk-vapor-drift 3s ease-out infinite;
+}
+
+.animate-rfk-flame-flicker {
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  animation: rfk-flame-flicker 1.4s ease-in-out infinite;
+}
+
+.animate-rfk-powder-fall {
+  animation: rfk-powder-fall 2.6s ease-in infinite;
 }
 
 .animate-rfk-scanline {
-  animation: rfk-scanline 4.5s ease-in-out infinite;
+  animation: rfk-scanline 6.8s ease-in-out infinite;
+}
+
+.animate-rfk-spin-slow {
+  animation: rfk-spin-slow 36s linear infinite;
+}
+
+.rfk-cta-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.rfk-cta-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 38%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.22),
+    transparent
+  );
+  transform: translateX(-140%) skewX(-20deg);
+  animation: rfk-btn-sheen 7.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.animate-rfk-hero-enter {
+  opacity: 0;
+  animation: rfk-hero-enter 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-rfk-product-swap {
+  animation: rfk-product-swap 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-rfk-marquee {
+  display: flex;
+  width: max-content;
+  animation: rfk-marquee 44s linear infinite;
+}
+
+.group:hover .animate-rfk-marquee {
+  animation-play-state: paused;
 }
 
