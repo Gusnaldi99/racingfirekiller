@@ -68,7 +68,7 @@ export default function Footer() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-rfk-silver hover:text-rfk-red transition-colors py-1 focus-visible:ring-2 focus-visible:ring-rfk-red rounded"
+                  className="text-rfk-silver hover:text-rfk-red-light transition-colors py-1 focus-visible:ring-2 focus-visible:ring-rfk-red rounded"
                 >
                   {link.label}
                 </Link>

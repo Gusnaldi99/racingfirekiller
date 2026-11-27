@@ -12,13 +12,23 @@ export default function Navbar() {
 
   useEffect(() => {
     let rafId = 0;
+    let cachedDocHeight = 0;
+
+    const measureDocHeight = () => {
+      cachedDocHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+    };
+
     const updateScroll = () => {
       rafId = 0;
+      if (!cachedDocHeight) {
+        measureDocHeight();
+      }
       const y = window.scrollY;
       setScrolled(y > 20);
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      setScrollProgress(docHeight > 0 ? Math.min(1, Math.max(0, y / docHeight)) : 0);
+      setScrollProgress(
+        cachedDocHeight > 0 ? Math.min(1, Math.max(0, y / cachedDocHeight)) : 0
+      );
     };
 
     const handleScroll = () => {
@@ -27,10 +37,19 @@ export default function Navbar() {
       }
     };
 
-    updateScroll();
+    const handleResize = () => {
+      cachedDocHeight = 0;
+      handleScroll();
+    };
+
+    if (window.scrollY > 0) {
+      rafId = requestAnimationFrame(updateScroll);
+    }
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleResize, { passive: true });
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
       if (rafId) cancelAnimationFrame(rafId);
     };
   }, []);
@@ -67,7 +86,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color,padding,box-shadow] duration-300 ${
         scrolled
           ? "bg-rfk-black/90 backdrop-blur-md border-b border-rfk-border/80 py-3 shadow-lg"
           : "bg-gradient-to-b from-rfk-black/95 to-transparent py-5"
@@ -113,7 +132,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-4">
             <Link
               href="/#kontak"
-              className="inline-flex items-center justify-center bg-rfk-red hover:bg-rfk-red-light text-rfk-white font-heading tracking-wider uppercase font-bold text-sm px-5 py-2.5 rounded transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-rfk-white"
+              className="inline-flex items-center justify-center bg-rfk-red hover:bg-rfk-red-dark text-rfk-white font-heading tracking-wider uppercase font-bold text-sm px-5 py-2.5 rounded transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-rfk-white"
             >
               <span>KONSULTASI</span>
             </Link>
@@ -156,7 +175,10 @@ export default function Navbar() {
           />
           <div
             id="mobile-navigation"
-            className="md:hidden fixed inset-x-0 top-full bg-rfk-black/95 backdrop-blur-xl border-b border-rfk-border px-6 py-6 shadow-2xl transition-all animate-in fade-in slide-in-from-top-4 duration-200 z-50"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu navigasi"
+            className="md:hidden fixed inset-x-0 top-full bg-rfk-black/95 backdrop-blur-xl border-b border-rfk-border px-6 py-6 shadow-2xl transition-opacity duration-200 z-50"
           >
             <div className="flex flex-col gap-2 font-heading tracking-wider uppercase font-semibold text-base">
               {navLinks.map((link) => (

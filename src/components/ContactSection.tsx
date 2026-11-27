@@ -107,7 +107,7 @@ export default function ContactSection() {
               {submitted && (
                 <div className="mb-6 p-4 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 text-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div className="flex items-center gap-2.5">
-                    <CheckCircle2 className="w-5 h-5 shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 shrink-0" aria-hidden="true" />
                     <span>Permintaan Anda telah disiapkan.</span>
                   </div>
                   {lastWaUrl && (
@@ -130,7 +130,7 @@ export default function ContactSection() {
                       htmlFor="form-name"
                       className="block text-sm font-heading font-bold uppercase tracking-wider text-rfk-white mb-1.5"
                     >
-                      Nama Lengkap <span className="text-rfk-red">*</span>
+                      Nama Lengkap <span className="text-rfk-red-light">*</span>
                     </label>
                     <input
                       id="form-name"
@@ -140,7 +140,7 @@ export default function ContactSection() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="Nama Anda"
-                      className="w-full min-h-[48px] px-4 py-3 rounded-lg bg-rfk-black/80 border border-rfk-border text-base text-rfk-white placeholder-rfk-silver/50 focus:border-rfk-red focus:outline-none focus:ring-1 focus:ring-rfk-red transition-colors"
+                      className="w-full min-h-[48px] px-4 py-3 rounded-lg bg-rfk-black/80 border border-rfk-border text-base text-rfk-white placeholder-rfk-silver/75 focus:border-rfk-red focus:outline-none focus:ring-1 focus:ring-rfk-red transition-colors"
                     />
                   </div>
 
@@ -149,7 +149,7 @@ export default function ContactSection() {
                       htmlFor="form-contact"
                       className="block text-sm font-heading font-bold uppercase tracking-wider text-rfk-white mb-1.5"
                     >
-                      Nomor WhatsApp / Email <span className="text-rfk-red">*</span>
+                      Nomor WhatsApp / Email <span className="text-rfk-red-light">*</span>
                     </label>
                     <input
                       id="form-contact"
@@ -159,7 +159,7 @@ export default function ContactSection() {
                       value={formData.contact}
                       onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
                       placeholder="08xxxxxxxxxx atau email"
-                      className="w-full min-h-[48px] px-4 py-3 rounded-lg bg-rfk-black/80 border border-rfk-border text-base text-rfk-white placeholder-rfk-silver/50 focus:border-rfk-red focus:outline-none focus:ring-1 focus:ring-rfk-red transition-colors"
+                      className="w-full min-h-[48px] px-4 py-3 rounded-lg bg-rfk-black/80 border border-rfk-border text-base text-rfk-white placeholder-rfk-silver/75 focus:border-rfk-red focus:outline-none focus:ring-1 focus:ring-rfk-red transition-colors"
                     />
                   </div>
                 </div>
@@ -179,7 +179,7 @@ export default function ContactSection() {
                       value={formData.vehicle}
                       onChange={(e) => setFormData({ ...formData, vehicle: e.target.value })}
                       placeholder="Contoh: Mobil Balap / Modifikasi / BMW E36"
-                      className="w-full min-h-[48px] px-4 py-3 rounded-lg bg-rfk-black/80 border border-rfk-border text-base text-rfk-white placeholder-rfk-silver/50 focus:border-rfk-red focus:outline-none focus:ring-1 focus:ring-rfk-red transition-colors"
+                      className="w-full min-h-[48px] px-4 py-3 rounded-lg bg-rfk-black/80 border border-rfk-border text-base text-rfk-white placeholder-rfk-silver/75 focus:border-rfk-red focus:outline-none focus:ring-1 focus:ring-rfk-red transition-colors"
                     />
                   </div>
 
@@ -197,7 +197,7 @@ export default function ContactSection() {
                       className="w-full min-h-[48px] px-4 py-3 rounded-lg bg-rfk-black/80 border border-rfk-border text-base text-rfk-white focus:border-rfk-red focus:outline-none focus:ring-1 focus:ring-rfk-red transition-colors"
                     >
                       <option value="">Belum tahu (Perlu rekomendasi)</option>
-                      <option value="1 KG (Ringkas &amp; Efisien)">1 KG (Ringkas &amp; Efisien)</option>
+                      <option value="1 KG (Ringkas & Efisien)">1 KG (Ringkas &amp; Efisien)</option>
                       <option value="2 KG (Perlindungan Seimbang)">2 KG (Perlindungan Seimbang)</option>
                       <option value="4 KG (Fire Suppression Kit Motorsport)">
                         4 KG (Fire Suppression Kit Motorsport)
@@ -220,13 +220,13 @@ export default function ContactSection() {
                     value={formData.notes}
                     onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                     placeholder="Ceritakan spesifikasi mobil, ruang mesin, atau ajang balap yang Anda ikuti..."
-                    className="w-full px-4 py-3 rounded-lg bg-rfk-black/80 border border-rfk-border text-base text-rfk-white placeholder-rfk-silver/50 focus:border-rfk-red focus:outline-none focus:ring-1 focus:ring-rfk-red transition-colors"
+                    className="w-full px-4 py-3 rounded-lg bg-rfk-black/80 border border-rfk-border text-base text-rfk-white placeholder-rfk-silver/75 focus:border-rfk-red focus:outline-none focus:ring-1 focus:ring-rfk-red transition-colors"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="group w-full min-h-[52px] bg-rfk-red hover:bg-rfk-red-light text-rfk-white font-heading font-bold tracking-wider uppercase text-base py-4 rounded-lg flex items-center justify-center gap-2 transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-rfk-white"
+                  className="group w-full min-h-[52px] bg-rfk-red hover:bg-rfk-red-dark text-rfk-white font-heading font-bold tracking-wider uppercase text-base py-4 rounded-lg flex items-center justify-center gap-2 transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-rfk-white"
                 >
                   <span>KIRIM PERMINTAAN KONSULTASI VIA WHATSAPP</span>
                   <Send className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />

@@ -43,7 +43,6 @@ export default function ShowcaseSection() {
                 <Link
                   href={`/showcase/${item.slug}/`}
                   className="relative w-full aspect-[16/10] overflow-hidden bg-rfk-black block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rfk-red"
-                  aria-label={`Lihat detail instalasi RFK pada ${item.title}`}
                 >
                   <Image
                     src={item.coverImage}
@@ -115,7 +114,9 @@ export default function ShowcaseSection() {
                       href={`/showcase/${item.slug}/`}
                       className="inline-flex items-center justify-center gap-2 bg-rfk-red hover:bg-rfk-red-dark text-rfk-white font-heading font-bold text-sm uppercase tracking-wider px-6 py-3 rounded transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-rfk-white min-h-[44px]"
                     >
-                      <span>LIHAT DETAIL INSTALASI</span>
+                      <span>
+                        LIHAT DETAIL INSTALASI<span className="sr-only"> {item.title}</span>
+                      </span>
                       <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
                     </Link>
                   </div>

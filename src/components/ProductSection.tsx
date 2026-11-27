@@ -74,7 +74,9 @@ export default function ProductSection() {
                       : "bg-rfk-surface/80 text-rfk-silver border-rfk-border hover:text-rfk-white hover:border-rfk-silver"
                   }`}
                 >
-                  <span className="text-xs sm:text-sm font-mono opacity-80">{codeLabel}</span>
+                  <span className={`text-xs sm:text-sm font-mono ${isSelected ? "text-rfk-white" : "text-rfk-silver"}`}>
+                    {codeLabel}
+                  </span>
                   <span className="text-base sm:text-lg uppercase">{prod.capacity}</span>
                   <span
                     className={`text-xs uppercase font-semibold px-2 py-0.5 rounded ${
@@ -104,7 +106,7 @@ export default function ProductSection() {
                   aria-hidden="true"
                   className="absolute inset-8 rounded-full border border-dashed border-rfk-red/25 animate-rfk-spin-slow pointer-events-none"
                 />
-                <div className="absolute inset-4 bg-radial-gradient from-rfk-red/15 via-rfk-charcoal/40 to-transparent rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute inset-4 bg-[radial-gradient(circle,rgba(211,2,1,0.16)_0%,rgba(28,28,28,0.35)_55%,transparent_75%)] rounded-full blur-3xl pointer-events-none" />
                 <div
                   key={activeProduct.id}
                   className="animate-rfk-product-swap relative w-full h-full min-h-[340px] sm:min-h-[440px] md:min-h-[500px] lg:min-h-[540px] flex items-center justify-center"
@@ -115,7 +117,6 @@ export default function ProductSection() {
                     fill
                     className="object-contain drop-shadow-[0_25px_45px_rgba(211,2,1,0.24)] transition-transform duration-500 hover:scale-105"
                     sizes="(max-width: 640px) 90vw, (max-width: 1024px) 70vw, 650px"
-                    priority
                   />
                 </div>
               </div>
@@ -204,7 +205,7 @@ export default function ProductSection() {
               <div>
                 <a
                   href={`#kontak`}
-                  className="inline-flex items-center justify-center bg-rfk-red hover:bg-rfk-red-light text-rfk-white font-heading font-bold text-sm sm:text-base tracking-wider uppercase px-7 py-4 rounded transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-rfk-white min-h-[48px]"
+                  className="inline-flex items-center justify-center bg-rfk-red hover:bg-rfk-red-dark text-rfk-white font-heading font-bold text-sm sm:text-base tracking-wider uppercase px-7 py-4 rounded transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-rfk-white min-h-[48px]"
                 >
                   <span>
                     {activeProduct.id === "rfk-4kg"

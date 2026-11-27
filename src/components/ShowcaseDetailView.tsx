@@ -101,7 +101,7 @@ export default function ShowcaseDetailView({ item, otherShowcase }: ShowcaseDeta
           <div className="max-w-4xl">
             {/* Category Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-rfk-surface border border-rfk-border text-xs sm:text-sm font-heading font-bold uppercase tracking-wider text-rfk-red-light mb-4">
-              <span className="w-2 h-2 rounded-full bg-rfk-red animate-pulse" aria-hidden="true" />
+              <span className="w-2 h-2 rounded-full bg-rfk-red" aria-hidden="true" />
               <span>{item.badge}</span>
             </div>
 
@@ -141,8 +141,8 @@ export default function ShowcaseDetailView({ item, otherShowcase }: ShowcaseDeta
       <section id="galeri" className="py-16 border-b border-rfk-border/50 bg-rfk-obsidian">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <div className="flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red tracking-wider uppercase mb-2">
-              <ShieldCheck className="w-4 h-4" />
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red-light tracking-wider uppercase mb-2">
+              <ShieldCheck className="w-4 h-4" aria-hidden="true" />
               <span>DOKUMENTASI FOTO INSTALASI RFK</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold uppercase font-heading text-rfk-white">
@@ -237,8 +237,8 @@ export default function ShowcaseDetailView({ item, otherShowcase }: ShowcaseDeta
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             {/* Story Text Column */}
             <div className="lg:col-span-7">
-              <div className="flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red tracking-wider uppercase mb-3">
-                <Flame className="w-4 h-4" />
+              <div className="flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red-light tracking-wider uppercase mb-3">
+                <Flame className="w-4 h-4" aria-hidden="true" />
                 <span>KEUNGGULAN PROTEKSI BALAP</span>
               </div>
               <h2 className="text-2xl sm:text-4xl font-extrabold uppercase font-heading text-rfk-white leading-tight mb-6">
@@ -315,8 +315,8 @@ export default function ShowcaseDetailView({ item, otherShowcase }: ShowcaseDeta
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Installation Configuration Points */}
           <div className="mb-16">
-            <div className="flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red tracking-wider uppercase mb-2">
-              <Wrench className="w-4 h-4" />
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red-light tracking-wider uppercase mb-2">
+              <Wrench className="w-4 h-4" aria-hidden="true" />
               <span>KONFIGURASI PEMASANGAN TEKNIS</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold uppercase font-heading text-rfk-white mb-8">
@@ -414,7 +414,7 @@ export default function ShowcaseDetailView({ item, otherShowcase }: ShowcaseDeta
                 />
               </div>
               <div>
-                <div className="text-xs sm:text-sm font-mono text-rfk-red uppercase mb-1">
+                <div className="text-xs sm:text-sm font-mono text-rfk-red-light uppercase mb-1">
                   {otherShowcase.badge}
                 </div>
                 <h3 className="text-xl sm:text-2xl font-extrabold uppercase font-heading text-rfk-white mb-1">
@@ -440,8 +440,8 @@ export default function ShowcaseDetailView({ item, otherShowcase }: ShowcaseDeta
       {/* Bottom Consultation Banner & CTA */}
       <section className="py-20 bg-gradient-to-r from-rfk-charcoal via-rfk-surface to-rfk-charcoal text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red tracking-wider uppercase mb-3">
-            <ShieldCheck className="w-4 h-4" />
+          <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-heading font-bold text-rfk-red-light tracking-wider uppercase mb-3">
+            <ShieldCheck className="w-4 h-4" aria-hidden="true" />
             <span>KONSULTASI &amp; PEMESANAN SISTEM RFK</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold uppercase font-heading text-rfk-white mb-4 leading-tight">
@@ -478,7 +478,7 @@ export default function ShowcaseDetailView({ item, otherShowcase }: ShowcaseDeta
           role="dialog"
           aria-modal="true"
           aria-label="Tampilan penuh foto instalasi"
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col justify-between p-4 sm:p-8 animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col justify-between p-4 sm:p-8"
           onClick={() => setLightboxOpen(false)}
         >
           {/* Lightbox Header */}
@@ -487,7 +487,7 @@ export default function ShowcaseDetailView({ item, otherShowcase }: ShowcaseDeta
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center gap-3">
-              <span className="font-mono text-sm text-rfk-red font-bold">
+              <span className="font-mono text-sm text-rfk-red-light font-bold">
                 {activePhotoIndex + 1} / {item.gallery.length}
               </span>
               <span className="text-sm font-heading uppercase text-rfk-silver-light">

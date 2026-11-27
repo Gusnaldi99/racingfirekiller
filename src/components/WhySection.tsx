@@ -1,8 +1,18 @@
 import React from "react";
+import dynamic from "next/dynamic";
 import { Zap, ShieldCheck, Timer, Flame } from "lucide-react";
 import { FEATURE_PILLARS } from "@/data/rfkData";
 import ScrollReveal from "@/components/ScrollReveal";
-import WhyComparisonGraphic from "@/components/WhyComparisonGraphic";
+
+const WhyComparisonGraphic = dynamic(
+  () => import("@/components/WhyComparisonGraphic"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="mb-14 p-6 sm:p-8 rounded-xl bg-rfk-surface border border-rfk-border/80 min-h-[340px]" />
+    ),
+  }
+);
 
 export default function WhySection() {
   const flagshipPillars = FEATURE_PILLARS.slice(0, 2);
@@ -90,7 +100,7 @@ export default function WhySection() {
                   </span>
                   <svg
                     viewBox="0 0 88 22"
-                    className="w-22 h-5 shrink-0"
+                    className="w-[88px] h-5 shrink-0"
                     aria-hidden="true"
                   >
                     {index === 0 ? (

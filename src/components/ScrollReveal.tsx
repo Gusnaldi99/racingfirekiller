@@ -64,7 +64,7 @@ export default function ScrollReveal({
         transitionDuration: `${durationMs}ms`,
         transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
       }}
-      className={`transition-all will-change-transform ${
+      className={`transition-[transform,opacity] ${
         visible
           ? "opacity-100 translate-y-0 translate-x-0 scale-100"
           : HIDDEN_STATE[variant]

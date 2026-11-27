@@ -59,9 +59,13 @@ export default function HeroSuppressionCanvas({
   const pausedRef = useRef(paused);
   const triggerRef = useRef<(() => void) | null>(null);
   const onPhaseChangeRef = useRef(onPhaseChange);
+  const resumeLoopRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
     pausedRef.current = paused;
+    if (!paused) {
+      resumeLoopRef.current?.();
+    }
   }, [paused]);
 
   useEffect(() => {
@@ -84,7 +88,45 @@ export default function HeroSuppressionCanvas({
     let height = 0;
     let dpr = 1;
     let animationId = 0;
+    let initTimer = 0;
     let isVisible = true;
+    let disposed = false;
+    let lastTime = 0;
+    let cachedRect: DOMRect | null = null;
+
+    // Pre-bake radial gradient sprites once to avoid hundreds of createRadialGradient calls/frame
+    const createSprite = (stops: [number, string][], size = 96) => {
+      const s = document.createElement("canvas");
+      s.width = size;
+      s.height = size;
+      const sCtx = s.getContext("2d");
+      if (sCtx) {
+        const half = size / 2;
+        const g = sCtx.createRadialGradient(half, half, 0, half, half, half);
+        for (const [offset, color] of stops) {
+          g.addColorStop(offset, color);
+        }
+        sCtx.fillStyle = g;
+        sCtx.fillRect(0, 0, size, size);
+      }
+      return s;
+    };
+
+    const flameSprite = createSprite([
+      [0, "rgba(255, 226, 120, 1)"],
+      [0.42, "rgba(255, 72, 0, 0.9)"],
+      [1, "rgba(211, 2, 1, 0)"],
+    ]);
+    const cooledSprite = createSprite([
+      [0, "rgba(241, 245, 249, 0.75)"],
+      [0.5, "rgba(186, 230, 253, 0.35)"],
+      [1, "rgba(15, 23, 42, 0)"],
+    ]);
+    const gasSprite = createSprite([
+      [0, "rgba(248, 250, 252, 1)"],
+      [0.5, "rgba(186, 230, 253, 0.58)"],
+      [1, "rgba(186, 230, 253, 0)"],
+    ]);
 
     const fireParticles: FireParticle[] = [];
     const gasParticles: GasParticle[] = [];
@@ -105,7 +147,8 @@ export default function HeroSuppressionCanvas({
       const rect = canvas.parentElement?.getBoundingClientRect();
       width = rect ? rect.width : window.innerWidth;
       height = rect ? rect.height : window.innerHeight;
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cachedRect = canvas.getBoundingClientRect();
+      dpr = width < 768 ? 1 : Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = Math.floor(width * dpr);
       canvas.height = Math.floor(height * dpr);
       canvas.style.width = `${width}px`;
@@ -120,9 +163,10 @@ export default function HeroSuppressionCanvas({
       const originX = width * 0.68;
       const originY = height * 0.64;
       const spreadX = Math.max(220, width * 0.36);
+      const maxParticles = width < 768 ? 110 : 210;
 
       for (let i = 0; i < count; i++) {
-        if (fireParticles.length > 230) break;
+        if (fireParticles.length > maxParticles) break;
         const isSpark = Math.random() < 0.35;
         fireParticles.push({
           x: originX + (Math.random() - 0.5) * spreadX,
@@ -195,15 +239,25 @@ export default function HeroSuppressionCanvas({
       });
     };
 
-    resize();
-    spawnFire(48);
-    window.addEventListener("resize", resize);
+    const invalidateRect = () => {
+      cachedRect = null;
+    };
+
+    const getCanvasRect = () => {
+      if (!cachedRect) {
+        cachedRect = canvas.getBoundingClientRect();
+      }
+      return cachedRect;
+    };
 
     const handlePointerMove = (e: PointerEvent) => {
-      if (pausedRef.current) return;
-      const rect = canvas.getBoundingClientRect();
-      mouseX = e.clientX - rect.left;
-      mouseY = e.clientY - rect.top;
+      if (pausedRef.current || !isVisible) return;
+      const rect = getCanvasRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      if (x < 0 || y < 0 || x > rect.width || y > rect.height) return;
+      mouseX = x;
+      mouseY = y;
 
       const now = performance.now();
       if (now - lastMouseBurst > 36) {
@@ -219,10 +273,13 @@ export default function HeroSuppressionCanvas({
     };
 
     const handlePointerDown = (e: PointerEvent) => {
-      if (pausedRef.current) return;
-      const rect = canvas.getBoundingClientRect();
-      blastX = e.clientX - rect.left;
-      blastY = e.clientY - rect.top;
+      if (pausedRef.current || !isVisible) return;
+      const rect = getCanvasRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      if (x < 0 || y < 0 || x > rect.width || y > rect.height) return;
+      blastX = x;
+      blastY = y;
       blastTimer = 36;
       spawnGasStream(blastX - 105, blastY + 42, blastX, blastY, 18, 1.35);
       shockwaves.push({
@@ -239,17 +296,47 @@ export default function HeroSuppressionCanvas({
       mouseY = -9999;
     };
 
+    const startLoop = () => {
+      if (disposed || animationId || !isVisible || document.hidden || pausedRef.current) {
+        return;
+      }
+      lastTime = performance.now();
+      animationId = requestAnimationFrame(tick);
+    };
+
+    resumeLoopRef.current = startLoop;
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        if (animationId) {
+          cancelAnimationFrame(animationId);
+          animationId = 0;
+        }
+      } else {
+        startLoop();
+      }
+    };
+
+    window.addEventListener("resize", resize);
+    window.addEventListener("scroll", invalidateRect, { passive: true });
     window.addEventListener("pointermove", handlePointerMove, { passive: true });
     window.addEventListener("pointerdown", handlePointerDown, { passive: true });
     window.addEventListener("pointerleave", handlePointerLeave);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     const observer = new IntersectionObserver(
       (entries) => {
         isVisible = entries[0]?.isIntersecting ?? true;
+        if (isVisible) {
+          invalidateRect();
+          startLoop();
+        } else if (animationId) {
+          cancelAnimationFrame(animationId);
+          animationId = 0;
+        }
       },
       { threshold: 0.02 }
     );
-    observer.observe(canvas);
 
     const drawGasRibbons = (
       nozzleX: number,
@@ -309,12 +396,18 @@ export default function HeroSuppressionCanvas({
       ctx.restore();
     };
 
-    const tick = () => {
-      animationId = requestAnimationFrame(tick);
-      if (!isVisible || document.hidden || pausedRef.current) return;
+    const tick = (now: number) => {
+      animationId = 0;
+      if (disposed || !isVisible || document.hidden || pausedRef.current) return;
 
-      cycleTimer += 1;
-      if (blastTimer > 0) blastTimer -= 1;
+      const dt = Math.min(2.5, Math.max(0.4, (now - lastTime) / 16.6667));
+      lastTime = now;
+
+      const prevFloor = Math.floor(cycleTimer);
+      cycleTimer += dt;
+      const currFloor = Math.floor(cycleTimer);
+      const stepped = currFloor > prevFloor;
+      if (blastTimer > 0) blastTimer = Math.max(0, blastTimer - dt);
 
       const cyclePos = cycleTimer % 340;
       const isBurning = cyclePos < 165;
@@ -353,7 +446,7 @@ export default function HeroSuppressionCanvas({
       ctx.fillStyle = ambientFire;
       ctx.fillRect(0, 0, width, height);
 
-      if (isBurning && cycleTimer % 3 === 0) {
+      if (isBurning && stepped && currFloor % 3 === 0) {
         spawnFire(cyclePos < 60 ? 5 : 6);
       }
 
@@ -364,10 +457,11 @@ export default function HeroSuppressionCanvas({
         vortexX = width * (0.67 - Math.sin(progress * Math.PI) * 0.06);
         vortexY = height * (0.44 - progress * 0.1);
 
-        if (cycleTimer % 3 === 0) {
+        if (stepped && currFloor % 3 === 0) {
           spawnGasStream(nozzleX, nozzleY, vortexX, vortexY, 6);
         }
-        if (cyclePos === 152 || cyclePos === 210) {
+        const posFloor = Math.floor(cyclePos);
+        if (stepped && (posFloor === 152 || posFloor === 210)) {
           shockwaves.push({
             x: vortexX,
             y: vortexY,
@@ -465,23 +559,17 @@ export default function HeroSuppressionCanvas({
           ctx.scale(0.8, 1.45 + Math.sin(p.life * 0.14 + p.seed) * 0.14);
         }
 
-        const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, p.radius);
-        if (p.heat > 0.5) {
-          grad.addColorStop(0, `rgba(255, 226, 120, ${alpha})`);
-          grad.addColorStop(0.42, `rgba(255, 72, 0, ${alpha * 0.9})`);
-          grad.addColorStop(1, "rgba(211, 2, 1, 0)");
-        } else {
-          grad.addColorStop(0, `rgba(241, 245, 249, ${alpha * 0.75})`);
-          grad.addColorStop(0.5, `rgba(186, 230, 253, ${alpha * 0.35})`);
-          grad.addColorStop(1, "rgba(15, 23, 42, 0)");
-        }
-
-        ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.arc(0, 0, p.radius, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.globalAlpha = alpha;
+        ctx.drawImage(
+          p.heat > 0.5 ? flameSprite : cooledSprite,
+          -p.radius,
+          -p.radius,
+          p.radius * 2,
+          p.radius * 2
+        );
         ctx.restore();
       }
+      ctx.globalAlpha = 1;
 
       // Update & draw gossamer clean-agent gas wisps
       ctx.globalCompositeOperation = "screen";
@@ -510,16 +598,16 @@ export default function HeroSuppressionCanvas({
         }
 
         const fade = Math.sin(lifeRatio * Math.PI) * g.alpha;
-        const grad = ctx.createRadialGradient(g.x, g.y, 0, g.x, g.y, g.radius);
-        grad.addColorStop(0, `rgba(248, 250, 252, ${fade})`);
-        grad.addColorStop(0.5, `rgba(186, 230, 253, ${fade * 0.58})`);
-        grad.addColorStop(1, "rgba(186, 230, 253, 0)");
-
-        ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.arc(g.x, g.y, g.radius, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.globalAlpha = fade;
+        ctx.drawImage(
+          gasSprite,
+          g.x - g.radius,
+          g.y - g.radius,
+          g.radius * 2,
+          g.radius * 2
+        );
       }
+      ctx.globalAlpha = 1;
 
       // Expanding pressurized shockwave rings
       for (let i = shockwaves.length - 1; i >= 0; i--) {
@@ -538,16 +626,41 @@ export default function HeroSuppressionCanvas({
       }
 
       ctx.globalCompositeOperation = "source-over";
+      animationId = requestAnimationFrame(tick);
     };
 
-    animationId = requestAnimationFrame(tick);
+    const startSimulation = () => {
+      if (disposed) return;
+      resize();
+      spawnFire(width < 768 ? 28 : 48);
+      observer.observe(canvas);
+      startLoop();
+    };
+
+    const idleWin = window as Window & {
+      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+    let idleId = 0;
+    if (idleWin.requestIdleCallback) {
+      idleId = idleWin.requestIdleCallback(startSimulation, { timeout: 1200 });
+    } else {
+      initTimer = window.setTimeout(startSimulation, 600);
+    }
 
     return () => {
-      cancelAnimationFrame(animationId);
+      disposed = true;
+      if (idleId && idleWin.cancelIdleCallback) {
+        idleWin.cancelIdleCallback(idleId);
+      }
+      window.clearTimeout(initTimer);
+      if (animationId) cancelAnimationFrame(animationId);
       window.removeEventListener("resize", resize);
+      window.removeEventListener("scroll", invalidateRect);
       window.removeEventListener("pointermove", handlePointerMove);
       window.removeEventListener("pointerdown", handlePointerDown);
       window.removeEventListener("pointerleave", handlePointerLeave);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       observer.disconnect();
     };
   }, []);

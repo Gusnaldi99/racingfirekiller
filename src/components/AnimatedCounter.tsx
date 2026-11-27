@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
 interface AnimatedCounterProps {
   value: string;
@@ -18,21 +18,20 @@ export default function AnimatedCounter({
   const numericTarget = Number(value.trim());
   const isNumeric = Number.isFinite(numericTarget) && /^\d+$/.test(value.trim());
 
-  const [displayValue, setDisplayValue] = useState<string>(value);
   const ref = useRef<HTMLSpanElement | null>(null);
   const hasAnimatedRef = useRef(false);
 
   useEffect(() => {
-    if (!isNumeric) {
-      setDisplayValue(value);
-      return;
-    }
-
     const el = ref.current;
     if (!el) return;
 
+    if (!isNumeric) {
+      el.textContent = value;
+      return;
+    }
+
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setDisplayValue(value);
+      el.textContent = value;
       return;
     }
 
@@ -48,13 +47,13 @@ export default function AnimatedCounter({
         // Ease out expo
         const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
         const current = Math.round(eased * numericTarget);
-        setDisplayValue(String(current));
+        el.textContent = String(current);
         if (progress < 1) {
           rafId = requestAnimationFrame(step);
         }
       };
 
-      setDisplayValue("0");
+      el.textContent = "0";
       rafId = requestAnimationFrame(step);
     };
 
@@ -76,5 +75,9 @@ export default function AnimatedCounter({
     };
   }, [durationMs, isNumeric, numericTarget, value]);
 
-  return <span ref={ref}>{displayValue}</span>;
+  return (
+    <span ref={ref} className="tabular-nums">
+      {value}
+    </span>
+  );
 }

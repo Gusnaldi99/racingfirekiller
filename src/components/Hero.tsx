@@ -27,44 +27,32 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Main Hero Copy */}
           <div className="lg:col-span-7 flex flex-col items-start">
-            <p
-              className="animate-rfk-hero-enter text-xs sm:text-sm font-heading font-bold tracking-wider uppercase text-rfk-silver mb-4"
-              style={{ animationDelay: "60ms" }}
-            >
+            <p className="animate-rfk-hero-enter text-xs sm:text-sm font-heading font-bold tracking-wider uppercase text-rfk-silver mb-4">
               KESELAMATAN KEBAKARAN OTOMOTIF &bull; RFK 2026
             </p>
 
-            <h1
-              className="animate-rfk-hero-enter text-4xl sm:text-6xl lg:text-7xl font-extrabold uppercase font-heading tracking-tight text-rfk-white leading-[0.95] mb-6"
-              style={{ animationDelay: "180ms" }}
-            >
+            <h1 className="animate-rfk-hero-enter text-4xl sm:text-6xl lg:text-7xl font-extrabold uppercase font-heading tracking-tight text-rfk-white leading-[0.95] mb-6">
               BUKAN SEKADAR <br />
               <span className="text-rfk-red-light">CEPAT.</span> SIAP <br />
               SAAT DIBUTUHKAN.
             </h1>
 
-            <p
-              className="animate-rfk-hero-enter text-base sm:text-lg lg:text-xl text-rfk-silver-light max-w-xl font-sans leading-relaxed mb-8"
-              style={{ animationDelay: "300ms" }}
-            >
+            <p className="animate-rfk-hero-enter text-base sm:text-lg lg:text-xl text-rfk-silver-light max-w-xl font-sans leading-relaxed mb-8">
               Sistem pemadam api dan tabung gas bersih untuk mobil balap serta modifikasi. Hembusan gas Hartindo AF11E menyedot panas dan memadamkan api tanpa meninggalkan residu pada mesin maupun kelistrikan.
             </p>
 
             {/* Primary & Secondary CTAs */}
-            <div
-              className="animate-rfk-hero-enter flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto"
-              style={{ animationDelay: "420ms" }}
-            >
+            <div className="animate-rfk-hero-enter flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
               <a
                 href="#produk"
-                className="rfk-cta-sheen inline-flex items-center justify-center bg-rfk-red hover:bg-rfk-red-light text-rfk-white font-heading font-bold text-sm sm:text-base tracking-wider uppercase px-7 py-4 rounded transition-all duration-200 hover:-translate-y-1 shadow-lg shadow-rfk-red/25 focus-visible:ring-2 focus-visible:ring-rfk-white min-h-[48px]"
+                className="rfk-cta-sheen inline-flex items-center justify-center bg-rfk-red hover:bg-rfk-red-dark text-rfk-white font-heading font-bold text-sm sm:text-base tracking-wider uppercase px-7 py-4 rounded transition-[transform,background-color] duration-200 hover:-translate-y-1 shadow-lg shadow-rfk-red/25 focus-visible:ring-2 focus-visible:ring-rfk-white min-h-[48px]"
               >
                 <span>PILIH VARIAN TABUNG</span>
               </a>
 
               <a
                 href="#sistem"
-                className="group inline-flex items-center justify-center gap-2 bg-rfk-charcoal/85 hover:bg-rfk-charcoal text-rfk-silver-light hover:text-rfk-white border border-rfk-border hover:border-rfk-red/60 font-heading font-semibold text-sm sm:text-base tracking-wider uppercase px-7 py-4 rounded transition-all duration-200 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-rfk-red min-h-[48px]"
+                className="group inline-flex items-center justify-center gap-2 bg-rfk-charcoal/85 hover:bg-rfk-charcoal text-rfk-silver-light hover:text-rfk-white border border-rfk-border hover:border-rfk-red/60 font-heading font-semibold text-sm sm:text-base tracking-wider uppercase px-7 py-4 rounded transition-[transform,background-color,border-color,color] duration-200 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-rfk-red min-h-[48px]"
               >
                 <span>CARA KERJA SISTEM</span>
                 <ArrowDownRight
@@ -76,10 +64,7 @@ export default function Hero() {
           </div>
 
           {/* Hero Visual: Certified Canister Trio + Live Gas-Suction Ring */}
-          <div
-            className="animate-rfk-hero-enter lg:col-span-5 relative flex justify-center lg:justify-end"
-            style={{ animationDelay: "220ms" }}
-          >
+          <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
             <div className="relative w-full max-w-md aspect-[4/3] sm:aspect-square flex items-center justify-center animate-rfk-float">
               {/* Single deliberate focus glow behind the primary product visual */}
               <div
@@ -142,8 +127,9 @@ export default function Hero() {
                     alt="Koleksi Tabung Racing Fire Killer Hartindo AF11E"
                     fill
                     priority
+                    fetchPriority="high"
                     className="object-contain drop-shadow-2xl"
-                    sizes="(max-width: 768px) 100vw, 450px"
+                    sizes="(max-width: 768px) 92vw, 448px"
                   />
                 </div>
               </div>

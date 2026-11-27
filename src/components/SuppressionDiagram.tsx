@@ -74,11 +74,37 @@ export default function SuppressionDiagram({
     const jets: Jet[] = [];
     let frame = 0;
     let rafId = 0;
-    let visible = true;
+    let visible = false;
+    let disposed = false;
+    let lastTime = performance.now();
+
+    const startLoop = () => {
+      if (disposed || rafId || !visible || document.hidden) return;
+      lastTime = performance.now();
+      rafId = requestAnimationFrame(tick);
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = 0;
+        }
+      } else {
+        startLoop();
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     const observer = new IntersectionObserver(
       (entries) => {
         visible = entries[0]?.isIntersecting ?? true;
+        if (visible) {
+          startLoop();
+        } else if (rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = 0;
+        }
       },
       { threshold: 0.05 }
     );
@@ -116,16 +142,21 @@ export default function SuppressionDiagram({
       }
     };
 
-    const tick = () => {
-      rafId = requestAnimationFrame(tick);
-      if (!visible || document.hidden) return;
-      frame += 1;
+    const tick = (now: number) => {
+      rafId = 0;
+      if (disposed || !visible || document.hidden) return;
+      const dt = Math.min(2.5, Math.max(0.4, (now - lastTime) / 16.6667));
+      lastTime = now;
+      const prevF = Math.floor(frame);
+      frame += dt;
+      const currF = Math.floor(frame);
+      const stepped = currF > prevF;
 
       const step = stepRef.current;
       ctx.clearRect(0, 0, W, H);
 
       // 1. Live flickering flames in Engine Bay & Fuel Tank (always active, sucked in Stage 2/3)
-      if (frame % 3 === 0) {
+      if (stepped && currF % 3 === 0) {
         spawnFlames();
       }
 
@@ -168,7 +199,7 @@ export default function SuppressionDiagram({
 
       // Stage 03: All 8 nozzles spray thin gas/smoke jets that curl & suck flames!
       if (step === 2) {
-        if (frame % 3 === 0) {
+        if (stepped && currF % 3 === 0) {
           NOZZLE_POINTS.forEach((n) => {
             if (jets.length < 130) {
               const dx = n.tx - n.x;
@@ -291,16 +322,17 @@ export default function SuppressionDiagram({
         ctx.fill();
       }
       ctx.globalCompositeOperation = "source-over";
+      rafId = requestAnimationFrame(tick);
     };
 
     function cCtxRestore(context: CanvasRenderingContext2D) {
       context.restore();
     }
 
-    rafId = requestAnimationFrame(tick);
-
     return () => {
-      cancelAnimationFrame(rafId);
+      disposed = true;
+      if (rafId) cancelAnimationFrame(rafId);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       observer.disconnect();
     };
   }, []);

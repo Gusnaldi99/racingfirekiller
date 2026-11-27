@@ -105,79 +105,27 @@ textarea {
   }
 }
 
-@keyframes rfk-gas-flow {
-  0% {
-    stroke-dashoffset: 48;
-  }
+@keyframes rfk-gas-pulse {
+  0%,
   100% {
-    stroke-dashoffset: 0;
+    opacity: 0.55;
+    transform: translateX(0px);
+  }
+  50% {
+    opacity: 0.95;
+    transform: translateX(4px);
   }
 }
 
 @keyframes rfk-gas-suction {
-  0% {
-    stroke-dashoffset: 110;
-    opacity: 0.25;
-  }
-  45% {
-    opacity: 0.95;
-  }
-  100% {
-    stroke-dashoffset: 0;
-    opacity: 0.2;
-  }
-}
-
-@keyframes rfk-suction-swirl {
-  0% {
-    transform: rotate(0deg) scale(1);
-  }
-  50% {
-    transform: rotate(180deg) scale(0.92);
-  }
-  100% {
-    transform: rotate(360deg) scale(1);
-  }
-}
-
-@keyframes rfk-vapor-drift {
-  0% {
-    transform: translate(0px, 4px) scale(0.9);
-    opacity: 0;
-  }
-  35% {
-    opacity: 0.65;
-  }
-  100% {
-    transform: translate(18px, -16px) scale(1.2);
-    opacity: 0;
-  }
-}
-
-@keyframes rfk-flame-flicker {
   0%,
   100% {
-    transform: scaleY(1) scaleX(1) translateY(0px);
+    opacity: 0.35;
+    transform: translate3d(0px, 0px, 0px) scale(0.99);
   }
-  33% {
-    transform: scaleY(1.1) scaleX(0.94) translateY(-2px);
-  }
-  66% {
-    transform: scaleY(0.92) scaleX(1.05) translateY(1px);
-  }
-}
-
-@keyframes rfk-powder-fall {
-  0% {
-    transform: translateY(-6px);
-    opacity: 0;
-  }
-  35% {
-    opacity: 0.9;
-  }
-  100% {
-    transform: translateY(18px);
-    opacity: 0.6;
+  50% {
+    opacity: 0.92;
+    transform: translate3d(3px, -2px, 0px) scale(1.01);
   }
 }
 
@@ -211,8 +159,8 @@ textarea {
 
 @keyframes rfk-hero-enter {
   0% {
-    opacity: 0;
-    transform: translateY(18px);
+    opacity: 0.92;
+    transform: translateY(12px);
   }
   100% {
     opacity: 1;
@@ -246,34 +194,14 @@ textarea {
 
 .animate-rfk-gas-flow {
   stroke-dasharray: 8 8;
-  animation: rfk-gas-flow 2.2s linear infinite;
+  animation: rfk-gas-pulse 2.2s ease-in-out infinite;
 }
 
 .animate-rfk-gas-suction {
   stroke-dasharray: 18 10;
-  animation: rfk-gas-suction 2.5s linear infinite;
-}
-
-.animate-rfk-suction-swirl {
   transform-box: fill-box;
   transform-origin: center;
-  animation: rfk-suction-swirl 4.2s linear infinite;
-}
-
-.animate-rfk-vapor-drift {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: rfk-vapor-drift 3s ease-out infinite;
-}
-
-.animate-rfk-flame-flicker {
-  transform-box: fill-box;
-  transform-origin: bottom center;
-  animation: rfk-flame-flicker 1.4s ease-in-out infinite;
-}
-
-.animate-rfk-powder-fall {
-  animation: rfk-powder-fall 2.6s ease-in infinite;
+  animation: rfk-gas-suction 2.5s ease-in-out infinite;
 }
 
 .animate-rfk-scanline {
@@ -306,8 +234,7 @@ textarea {
 }
 
 .animate-rfk-hero-enter {
-  opacity: 0;
-  animation: rfk-hero-enter 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: rfk-hero-enter 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-rfk-product-swap {

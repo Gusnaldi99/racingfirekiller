@@ -72,21 +72,52 @@ export default function WhyComparisonGraphic() {
 
     let frame = 0;
     let rafId = 0;
-    let visible = true;
+    let visible = false;
+    let disposed = false;
+    let lastTime = performance.now();
+
+    const startLoop = () => {
+      if (disposed || rafId || !visible || document.hidden) return;
+      lastTime = performance.now();
+      rafId = requestAnimationFrame(tick);
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = 0;
+        }
+      } else {
+        startLoop();
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     const observer = new IntersectionObserver(
       (entries) => {
         visible = entries.some((e) => e.isIntersecting);
+        if (visible) {
+          startLoop();
+        } else if (rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = 0;
+        }
       },
       { threshold: 0.05 }
     );
     observer.observe(powderCanvas);
     observer.observe(cleanCanvas);
 
-    const tick = () => {
-      rafId = requestAnimationFrame(tick);
-      if (!visible || document.hidden) return;
-      frame += 1;
+    const tick = (now: number) => {
+      rafId = 0;
+      if (disposed || !visible || document.hidden) return;
+      const dt = Math.min(2.5, Math.max(0.4, (now - lastTime) / 16.6667));
+      lastTime = now;
+      const prevF = Math.floor(frame);
+      frame += dt;
+      const currF = Math.floor(frame);
+      const stepped = currF > prevF;
 
       // ==========================================
       // LEFT CANVAS: APAR SERBUK KONVENSIONAL
@@ -108,7 +139,7 @@ export default function WhyComparisonGraphic() {
       pCtx.fill();
 
       // Spawn falling dry powder particles
-      if (frame % 3 === 0 && grains.length < 95) {
+      if (stepped && currF % 3 === 0 && grains.length < 95) {
         grains.push({
           x: 45 + Math.random() * (W - 90),
           y: 4 + Math.random() * 12,
@@ -121,7 +152,7 @@ export default function WhyComparisonGraphic() {
       }
 
       // Stubborn fire embers flickering on crust
-      if (frame % 4 === 0 && powderFlames.length < 40) {
+      if (stepped && currF % 4 === 0 && powderFlames.length < 40) {
         powderFlames.push({
           x: 162 + (Math.random() - 0.5) * 44,
           y: 90,
@@ -208,7 +239,7 @@ export default function WhyComparisonGraphic() {
       cCtx.fillRect(18, 45, 18, 13);
 
       // Spawn flames during ignition phase
-      if (burning && frame % 3 === 0 && cleanFlames.length < 75) {
+      if (burning && stepped && currF % 3 === 0 && cleanFlames.length < 75) {
         cleanFlames.push({
           x: vortexX + (Math.random() - 0.5) * 56,
           y: 92,
@@ -228,7 +259,7 @@ export default function WhyComparisonGraphic() {
         const env = Math.sin(p * Math.PI);
 
         // Spawn high-velocity thin mist wisps from nozzle
-        if (frame % 3 === 0) {
+        if (stepped && currF % 3 === 0) {
           for (let k = 0; k < 3; k++) {
             if (mistPts.length < 85) {
               mistPts.push({
@@ -367,12 +398,14 @@ export default function WhyComparisonGraphic() {
       cCtx.font = "600 10.5px sans-serif";
       cCtx.textAlign = "center";
       cCtx.fillText("Gas tipis menyedot api & menguap 0% residu", W / 2, 121);
+
+      rafId = requestAnimationFrame(tick);
     };
 
-    rafId = requestAnimationFrame(tick);
-
     return () => {
-      cancelAnimationFrame(rafId);
+      disposed = true;
+      if (rafId) cancelAnimationFrame(rafId);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       observer.disconnect();
     };
   }, []);
@@ -405,7 +438,7 @@ export default function WhyComparisonGraphic() {
           <div className="rounded-lg bg-rfk-black/80 border border-rfk-border/60 p-2 overflow-hidden">
             <canvas
               ref={powderCanvasRef}
-              className="w-full h-32 block"
+              className="w-full aspect-[360/128] block"
               aria-label="Animasi serbuk APAR konvensional menumpuk sebagai kerak pada permukaan mesin"
             />
           </div>
@@ -439,7 +472,7 @@ export default function WhyComparisonGraphic() {
           <div className="rounded-lg bg-rfk-black/80 border border-rfk-red/45 p-2 overflow-hidden">
             <canvas
               ref={cleanCanvasRef}
-              className="w-full h-32 block"
+              className="w-full aspect-[360/128] block"
               aria-label="Animasi hembusan gas tipis Hartindo AF11E menyedot api dan menguap bersih tanpa residu"
             />
           </div>

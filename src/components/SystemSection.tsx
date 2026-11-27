@@ -1,20 +1,32 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import { Radio, Shield } from "lucide-react";
 import { SYSTEM_STEPS } from "@/data/rfkData";
 import ScrollReveal from "@/components/ScrollReveal";
-import SuppressionDiagram from "@/components/SuppressionDiagram";
+
+const SuppressionDiagram = dynamic(
+  () => import("@/components/SuppressionDiagram"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="rounded-2xl bg-rfk-surface border border-rfk-border/80 p-5 sm:p-6 aspect-[580/320]" />
+    ),
+  }
+);
 
 export default function SystemSection() {
   const [activeStep, setActiveStep] = useState(0);
+  const [autoCycle, setAutoCycle] = useState(true);
 
   useEffect(() => {
+    if (!autoCycle) return;
     const interval = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % SYSTEM_STEPS.length);
     }, 3400);
     return () => clearInterval(interval);
-  }, []);
+  }, [autoCycle]);
 
   return (
     <section id="sistem" className="py-24 bg-rfk-black relative border-b border-rfk-border/50 overflow-hidden">
@@ -102,7 +114,10 @@ export default function SystemSection() {
                 <button
                   key={step.step}
                   type="button"
-                  onClick={() => setActiveStep(idx)}
+                  onClick={() => {
+                    setAutoCycle(false);
+                    setActiveStep(idx);
+                  }}
                   aria-pressed={isActive}
                   className={`w-full text-left p-5 rounded-xl border transition-all duration-200 focus-visible:ring-2 focus-visible:ring-rfk-red ${
                     isActive
@@ -151,7 +166,7 @@ export default function SystemSection() {
             </div>
             <a
               href="#kontak"
-              className="rfk-cta-sheen inline-flex items-center justify-center bg-rfk-red hover:bg-rfk-red-light text-rfk-white font-heading font-bold text-sm sm:text-base tracking-wider uppercase px-7 py-4 rounded transition-all duration-200 hover:-translate-y-0.5 shrink-0 focus-visible:ring-2 focus-visible:ring-rfk-white min-h-[48px]"
+              className="rfk-cta-sheen inline-flex items-center justify-center bg-rfk-red hover:bg-rfk-red-dark text-rfk-white font-heading font-bold text-sm sm:text-base tracking-wider uppercase px-7 py-4 rounded transition-[transform,background-color] duration-200 hover:-translate-y-0.5 shrink-0 focus-visible:ring-2 focus-visible:ring-rfk-white min-h-[48px]"
             >
               <span>DISKUSIKAN INSTALASI</span>
             </a>
